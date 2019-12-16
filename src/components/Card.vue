@@ -34,7 +34,7 @@
           </span>
           <span class="checkIcon">
             <button @click="toggleCheckIcon">
-              <img :src="`/img/icons/${displayCheckIcon}.svg`" />
+              <img :src="displayCheckIcon" />
             </button>
           </span>
         </div>
@@ -51,13 +51,13 @@ export default {
   props: ["item"],
   data() {
     return {
-      iconSource: `/production-sub-path/img/icons/${this.item.category}.svg`
+      iconSource: `../assets/images/${this.item.category}.svg`
     };
   },
   created() {},
   computed: {
     displayCheckIcon() {
-      return this.item.checked ? "checked" : "unchecked";
+      return this.item.checked ? "../assets/images/checked.svg" : "../assets/images/unchecked.svg";
     },
     displayCardBg() {
       return this.item.default ? "dark" : "secondary";

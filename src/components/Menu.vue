@@ -42,7 +42,7 @@
           <p>Alphabetical</p>
         </button>
         <button class="checked" v-if="currentPage == 'gear list'">
-          <img src="../assets/images/checked.svg" />
+          <img src="../assets/images/checked-menu.svg" />
           <p>Ready</p>
         </button>
       </div>
