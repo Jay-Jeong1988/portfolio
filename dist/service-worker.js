@@ -14,10 +14,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.eef9d52e7df316156fa53d11ad28e720.js"
+  "/production-sub-path/precache-manifest.875c765492878d47197fad5d48c18e6a.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "survivalstack"});
+workbox.core.setCacheNameDetails({prefix: "pokercases"});
 
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
