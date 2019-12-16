@@ -34,7 +34,7 @@
           </span>
           <span class="checkIcon">
             <button @click="toggleCheckIcon">
-              <img :src="`./img/icons/${displayCheckIcon}.svg`" />
+              <img :src="`@/img/icons/${displayCheckIcon}.svg`" />
             </button>
           </span>
         </div>
@@ -51,7 +51,7 @@ export default {
   props: ["item"],
   data() {
     return {
-      iconSource: `./img/icons/${this.item.category}.svg`
+      iconSource: `@/img/icons/${this.item.category}.svg`
     };
   },
   created() {},
