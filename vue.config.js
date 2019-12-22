@@ -6,6 +6,11 @@ module.exports = {
       appleTouchIcon: 'img/icons/car.png',
       maskIcon: 'img/icons/car',
       msTileImage: 'img/icons/car.png'
+    },
+    serviceWorker:false,
+    workboxPluginMode:'InjectManifest',
+    workboxOptions: {
+      swSrc: './app/sw.js', /* Empty file. */
     }
   }
 }

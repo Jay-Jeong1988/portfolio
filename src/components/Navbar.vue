@@ -5,7 +5,7 @@
     </a> -->
     <div class="statusSample">
       <span><img :src="`/img/icons/scheduled.svg`"/><p>Scheduled</p><p> 예약</p></span>
-      <span><img :src="`/img/icons/going.svg`"/><p>Driving</p><p> 운행중</p></span>
+      <span><img :src="`/img/icons/driving.svg`"/><p>Driving</p><p> 운행중</p></span>
       <span><img :src="`/img/icons/done.svg`"/><p>Done</p><p> 완료</p></span>
     </div>
     <div class="warning">

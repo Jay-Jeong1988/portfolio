@@ -52,7 +52,7 @@ export default {
         .then((response) => { return response.json() })
         .then((data) => {
           self.trips = data
-        }).catch( error => { console.log(error); });
+        }).catch( error => error );
     },
     toggleMenu() {
       this.isMenu = !this.isMenu;
