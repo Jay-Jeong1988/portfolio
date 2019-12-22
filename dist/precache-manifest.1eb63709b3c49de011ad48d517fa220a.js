@@ -4,7 +4,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/car.ico"
   },
   {
-    "revision": "e0a0961b04f6d2b7ad6f",
+    "revision": "3bcf9d8445f5b6b387e8",
     "url": "/css/app.8550cb54.css"
   },
   {
@@ -40,12 +40,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/travel.54b2c89b.svg"
   },
   {
-    "revision": "bc6b3b730422233c77939fd3e7c6e020",
+    "revision": "e77d3a1646a404a31a56b6d37067c494",
     "url": "/index.html"
   },
   {
-    "revision": "e0a0961b04f6d2b7ad6f",
-    "url": "/js/app.a7d7c0cf.js"
+    "revision": "3bcf9d8445f5b6b387e8",
+    "url": "/js/app.22bc0e3e.js"
   },
   {
     "revision": "5a85b8b0a6fe6988783a",

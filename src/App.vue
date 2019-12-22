@@ -46,7 +46,9 @@ export default {
   methods: {
     fetchTrips() {
       let self = this
-      const myRequest = new Request('http://localhost:8081/api/v1/trips/getAll')
+      const productionRequest = new Request('https://survivalstack.herokuapp.com/api/v1/trips/getAll')
+      const devRequest = new Request('http://localhost:8081/api/v1/trips/getAll')
+      let myRequest = process.env.NODE_ENV === 'production' ? productionRequest : devRequest
 
       fetch(myRequest)
         .then((response) => { return response.json() })
