@@ -131,7 +131,7 @@ typings/
 .nuxt
 
 # react / gatsby 
-
+.history
 
 # vuepress build output
 .vuepress/dist

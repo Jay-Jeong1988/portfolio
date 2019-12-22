@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect(process.env.MONGODB_URL, {
+mongoose.connect("mongodb+srv://jay:WIohGW33pBIhyKWU@survivalstack-ceh5l.mongodb.net/pockercases?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useCreateIndex: true,
 }, (err) => {

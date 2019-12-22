@@ -31,7 +31,7 @@
             <img :src="`/img/icons/${item.status}.svg`"/>
           </span>
         </div>
-        <h3>{{item.pickupTime + "-" + item.eta}}</h3>
+        <h3>{{ `${pickupHour - 8}:${pickupMin}-${etaHour - 8}:${etaMin}` }}</h3>
       </div>
   </div>
 </template>
@@ -46,6 +46,18 @@ export default {
   },
   created() {},
   computed: {
+    pickupHour(){
+      return this.item.pickupTime.split("T")[1].split(":")[0]
+    },
+    pickupMin(){
+      return this.item.pickupTime.split("T")[1].split(":")[1]
+    },
+    etaHour(){
+      return this.item.eta.split("T")[1].split(":")[0]
+    },
+    etaMin(){
+      return this.item.eta.split("T")[1].split(":")[1]
+    }
   },
   methods: {
     toggleCheckIcon(e) {

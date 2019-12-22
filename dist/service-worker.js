@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.261a92da6c6e7a11f6c652ca020abcbd.js"
+  "/precache-manifest.8a937d1eaaf320f503f25a5a6b481bf0.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "pokercases"});

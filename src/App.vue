@@ -28,114 +28,6 @@ export default {
       isMenu: false,
       user: null,
       trips: [
-        {
-          pickupTime: "12:40",
-          eta: "13:10",
-          from: "YVR Airport",
-          to: "Downtown",
-          thumbnailUrl:
-            "https://ik.imagekit.io/kitkitkitit/survivalstack/tr:q-100,ar-6-4,w-1000e-usm-2-2-0.8-0.024/knife-creamy50.jpg",
-          status: "going"
-        },
-        {
-          pickupTime: "12:40",
-          eta: "13:10",
-          from: "YVR Airport",
-          to: "Downtown",
-          thumbnailUrl:
-            "https://ik.imagekit.io/kitkitkitit/survivalstack/tr:q-100,ar-6-4,w-1000e-usm-2-2-0.8-0.024/knife-creamy50.jpg",
-          status: "going"
-        },
-        {
-          pickupTime: "12:40",
-          eta: "13:10",
-          from: "YVR Airport",
-          to: "Downtown",
-          thumbnailUrl:
-            "https://ik.imagekit.io/kitkitkitit/survivalstack/tr:q-100,ar-6-4,w-1000e-usm-2-2-0.8-0.024/knife-creamy50.jpg",
-          status: "going"
-        },
-        {
-          pickupTime: "12:40",
-          eta: "13:10",
-          from: "YVR Airport",
-          to: "Downtown",
-          thumbnailUrl:
-            "https://ik.imagekit.io/kitkitkitit/survivalstack/tr:q-100,ar-6-4,w-1000e-usm-2-2-0.8-0.024/knife-creamy50.jpg",
-          status: "going"
-        },
-        {
-          pickupTime: "12:40",
-          eta: "13:10",
-          from: "YVR Airport",
-          to: "Downtown",
-          thumbnailUrl:
-            "https://ik.imagekit.io/kitkitkitit/survivalstack/tr:q-100,ar-6-4,w-1000e-usm-2-2-0.8-0.024/knife-creamy50.jpg",
-          status: "going"
-        },
-        {
-          pickupTime: "12:40",
-          eta: "13:10",
-          from: "YVR Airport",
-          to: "Downtown",
-          thumbnailUrl:
-            "https://ik.imagekit.io/kitkitkitit/survivalstack/tr:q-100,ar-6-4,w-1000e-usm-2-2-0.8-0.024/knife-creamy50.jpg",
-          status: "going"
-        },
-        {
-          pickupTime: "12:40",
-          eta: "13:10",
-          from: "YVR Airport",
-          to: "Downtown",
-          thumbnailUrl:
-            "https://ik.imagekit.io/kitkitkitit/survivalstack/tr:q-100,ar-6-4,w-1000e-usm-2-2-0.8-0.024/knife-creamy50.jpg",
-          status: "going"
-        },
-        {
-          pickupTime: "12:40",
-          eta: "13:10",
-          from: "YVR Airport",
-          to: "Downtown",
-          thumbnailUrl:
-            "https://ik.imagekit.io/kitkitkitit/survivalstack/tr:q-100,ar-6-4,w-1000e-usm-2-2-0.8-0.024/knife-creamy50.jpg",
-          status: "going"
-        },
-        {
-          pickupTime: "12:40",
-          eta: "13:10",
-          from: "YVR Airport",
-          to: "Downtown",
-          thumbnailUrl:
-            "https://ik.imagekit.io/kitkitkitit/survivalstack/tr:q-100,ar-6-4,w-1000e-usm-2-2-0.8-0.024/knife-creamy50.jpg",
-          status: "going"
-        },
-        {
-          pickupTime: "12:40",
-          eta: "13:10",
-          from: "YVR Airport",
-          to: "Downtown",
-          thumbnailUrl:
-            "https://ik.imagekit.io/kitkitkitit/survivalstack/tr:q-100,ar-6-4,w-1000e-usm-2-2-0.8-0.024/knife-creamy50.jpg",
-          status: "going"
-        },
-        {
-          pickupTime: "12:40",
-          eta: "13:10",
-          from: "YVR Airport",
-          to: "Downtown",
-          thumbnailUrl:
-            "https://ik.imagekit.io/kitkitkitit/survivalstack/tr:q-100,ar-6-4,w-1000e-usm-2-2-0.8-0.024/knife-creamy50.jpg",
-          status: "going"
-        },
-        {
-          pickupTime: "12:40",
-          eta: "13:10",
-          from: "YVR Airport",
-          to: "Downtown",
-          thumbnailUrl:
-            "https://ik.imagekit.io/kitkitkitit/survivalstack/tr:q-100,ar-6-4,w-1000e-usm-2-2-0.8-0.024/knife-creamy50.jpg",
-          status: "going"
-        },
       ]
     };
   },
@@ -152,6 +44,16 @@ export default {
     }
   },
   methods: {
+    fetchTrips() {
+      let self = this
+      const myRequest = new Request('http://localhost:8081/api/v1/trips/getAll')
+
+      fetch(myRequest)
+        .then((response) => { return response.json() })
+        .then((data) => {
+          self.trips = data
+        }).catch( error => { console.log(error); });
+    },
     toggleMenu() {
       this.isMenu = !this.isMenu;
     },
@@ -168,10 +70,17 @@ export default {
     },
     hideMenu() {
       this.isMenu = false;
+    },
+    setData (err, post) {
+      if (err) {
+        this.error = err.toString()
+      } else {
+        this.post = post
+      }
     }
   },
   created() {
-    
+    this.fetchTrips()
   }
 };
 </script>
