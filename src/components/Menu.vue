@@ -3,48 +3,43 @@
     <div class="fixedContainer">
       <div class="logo">
         <router-link to="/">
-          <img src="../assets/images/survivalstack.png" />
+          <img src="../assets/images/JJ RIDE1.png" />
         </router-link>
       </div>
       <div class="filters">
-        <button class="gears">
-          <img src="../assets/images/gears.svg" />
-          <p>Gear List</p>
+        <button class="about">
+          <img src="../assets/images/about.svg" />
+          <p>소개</p>
+          <p>About</p>
         </button>
-        <button class="news">
-          <img src="../assets/images/news.svg" />
-          <p>News & Events</p>
-        </button>
-        <button class="skills">
-          <img src="../assets/images/skills.svg" />
-          <p>Skills</p>
-        </button>
-        <button class="hunting">
-          <img src="../assets/images/hunting.svg" />
-          <p>Hunting</p>
-        </button>
-        <button class="trips">
-          <img src="../assets/images/trips.svg" />
+        <button class="trips" @click="goToHome">
+          <img src="../assets/images/travel.svg" />
+          <p>예약현황</p>
           <p>Trips</p>
         </button>
-        <button class="community">
-          <img src="../assets/images/community.svg" />
-          <p>Community</p>
+        <button class="notification" @click="goToNotification">
+          <img src="../assets/images/notification.svg" />
+          <p>공지사항</p>
+          <p>Notification</p>
         </button>
       </div>
-      <div class="footer">
-        <button class="category" v-if="currentPage == 'gear list'">
-          <img src="../assets/images/category.svg" />
-          <p>Category</p>
-        </button>
-        <button class="alphabet" v-if="currentPage == 'gear list'">
-          <img src="../assets/images/alphabet.svg" />
-          <p>Alphabetical</p>
-        </button>
-        <button class="checked" v-if="currentPage == 'gear list'">
-          <img src="../assets/images/checked-menu.svg" />
-          <p>Ready</p>
-        </button>
+      <div class="footers">
+        <p>SERVICE CENTER 24/7</p>
+        <span>
+          <img src="../assets/images/smartphone.svg" />
+          <p>778 792 1407</p>
+        </span>
+        <span>
+          <img src="../assets/images/kakao-talk.svg" />
+          <p>hangma12</p>
+        </span>
+        <span>
+          <img src="@/assets/images/email.svg" />
+          <p>heybros32@gmail.com</p>
+        </span>
+        <span>
+          
+        </span>
       </div>
     </div>
   </div>
@@ -54,22 +49,23 @@ export default {
   name: "Menu",
   data() {
     return {
-      categories: []
+      categories: [],
     };
   },
   computed: {},
   methods: {
-    switchPage() {
-
+    switchPage() {},
+    goToNotification(){
+      this.$emit("closeMenu")
+      this.$router.push('Notification')
+    },
+    goToHome(){
+      this.$emit("closeMenu")
+      this.$router.push("/")
     }
-    // redirectTo(path) {
-    //     this.$emit("closeMenubar")
-    //     this.$router.push(path)
-    // }
   },
-  created() {
-  },
-  props: [ "currentPage" ]
+  created() {},
+  props: ["currentPage"]
 };
 </script>
 <style scoped>
@@ -80,6 +76,26 @@ export default {
 @media only screen and (max-width: 924px) {
   #menu {
     display: none;
+  }
+}
+.warning {
+  display: none;
+  position: absolute;
+  padding: 1em;
+}
+.warning p {
+  margin: 0;
+  font-size: 1rem;
+}
+.notification {
+  display: none;
+}
+@media only screen and (max-width: 600px) {
+  .warning {
+    display: block;
+  }
+  .notification {
+    display: block;
   }
 }
 button {
@@ -98,7 +114,8 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #0d1822;
+  background-color: white;
+  justify-content: space-between;
 }
 .closeMenu {
   margin-bottom: 4em;
@@ -110,24 +127,48 @@ button {
   display: inline-block;
 }
 .logo img {
-  width: 10em;
+  width: 15em;
 }
-.filters img, .footer img {
-  width: 1.7em;
+.filters img {
+  width: 2.5em;
 }
-.filters p, .footer p {
+.filters p {
+  margin: 0;
   margin-top: 0.5em;
-  color: white;
-  font-size: 0.8em;
+  font-size: 1em;
 }
-.filters, .footer {
+.filters p:last-child {
+  margin: 0;
+}
+.filters {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: 7rem;
   width: inherit;
 }
-.filters > *:hover, .footer > *:hover {
+.filters > *:hover {
   transition: all 0.2s;
-  background: rgba(0,0,0,0.5);
+  background: rgba(245, 217, 250, 0.5);
+}
+.footers {
+  text-align: center;
+  padding-bottom: 8vh;
+  background-color: rgb(240,240,240);
+  width: 100%;
+  padding-top:1em;
+  color: rgb(110,110,110);
+}
+.footers img {
+  width: 1.2em;
+  margin: 0 10px;
+}
+.footers span {
+  display: flex;
+  align-items: center;
+  margin: 3px 0;
+  margin-left: 1em;
+}
+.footers p {
+  margin: 0;
 }
 </style>

@@ -3,14 +3,6 @@
     <div class="defaultCards">
       <Card v-for="(item, i) in defaultItems" :key="i" :item="item" />
     </div>
-    <div class="customCards">
-      <Card v-for="(item, i) in customItems" :key="i" :item="item" />
-    </div>
-    <div class="createLink">
-      <router-link to="/create">
-        <img src="../assets/images/plus.svg" />
-      </router-link>
-    </div>
   </div>
 </template>
 
@@ -27,7 +19,7 @@ export default {
     Card
   },
   props: [
-    "customItems", "defaultItems", "currentPage"
+    "defaultItems", "currentPage"
   ]
 };
 </script>
@@ -59,19 +51,19 @@ export default {
 }
 .content > div > * {
   display: inline-block;
-  width: calc((100vw - 16em - 6.6em) * .33);
+  width: calc((100vw - 16em - 8.5em) * .25);
   margin-right: 1.7em;
   margin-bottom: 1.7em;
 }
 
 @media only screen and (max-width: 924px) {
   .content > div > * {
-    width: calc((100vw - 5.5em) * .5);
+    width: calc((100vw - 6.8em) * .33);
   }
 }
 @media only screen and (max-width: 600px) {
   .content > div > * {
-    width: calc((100vw - 3.8em));
+    width: calc((100vw - 3.4em));
   }
 }
 </style>

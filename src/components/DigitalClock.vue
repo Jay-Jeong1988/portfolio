@@ -59,8 +59,7 @@ export default {
 #clock {
   font-family: "Share Tech Mono", monospace;
   text-align: center;
-  color: #daf6ff;
-  text-shadow: 0 0 20px rgb(230, 143, 85), 0 0 20px rgba(10, 175, 230, 0);
+  color: #141414;
 }
 .time {
   letter-spacing: 0.05em;
@@ -71,8 +70,11 @@ export default {
   letter-spacing: 0.1em;
 }
 @media only screen and (max-width: 924px) {
-    #clock {
-        display: none;
+    .time {
+      font-size: 16px;
+    }
+    .date {
+        font-size: 16px;
     }
 }
 </style>
