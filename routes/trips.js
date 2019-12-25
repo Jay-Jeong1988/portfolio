@@ -106,8 +106,7 @@ router.post('/create', (req, res) => {
   });
 
   newTrip.save().then(newTrip => {
-    console.log("successfully created a trip");
-    res.status(200).json(newTrip);
+    res.status(200).send("successfully created a trip");
   }).catch(error => {
     console.log(error.message);
     res.status(500).json({

@@ -105,8 +105,7 @@ export default {
 
       fetch(myUrl, options)
         .then(response => {
-          console.log(response);
-          this.$router.push("/");
+          if(response.status == 200) this.$router.push("/");
         })
         .catch(error => {
           this.responseError = error;
