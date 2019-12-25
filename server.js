@@ -21,6 +21,7 @@ app.use(cookieParser());
 app.use(apiPath + '/trips', tripsRouter);
 
 app.use('/', serveStatic(path.join(__dirname, '/dist')))
+app.use('/*', serveStatic(path.join(__dirname, '/dist')))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

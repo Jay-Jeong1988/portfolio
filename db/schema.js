@@ -16,12 +16,6 @@ const tripSchema = new mongoose.Schema({
         phone: {
                 type: Number,
                 required: true,
-                validate: {
-                        validator: function(phoneNo) {
-                          return phoneNo.length === 10
-                        },
-                        message: props => `${props.value} is not a valid phone number!`
-                      },
         },
         pickupAddress: {
                 type: String,
