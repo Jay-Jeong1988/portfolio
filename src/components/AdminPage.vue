@@ -88,28 +88,30 @@ export default {
       this.data.destinationAddress = `${streetNumber} ${route}, ${locality}`
     },
     makeReservation() {
-      const productionUrl =
-        "https://survivalstack.herokuapp.com/api/v1/trips/create";
-      const devUrl = "http://localhost:8081/api/v1/trips/create";
-      let myUrl =
-        process.env.NODE_ENV === "production" ? productionUrl : devUrl;
+      if(this.$store.state.isAdmin){
+        const productionUrl =
+          "https://survivalstack.herokuapp.com/api/v1/trips/create";
+        const devUrl = "http://localhost:8081/api/v1/trips/create";
+        let myUrl =
+          process.env.NODE_ENV === "production" ? productionUrl : devUrl;
 
-      const options = {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json;charset=UTF-8"
-        },
-        body: JSON.stringify(this.data)
-      };
+        const options = {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json;charset=UTF-8"
+          },
+          body: JSON.stringify(this.data)
+        };
 
-      fetch(myUrl, options)
-        .then(response => {
-          if(response.status == 200) this.$router.push("/");
-        })
-        .catch(error => {
-          this.responseError = error;
-        });
+        fetch(myUrl, options)
+          .then(response => {
+            if(response.status == 200) this.$router.push("/");
+          })
+          .catch(error => {
+            this.responseError = error;
+          });
+      }
     }
   },
   mounted() {
