@@ -27,7 +27,7 @@
           <p>결제방법</p>
           <p>Payment</p>
         </button>
-        <button class="admin" @click="goToAdminPage" v-if="$store.state.isAdmin">
+        <button class="admin" @click="goToAdminPage" v-if="$store.state.isAdmin || isAdmin">
           <img src="../assets/images/admin.svg" alt="admin person icon" />
           <p>Admin</p>
         </button>
@@ -61,7 +61,8 @@ export default {
   data() {
     return {
       categories: [],
-      adminCode: ""
+      adminCode: "",
+      isAdmin: false
     };
   },
   computed: {},
@@ -89,6 +90,7 @@ export default {
     },
     verifyAdminCode(){
       this.$store.state.isAdmin = this.adminCode === process.env.VUE_APP_ADMINKEY
+      this.isAdmin = this.adminCode === process.env.VUE_APP_ADMINKEY
     }
   },
   created() {

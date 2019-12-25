@@ -5,7 +5,6 @@
       <span>
         <p>Cash</p>
         <img src="../assets/images/cash.svg" alt="cash icon" />
-        <p>만나서 직접 현금으로 주셔도 됩니다.</p>
       </span>
       <span>
         <p>Paypal</p>

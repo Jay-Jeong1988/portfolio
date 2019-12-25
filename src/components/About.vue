@@ -13,7 +13,7 @@
           도착하고 나서도 요금이 비싸게 나와 지불하기 아까웠던 적이
           있으셨나요? 택시를 급하게 이용해야 하는데 업체가 전화를 받지 않아서 애탄 적이 있으셨나요?
           이사는 해야 되지만 짐이 너무 적어서 굳이 이사전문업체에 연락하기 애매하시다면,
-          그 외에 물건을 급하게 전달해야 하는데 시간이 없어서.. 등등 여러 이유로 자기 차가 없으셔서 불편을
+          그 외에 물건을 급하게 전달해야 하는데 시간이 없어서.. 등등 여러 이유로 자차가 없으셔서 불편을
           겪고 계신다면 JJ RIDE에 연락주세요. 기존 지출보다 훨씬 저렴한 비용에 해결해 드립니다.
           궁금한 게 있으시면 문의만 하셔도 좋으니 카톡/전화/이메일 상관없이 편하게 연락해주세요.
           <small>*상시로 예약/운행 상황을 업데이트 하니 웹사이트를 확인 해주세요.</small>
@@ -39,14 +39,13 @@
       </div>
       <div class="pContainer">
         <p class="english">
-          If you had ever felt annoying on taxi with its cost or not answering phone calls,
-          or if you have to move, but only have a few stuffs that you don't really
-          want to spend extra budget on a moving company, or if you bula bula..etc,
-          no problem!
-          just call us at JJ Ride, then we will help you handling all that
-          with very reasonable price.
-          Feel completely free to ask questions if you have any,
-          or to just get an estimate.
+          If you've ever felt frustrated by the high costs and unresponsive
+          operators from taxis, JJ RIDE is your cheaper, safer, and friendlier option.
+          Just call to book, and we'll help handle everything with your transportation at a
+          very reasonable price. Whether you need to move a few things across town, need a 
+          quick ride to/from the airport, or just looking to save some money getting to your
+           destination, we have you covered.
+          Feel free to call to ask any questions or to get an estimate for your trip.
           <small>
             *Please check the driving status on the website so you don't have
             to feel nervous everytime about if your driver is coming or not.
