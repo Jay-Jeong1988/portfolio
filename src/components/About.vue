@@ -1,5 +1,11 @@
 <template>
   <div class="About">
+    <div class="checkAdmin" v-if="isSecret">
+          <div id="code">
+            <input type="text" class="form-control" v-model="adminCode">
+            <button @click="verifyCode" class="btn btn-outline-primary">Verify</button>
+          </div>
+        </div>
     <h3>
       One thing
       <b>JJ RIDE</b> guarantees.. is
@@ -12,7 +18,7 @@
           그마저도 혹시나 빙 돌아가지 않을까 걱정하면서 가고,
           도착하고 나서도 요금이 비싸게 나와 지불하기 아까웠던 적이
           있으셨나요? 택시를 급하게 이용해야 하는데 업체가 전화를 받지 않아서 애탄 적이 있으셨나요?
-          이사는 해야 되지만 짐이 너무 적어서 굳이 이사전문업체에 연락하기 애매하시다면,
+          이사는 해야 되지만 짐이 너무 적어서 <span @click="openSesame">굳이</span> 이사전문업체에 연락하기 애매하시다면,
           그 외에 물건을 급하게 전달해야 하는데 시간이 없어서.. 등등 여러 이유로 자차가 없으셔서 불편을
           겪고 계신다면 JJ RIDE에 연락주세요. 기존 지출보다 훨씬 저렴한 비용에 해결해 드립니다.
           궁금한 게 있으시면 문의만 하셔도 좋으니 카톡/전화/이메일 상관없이 편하게 연락해주세요.
@@ -21,7 +27,7 @@
       </div>
       <div class="imageContainer">
         <img
-          src="http://ik.imagekit.io/kitkitkitit/survivalstack/tr:q-100,ar-5-5,w-600/buckleup.png"
+          src="http://ik.imagekit.io/kitkitkitit/survivalstack/tr:q-100,ar-5-5,w-600/buckleup1.png"
           alt="car image"
         />
       </div>
@@ -60,10 +66,24 @@
 export default {
   name: "About",
   data() {
-    return {};
+    return {
+      isSecret: false,
+      adminCode: ""
+    };
   },
   components: {},
-  props: []
+  props: [],
+  methods: {
+    openSesame(){
+      this.isSecret = !this.isSecret
+    },
+    verifyCode(){
+      if(this.adminCode === process.env.VUE_APP_ADMINKEY){
+        this.$store.state.isAdmin = this.adminCode === process.env.VUE_APP_ADMINKEY
+        localStorage.setItem("adminKey", this.adminCode)
+      }
+    }
+  }
 };
 </script>
 
@@ -119,5 +139,9 @@ h3 {
   .imageContainer {
     width: 100%;
   }
+}
+#code {
+  display: flex;
+  justify-content: space-around;
 }
 </style>

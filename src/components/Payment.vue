@@ -5,6 +5,7 @@
       <span>
         <p>Cash</p>
         <img src="../assets/images/cash.svg" alt="cash icon" />
+        <p>현금결제</p>
       </span>
       <span>
         <p>Paypal</p>
@@ -40,9 +41,9 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Poor+Story|Raleway&display=swap");
 .Payment {
-  height: 80vh;
   padding: 1.7em;
   display: flex;
+  margin-top: 8em;
   flex-direction: column;
   justify-content: center;
   align-items: center;

@@ -3,7 +3,7 @@ var router = express.Router();
 var Trip = require("../db/schema");
 
 router.get('/getAll', function (req, res, next) {
-  Trip.find().limit(25)
+  Trip.find().limit(20)
     .sort({
       pickupTime: -1
     })

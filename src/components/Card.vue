@@ -36,7 +36,7 @@
           <img :src="`/img/icons/${item.status}.svg`" alt="driving status icon" />
         </span>
       </div>
-      <h3><small style="font-size: .7rem;">예약&nbsp;</small>{{ `${pickupTime}` }}</h3>
+      <h3 :class="item.status"><small style="font-size: .7rem;">예약&nbsp;</small>{{ `${pickupTime}` }}</h3>
     </div>
     <Modal v-if="modalShow" :item="item"></Modal>
   </div>
@@ -147,5 +147,14 @@ export default {
   .card > img {
     max-height: 200px;
   }
+}
+.scheduled {
+  color: rgb(200,200,200);
+}
+.done {
+  color: red;
+}
+.driving {
+  color: #91ED90
 }
 </style>

@@ -33,7 +33,7 @@
         </button>
       </div>
       <div class="footers">
-        <p>SERVICE CENTRE 24/7</p>
+        <div class="footer-title"><p>예약/문의 24/7</p><p>RESERVATION</p></div>
         <span>
           <img src="../assets/images/smartphone.svg" alt="smartphone icon" />
           <p>778 792 1407</p>
@@ -46,11 +46,6 @@
           <img src="@/assets/images/email.svg" alt="email icon" />
           <p>heybros32@gmail.com</p>
         </span>
-        <div class="checkAdmin">
-          <div id="code">
-            <input type="text" class="form-control" v-model="adminCode" v-on:input="verifyAdminCode">
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -87,9 +82,6 @@ export default {
       this.$emit("closeMenu");
       this.$router.push("/about");
     },
-    verifyAdminCode(){
-      this.$store.state.isAdmin = this.adminCode === process.env.VUE_APP_ADMINKEY
-    }
   },
   created() {
     this.$store.commit("setAdmin");
@@ -184,7 +176,7 @@ button {
 }
 .footers {
   text-align: center;
-  padding-bottom: 8vh;
+  padding-bottom: 10vh;
   background-color: rgb(240, 240, 240);
   width: 100%;
   padding-top: 1em;
@@ -203,5 +195,11 @@ button {
 }
 .footers p {
   margin: 0;
+}
+.footer-title {
+  width: 100%;
+  display: flex; 
+  justify-content: space-Evenly;
+  margin-bottom: .5em;
 }
 </style>

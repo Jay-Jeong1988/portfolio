@@ -2,39 +2,77 @@
   <div class="navbar">
     <!-- <a id="homeLink" href>
       <img src="../assets/images/car.svg" />
-    </a> -->
+    </a>-->
     <div class="statusSample">
-      <span><img :src="`/img/icons/scheduled.svg`" alt="white car"/><p>Scheduled</p><p> 예약</p></span>
-      <span><img :src="`/img/icons/driving.svg`" alt="green car"/><p>Driving</p><p> 운행중</p></span>
-      <span><img :src="`/img/icons/done.svg`" alt="red car"/><p>Done</p><p> 완료</p></span>
+      <span>
+        <img :src="`/img/icons/scheduled.svg`" alt="white car" />
+        <p>Scheduled</p>
+        <p>예약</p>
+      </span>
+      <span>
+        <img :src="`/img/icons/driving.svg`" alt="green car" />
+        <p>Driving</p>
+        <p>운행중</p>
+      </span>
+      <span>
+        <img :src="`/img/icons/done.svg`" alt="red car" />
+        <p>Done</p>
+        <p>완료</p>
+      </span>
     </div>
     <div class="warning">
-      <p>현재는 중형차만 보유하고 있는 관계로 대형 이사짐은 운반이 불가합니다.</p>
-        <p>차량: Toyota Camry Le/ 4도어 5인석(운전석 포함)/ 트렁크 용량: 대형 캐리어 x 4</p> 
+      <p>예약문의</p>
+      <span>
+        <img @click="selectContact" src="@/assets/images/email.svg" alt="email icon" name="email"/>
+        <ContactCard :type="contactType" v-if="isContactCardOpen && contactType==='email'" :iconClickedPosition="iconClickedPosition"/>
+      </span>
+      <span>
+        <img @click="selectContact" src="../assets/images/smartphone.svg" name="phone" alt="smartphone icon" />
+        <ContactCard :type="contactType" v-if="isContactCardOpen && contactType==='phone'" :iconClickedPosition="iconClickedPosition"/>
+      </span>
+      <span>
+        <img @click="selectContact" src="../assets/images/kakao-talk.svg" name="katalk" alt="kakaotalk icon" />
+        <ContactCard :type="contactType" v-if="isContactCardOpen && contactType==='katalk'" :iconClickedPosition="iconClickedPosition"/>
+      </span>
     </div>
   </div>
 </template>
 <script>
-// import DigitalClock from "./DigitalClock";
-
+import ContactCard from './ContactCard'
 export default {
   name: "Navbar",
   data() {
-    return {};
+    return {
+      contactType: "",
+      iconClickedPosition: "",
+      isContactCardOpen: false
+    };
   },
   components: {
-    // DigitalClock
+    ContactCard
   },
   computed: {
-    // pad() {
-    //   var s = this.checkedItemCount + "";
-    //   var size = `${this.totalItemCount}`.length;
-    //   while (s.length < size) s = "0" + s;
-    //   return s;
-    // }
   },
-  methods: {},
-  created() {},
+  methods: {
+    selectContact(e){
+      var clickedPosition = [e.clientX, e.clientY]
+      var clickedType = e.target.name
+      this.contactType = clickedType
+      this.iconClickedPosition = clickedPosition
+      setTimeout(()=>this.isContactCardOpen = true, 0)
+    },
+  },
+  mounted() {
+    var self = this
+    var body = document.getElementsByTagName("body")[0]
+      body.addEventListener("click", function(e){
+        e.preventDefault()
+        if(self.isContactCardOpen){
+          var contactCard = document.getElementById("ContactCard")
+          if (!contactCard.contains(e.target)) self.isContactCardOpen = false
+        }
+      })
+  },
   props: ["totalItemCount", "checkedItemCount"]
 };
 </script>
@@ -70,7 +108,7 @@ export default {
   align-items: center;
 }
 #twitter {
-    margin-left: 1em;
+  margin-left: 1em;
 }
 #twitter > img {
   width: 1.8em;
@@ -86,14 +124,14 @@ export default {
   color: white;
   font-weight: lighter;
 }
-.statusSample img{
+.statusSample img {
   width: 1.5rem;
   margin: -2px;
 }
 .statusSample span {
   display: flex;
   align-items: center;
-  font-size: .7em;
+  font-size: 0.7em;
   justify-content: space-between;
 }
 .statusSample p {
@@ -101,8 +139,9 @@ export default {
   margin-left: 5px;
 }
 .warning p {
-  color: rgb(200,200,200);
+  color: rgb(250, 250, 250);
   margin: 0;
+  margin-right: .5em;
 }
 @media only screen and (max-width: 924px) {
   #homeLink {
@@ -117,10 +156,20 @@ export default {
 }
 @media only screen and (max-width: 600px) {
   .navbar {
-    background-color: #343A40;
+    background-color: #343a40;
   }
-  .warning {
-    display: none;
-  }
+}
+.warning {
+  display: flex;
+  align-items: center;
+}
+.warning img {
+  width: 1.5em;
+}
+.warning span {
+  border-radius: 10px;
+  margin: 0 5px;
+  padding: 0 2px;
+  border: white solid 0.5px;
 }
 </style>
