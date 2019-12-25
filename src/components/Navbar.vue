@@ -66,8 +66,8 @@ export default {
     var self = this
     var body = document.getElementsByTagName("body")[0]
       body.addEventListener("click", function(e){
-        e.preventDefault()
         if(self.isContactCardOpen){
+          e.preventDefault()
           var contactCard = document.getElementById("ContactCard")
           if (!contactCard.contains(e.target)) self.isContactCardOpen = false
         }

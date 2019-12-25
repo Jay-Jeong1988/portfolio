@@ -27,7 +27,7 @@ const tripSchema = new mongoose.Schema({
         },
         pickupTime: {
                 type: Date,
-                required: true
+                required: true,
         },
         customerName: {
                 type: String,

@@ -23,8 +23,12 @@
         ></vue-google-autocomplete>
       </div>
       <div>
+        <label>pickup date</label>
+        <input class="form-control date" v-model="pickupDate" type="date" />
+      </div>
+      <div>
         <label>pickup time</label>
-        <input class="form-control date" v-model="data.pickupTime" type="datetime-local" />
+        <input class="form-control time" v-model="pickupTime" type="time" />
       </div>
       <div>
         <label>duration</label>
@@ -69,6 +73,8 @@ export default {
         price: 0,
         distance: 0
       },
+      pickupDate: "",
+      pickupTime: "",
       responseError: null,
     };
   },
@@ -94,7 +100,7 @@ export default {
         const devUrl = "http://localhost:8081/api/v1/trips/create";
         let myUrl =
           process.env.NODE_ENV === "production" ? productionUrl : devUrl;
-
+        this.data.pickupTime = this.pickupDate + "T" + this.pickupTime + ":00Z"
         const options = {
           method: "POST",
           headers: {
@@ -115,8 +121,12 @@ export default {
     }
   },
   mounted() {
-    var now = new Date().toISOString().split(".")[0];
-    document.getElementsByClassName("date")[0].setAttribute('min', now);
+    var localeDateToday = new Date()
+    var y = localeDateToday.getFullYear()
+    var m = localeDateToday.getMonth() + 1
+    var d = localeDateToday.getDate()
+    var todayInISO = `${y}-${m}-${d}`
+    document.getElementsByClassName("date")[0].setAttribute('min', todayInISO);
   },
   components: { VueGoogleAutocomplete },
   props: []

@@ -95,7 +95,7 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap");
 #menu {
   min-width: 16em;
-  border-right: solid 1px rgb(211, 211, 211);
+  border-right: solid 1px rgb(131, 23, 23);
 }
 @media only screen and (max-width: 924px) {
   #menu {
