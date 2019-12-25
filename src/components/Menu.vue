@@ -102,26 +102,6 @@ export default {
     display: none;
   }
 }
-.warning {
-  display: none;
-  position: absolute;
-  padding: 1em;
-}
-.warning p {
-  margin: 0;
-  font-size: 1rem;
-}
-.notification {
-  display: none;
-}
-@media only screen and (max-width: 600px) {
-  .warning {
-    display: block;
-  }
-  .notification {
-    display: block;
-  }
-}
 button {
   border: none;
   background-color: transparent;

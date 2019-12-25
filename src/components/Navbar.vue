@@ -20,7 +20,7 @@
         <p>완료</p>
       </span>
     </div>
-    <div class="warning">
+    <div class="contactIcons">
       <p>예약문의</p>
       <span>
         <img @click="selectContact" src="@/assets/images/email.svg" alt="email icon" name="email"/>
@@ -138,7 +138,7 @@ export default {
   margin: 0;
   margin-left: 5px;
 }
-.warning p {
+.contactIcons p {
   color: rgb(250, 250, 250);
   margin: 0;
   margin-right: .5em;
@@ -159,14 +159,14 @@ export default {
     background-color: #343a40;
   }
 }
-.warning {
+.contactIcons {
   display: flex;
   align-items: center;
 }
-.warning img {
+.contactIcons img {
   width: 1.5em;
 }
-.warning span {
+.contactIcons span {
   border-radius: 10px;
   margin: 0 5px;
   padding: 0 2px;
