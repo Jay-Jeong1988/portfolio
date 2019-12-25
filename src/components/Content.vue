@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div class="defaultCards">
-      <Card v-for="(item, i) in trips" :key="i" :item="item" />
+      <Card v-for="(item) in trips" :key="`${item._id}`" :item="item" />
     </div>
   </div>
 </template>
@@ -27,7 +27,7 @@ export default {
         .then((response) => { return response.json() })
         .then((data) => {
           self.trips = data
-        }).catch( error => error );
+        }).catch( error => alert(error) );
     },
   },
   created(){

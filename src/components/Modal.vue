@@ -87,14 +87,15 @@ export default {
   data() {
     return {
       modalShow: false,
-      pst: new Date(this.item.pickupTime),
       editing: false,
-      responseError: null,
       data: {}
     };
   },
   props: ["item"],
   computed: {
+    pst() {
+      return new Date(this.data.pickupTime)
+    },
     pickupTime() {
       let hr = this.pst.getHours() == "0" ? "00" : this.pst.getHours();
       let min = this.pst.getMinutes() == "0" ? "00" : this.pst.getMinutes();
@@ -122,7 +123,7 @@ export default {
           this.item.status = data.status;
         })
         .catch(error => {
-          this.responseError = error;
+          alert(error)
         });
     },
     edit() {
@@ -147,9 +148,12 @@ export default {
         .then(response => response.json())
         .then(trip => {
           this.data = trip;
+          this.item._id += 1;    //changing item's key makes ables to update the component in real time
+          this.editing = false;
+          setTimeout(()=>this.item._id = this.item._id.slice(0,-1), 0) //must change the key back to as it was, otherwise fetch fails due to unmatching _id
         })
         .catch(error => {
-          this.responseError = error;
+          alert(error)
         });
     },
     deleteTrip() {
@@ -161,7 +165,7 @@ export default {
         fetch(`${myUrl}?tripId=${this.data._id}`)
         .then(response => response.status)
         .catch(error => {
-          this.responseError = error;
+          alert(error)
         });
     }
   },
