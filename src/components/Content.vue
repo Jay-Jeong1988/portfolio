@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div class="defaultCards">
-      <Card v-for="(item, i) in defaultItems" :key="i" :item="item" />
+      <Card v-for="(item, i) in trips" :key="i" :item="item" />
     </div>
   </div>
 </template>
@@ -13,13 +13,30 @@ export default {
   name: "Content",
   data() {
     return {
+      trips: []
     };
+  },
+  methods: {
+    fetchTrips() {
+      let self = this
+      const productionRequest = new Request('https://survivalstack.herokuapp.com/api/v1/trips/getAll')
+      const devRequest = new Request('http://localhost:8081/api/v1/trips/getAll')
+      let myRequest = process.env.NODE_ENV === 'production' ? productionRequest : devRequest
+
+      fetch(myRequest)
+        .then((response) => { return response.json() })
+        .then((data) => {
+          self.trips = data
+        }).catch( error => error );
+    },
+  },
+  created(){
+    this.fetchTrips()
   },
   components: {
     Card
   },
   props: [
-    "defaultItems", "currentPage"
   ]
 };
 </script>
@@ -42,7 +59,9 @@ export default {
 
 .content {
   margin-top: 4em;
-  padding: 1.7em;
+  padding-top: 1.7em;
+  padding-left: 1.3em;
+  padding-bottom: 3.3em;
   padding-right: 0;
 }
 
@@ -51,19 +70,19 @@ export default {
 }
 .content > div > * {
   display: inline-block;
-  width: calc((100vw - 16em - 8.5em) * .25);
-  margin-right: 1.7em;
+  width: calc((100vw - 16em - 6.5em) * .25);
+  margin-right: 1.3em;
   margin-bottom: 1.7em;
 }
 
 @media only screen and (max-width: 924px) {
   .content > div > * {
-    width: calc((100vw - 6.8em) * .33);
+    width: calc((100vw - 5em) * .33);
   }
 }
 @media only screen and (max-width: 600px) {
   .content > div > * {
-    width: calc((100vw - 3.4em));
+    width: calc((100vw - 2.8em));
   }
 }
 </style>

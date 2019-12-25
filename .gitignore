@@ -132,6 +132,7 @@ typings/
 
 # react / gatsby 
 .history
+public/index.html
 
 # vuepress build output
 .vuepress/dist

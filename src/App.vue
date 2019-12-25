@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <Menu :class="{showMenu: isMenu}" :currentPage="currentPage" @closeMenu="hideMenu"></Menu>
+    <Menu :class="{showMenu: isMenu}" @closeMenu="hideMenu"></Menu>
     <div id="main">
-      <Navbar :totalItemCount="totalItemCount" :checkedItemCount="checkedItemCount"></Navbar>
-      <router-view :defaultItems="trips" :currentPage="currentPage"/>
+      <Navbar></Navbar>
+      <router-view/>
       <div class="showMenuBtn" @click="toggleMenu">
         <p v-if="!isMenu">Show filters</p>
         <p v-else>Hide filters</p>
@@ -24,65 +24,25 @@ export default {
   components: { Menu, Navbar },
   data() {
     return {
-      currentPage: "trips",
+      isAdmin: false,
       isMenu: false,
-      user: null,
-      trips: [
-      ]
     };
   },
   computed: {
-    totalItemCount() {
-      return this.trips.length;
-    },
-    checkedItemCount() {
-      var checkedItems = 0;
-      this.trips.forEach(item => {
-        if (item.status == "done") checkedItems++;
-      });
-      return checkedItems;
-    }
   },
   methods: {
-    fetchTrips() {
-      let self = this
-      const productionRequest = new Request('https://survivalstack.herokuapp.com/api/v1/trips/getAll')
-      const devRequest = new Request('http://localhost:8081/api/v1/trips/getAll')
-      let myRequest = process.env.NODE_ENV === 'production' ? productionRequest : devRequest
-
-      fetch(myRequest)
-        .then((response) => { return response.json() })
-        .then((data) => {
-          self.trips = data
-        }).catch( error => error );
-    },
     toggleMenu() {
       this.isMenu = !this.isMenu;
-    },
-    logout() {
-      localStorage.removeItem("user");
-      this.user = null;
-      this.closeMenubar();
-      this.$router.push("/login");
-    },
-    login(user) {
-      localStorage.setItem("user", JSON.stringify(user));
-      this.user = user;
-      this.$router.push("/");
     },
     hideMenu() {
       this.isMenu = false;
     },
-    setData (err, post) {
-      if (err) {
-        this.error = err.toString()
-      } else {
-        this.post = post
-      }
-    }
   },
   created() {
-    this.fetchTrips()
+    this.$router.beforeEach((to, from, next) => {
+      this.hideMenu()
+      next()
+    })
   }
 };
 </script>

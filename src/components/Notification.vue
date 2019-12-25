@@ -7,7 +7,7 @@
 <p>차량: Toyota Camry Le/ 4도어 5인석(운전석 포함)/ 트렁크 용량: 대형 캐리어 x 4</p> 
     </div>
     <div class="camry">
-      <img src="http://ik.imagekit.io/kitkitkitit/tr:q-100,w-500/camry.jpg"/>
+      <img src="http://ik.imagekit.io/kitkitkitit/tr:q-100,w-500/camry.jpg" alt="white camry"/>
     </div>
     </div>
   </div>
@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "Content",
+  name: "Notification",
   data() {
     return {
     };

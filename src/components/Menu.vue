@@ -3,43 +3,54 @@
     <div class="fixedContainer">
       <div class="logo">
         <router-link to="/">
-          <img src="../assets/images/JJ RIDE1.png" />
+          <img src="../assets/images/JJ RIDE1.png" alt="logo" />
         </router-link>
       </div>
       <div class="filters">
-        <button class="about">
-          <img src="../assets/images/about.svg" />
+        <button class="about" @click="goToAbout">
+          <img src="../assets/images/about.svg" alt="about icon" />
           <p>소개</p>
           <p>About</p>
         </button>
         <button class="trips" @click="goToHome">
-          <img src="../assets/images/travel.svg" />
+          <img src="../assets/images/travel.svg" alt="travel icon" />
           <p>예약현황</p>
           <p>Trips</p>
         </button>
         <button class="notification" @click="goToNotification">
-          <img src="../assets/images/notification.svg" />
+          <img src="../assets/images/notification.svg" alt="notification icon" />
           <p>공지사항</p>
           <p>Notification</p>
         </button>
+        <button class="payment" @click="goToPayment">
+          <img src="../assets/images/payment.svg" alt="payment icon" />
+          <p>결제방법</p>
+          <p>Payment</p>
+        </button>
+        <button class="admin" @click="goToAdminPage" v-if="$store.state.isAdmin">
+          <img src="../assets/images/admin.svg" alt="admin person icon" />
+          <p>Admin</p>
+        </button>
       </div>
       <div class="footers">
-        <p>SERVICE CENTER 24/7</p>
+        <p>SERVICE CENTRE 24/7</p>
         <span>
-          <img src="../assets/images/smartphone.svg" />
+          <img src="../assets/images/smartphone.svg" alt="smartphone icon" />
           <p>778 792 1407</p>
         </span>
         <span>
-          <img src="../assets/images/kakao-talk.svg" />
+          <img src="../assets/images/kakao-talk.svg" alt="kakaotalk icon" />
           <p>hangma12</p>
         </span>
         <span>
-          <img src="@/assets/images/email.svg" />
+          <img src="@/assets/images/email.svg" alt="email icon" />
           <p>heybros32@gmail.com</p>
         </span>
-        <span>
-          
-        </span>
+        <div class="checkAdmin">
+          <div id="code">
+            <input type="text" class="form-control" v-model="adminCode" v-on:input="verifyAdminCode">
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -50,25 +61,46 @@ export default {
   data() {
     return {
       categories: [],
+      adminCode: ""
     };
   },
   computed: {},
   methods: {
     switchPage() {},
-    goToNotification(){
-      this.$emit("closeMenu")
-      this.$router.push('Notification')
+    goToNotification() {
+      this.$emit("closeMenu");
+      this.$router.push("Notification");
     },
-    goToHome(){
-      this.$emit("closeMenu")
-      this.$router.push("/")
+    goToHome() {
+      this.$emit("closeMenu");
+      this.$router.push("/");
+    },
+    goToPayment() {
+      this.$emit("closeMenu");
+      this.$router.push("/how-to-pay");
+    },
+    goToAdminPage() {
+      this.$emit("closeMenu");
+      this.$router.push("/admin");
+    },
+    goToAbout() {
+      this.$emit("closeMenu");
+      this.$router.push("/about");
+    },
+    verifyAdminCode(){
+      this.$store.state.isAdmin = this.adminCode === process.env.VUE_APP_ADMINKEY
     }
   },
-  created() {},
-  props: ["currentPage"]
+  created() {
+    this.$store.commit("setAdmin");
+  },
+  mounted() {
+  },
+  props: []
 };
 </script>
 <style scoped>
+@import url("https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap");
 #menu {
   min-width: 16em;
   border-right: solid 1px rgb(211, 211, 211);
@@ -130,7 +162,7 @@ button {
   width: 15em;
 }
 .filters img {
-  width: 2.5em;
+  width: 2em;
 }
 .filters p {
   margin: 0;
@@ -153,10 +185,11 @@ button {
 .footers {
   text-align: center;
   padding-bottom: 8vh;
-  background-color: rgb(240,240,240);
+  background-color: rgb(240, 240, 240);
   width: 100%;
-  padding-top:1em;
-  color: rgb(110,110,110);
+  padding-top: 1em;
+  color: rgb(110, 110, 110);
+  font-family: "Nanum Gothic", sans-serif;
 }
 .footers img {
   width: 1.2em;

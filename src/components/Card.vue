@@ -1,74 +1,90 @@
 <template>
-  <div class="gear">
-      <b-card
-        style="
+  <div class="gear" @click="openModal">
+    <b-card
+      style="
             max-height: 180px;
+            border: none;
             border-radius: 10px;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
             overflow: hidden;
              "
-        no-body
-        bg-variant="bg-dark"
-      >
-        <b-card-img
-          style="
-            filter: contrast(0.8) brightness(1.2);
+      no-body
+      bg-variant="bg-dark"
+    >
+    <div class="overlay-text">
+      <p>{{ item.from + " - " + item.to }}</p>
+      <p>{{ `예상소요시간: ${item.duration} mins` }}</p>
+      <p>{{ getDate }}</p>
+      <p>{{ item.customerName.split("-")[1] }}</p>
+    </div>
+      <b-card-img
+        style="
+            filter: brightness(.8);
             border-radius: 10px;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
             "
-          :src="`${item.thumbnailUrl}`"
-          alt="item image"
-          fluid="true"
-        ></b-card-img>
-      </b-card>
-      <div
-        class="card-header bg-dark"
-      >
-        <div class="headerIcons">
-          <span class="categoryIcon">
-            <img :src="`/img/icons/${item.status}.svg`"/>
-          </span>
-        </div>
-        <h3>{{ `${pickupHour - 8}:${pickupMin}-${etaHour - 8}:${etaMin}` }}</h3>
+        :src="`${item.thumbnailUrl}`"
+        alt="item image"
+        fluid="true"
+      ></b-card-img>
+    </b-card>
+    <div class="card-header bg-dark">
+      <div class="headerIcons">
+        <span class="categoryIcon">
+          <img :src="`/img/icons/${item.status}.svg`" alt="driving status icon" />
+        </span>
       </div>
+      <h3><small style="font-size: .7rem;">예약&nbsp;</small>{{ `${pickupTime}` }}</h3>
+    </div>
+    <Modal v-if="modalShow" :item="item"></Modal>
   </div>
 </template>
 <script>
-// import {api} from '../api'
+import Modal from "../components/Modal.vue";
 export default {
   name: "Card",
   props: ["item"],
   data() {
     return {
+      pst: new Date(this.item.pickupTime),
+      modalShow: false
     };
   },
   created() {},
   computed: {
-    pickupHour(){
-      return this.item.pickupTime.split("T")[1].split(":")[0]
+    pickupTime() {
+      let hr = this.pst.getHours() == "0" ? "00" : this.pst.getHours()
+      let min = this.pst.getMinutes() == "0" ? "00" : this.pst.getMinutes()
+      return hr + " : " + min;
     },
-    pickupMin(){
-      return this.item.pickupTime.split("T")[1].split(":")[1]
-    },
-    etaHour(){
-      return this.item.eta.split("T")[1].split(":")[0]
-    },
-    etaMin(){
-      return this.item.eta.split("T")[1].split(":")[1]
+    getDate(){
+      let y = this.pst.getFullYear()
+      let m = this.pst.getMonth() + 1
+      let d = this.pst.getDate()
+      return y + "/" + m + "/" + d + " " + `${this.pst}`.split(" ")[0]
     }
   },
   methods: {
     toggleCheckIcon(e) {
       e.preventDefault();
       this.item.checked = !this.item.checked;
+    },
+    openModal() {
+      if(this.$store.state.isAdmin) this.modalShow = !this.modalShow;
     }
-  }
+  },
+  mounted() {
+    this.$root.$on('bv::modal::hide', () => {
+      this.modalShow = false;
+    })
+  },
+  components: { Modal }
 };
 </script>
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
 .gear a {
   cursor: initial;
 }
@@ -98,7 +114,7 @@ export default {
 .headerIcons {
   display: flex;
   justify-content: space-between;
-  margin-right:1em;
+  margin-right: 1em;
 }
 .headerIcons button {
   background-color: transparent;
@@ -107,7 +123,27 @@ export default {
 .headerIcons img {
   width: 2.1em;
 }
-@media only screen and (min-width: 450px) and (max-width: 600px){
+.overlay-text {
+  position: absolute;
+  z-index: 900;
+  width: 100%;
+  padding: 1em;
+  overflow: scroll;
+  height: 100%;
+}
+.overlay-text p {
+  font-size: 1em;
+  color: white;
+  line-height: 1;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.35);
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 5px;
+}
+.overlay-text p:nth-child(1){
+  font-size: 1.5em;
+}
+@media only screen and (min-width: 450px) and (max-width: 600px) {
   .card > img {
     max-height: 200px;
   }

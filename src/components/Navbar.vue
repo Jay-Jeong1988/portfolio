@@ -4,9 +4,9 @@
       <img src="../assets/images/car.svg" />
     </a> -->
     <div class="statusSample">
-      <span><img :src="`/img/icons/scheduled.svg`"/><p>Scheduled</p><p> 예약</p></span>
-      <span><img :src="`/img/icons/driving.svg`"/><p>Driving</p><p> 운행중</p></span>
-      <span><img :src="`/img/icons/done.svg`"/><p>Done</p><p> 완료</p></span>
+      <span><img :src="`/img/icons/scheduled.svg`" alt="white car"/><p>Scheduled</p><p> 예약</p></span>
+      <span><img :src="`/img/icons/driving.svg`" alt="green car"/><p>Driving</p><p> 운행중</p></span>
+      <span><img :src="`/img/icons/done.svg`" alt="red car"/><p>Done</p><p> 완료</p></span>
     </div>
     <div class="warning">
       <p>현재는 중형차만 보유하고 있는 관계로 대형 이사짐은 운반이 불가합니다.</p>
@@ -49,7 +49,7 @@ export default {
   justify-content: space-between;
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 950;
   border-bottom: 1px solid rgb(211, 211, 211);
   padding: 0.5rem 1.5rem;
   white-space: nowrap;

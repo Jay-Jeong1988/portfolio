@@ -5,14 +5,43 @@ const tripSchema = new mongoose.Schema({
                 type: String,
         },
         to: {
-                type: String
+                type: String,
+        },
+        distance: {
+                type: Number
+        },
+        price: {
+                type: Number
+        },
+        phone: {
+                type: Number,
+                required: true,
+                validate: {
+                        validator: function(phoneNo) {
+                          return phoneNo.length === 10
+                        },
+                        message: props => `${props.value} is not a valid phone number!`
+                      },
+        },
+        pickupAddress: {
+                type: String,
+                required: true
+        },
+        destinationAddress: {
+                type: String,
+                required: true
         },
         pickupTime: {
                 type: Date,
                 required: true
         },
-        eta: {
-                type: Date,
+        customerName: {
+                type: String,
+                required: true
+        },
+        duration: {
+                type: Number,
+                required: true
         },
         thumbnailUrl: {
                 type: String
