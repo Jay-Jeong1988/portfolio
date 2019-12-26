@@ -55,14 +55,14 @@ export default {
   created() {},
   computed: {
     pickupTime() {
-      let hr = this.pst.getHours() == "0" ? "00" : this.pst.getHours()
-      let min = this.pst.getMinutes() == "0" ? "00" : this.pst.getMinutes()
+      let hr = this.item.pickupTime.split("T")[1].split(":")[0]
+      let min = this.item.pickupTime.split("T")[1].split(":")[1]
       return hr + " : " + min;
     },
     getDate(){
-      let y = this.pst.getFullYear()
-      let m = this.pst.getMonth() + 1
-      let d = this.pst.getDate()
+      let y = this.item.pickupTime.split("T")[0].split("-")[0]
+      let m = this.item.pickupTime.split("T")[0].split("-")[1]
+      let d = this.item.pickupTime.split("T")[0].split("-")[2]
       return y + "/" + m + "/" + d + " " + `${this.pst}`.split(" ")[0]
     }
   },
