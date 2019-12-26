@@ -121,6 +121,7 @@ export default {
         .then(response => response.json())
         .then(data => {
           this.item.status = data.status;
+          this.modalShow = false;
         })
         .catch(error => {
           alert(error)
