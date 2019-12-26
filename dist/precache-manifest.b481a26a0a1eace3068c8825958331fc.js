@@ -4,11 +4,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/car.ico"
   },
   {
-    "revision": "6d244a12d0c097598123",
-    "url": "/css/app.5f313169.css"
+    "revision": "63fa244e4f290c873bd7",
+    "url": "/css/app.2393c322.css"
   },
   {
-    "revision": "8899b46d1b3520f97618",
+    "revision": "1144d48755b7d37eb60b",
     "url": "/css/chunk-vendors.c580d68a.css"
   },
   {
@@ -56,16 +56,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/travel.54b2c89b.svg"
   },
   {
-    "revision": "b01a28f54b6b1e93bbf0eb5c3ddf1275",
+    "revision": "13d8751eb0396f6ea9f48ae0fa192a46",
     "url": "/index.html"
   },
   {
-    "revision": "6d244a12d0c097598123",
-    "url": "/js/app.3d1477f4.js"
+    "revision": "63fa244e4f290c873bd7",
+    "url": "/js/app.5815e59d.js"
   },
   {
-    "revision": "8899b46d1b3520f97618",
-    "url": "/js/chunk-vendors.1fe11a06.js"
+    "revision": "1144d48755b7d37eb60b",
+    "url": "/js/chunk-vendors.c1a271ad.js"
   },
   {
     "revision": "b75c440b72f00815511e2c1dfaabe622",
