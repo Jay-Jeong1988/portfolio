@@ -9,7 +9,7 @@
               <p>안녕하세요 JJ Ride 입니다. 현재 저희는 중형차만 보유하고 있는 관계로 대형 이사짐은 운반이 불가합니다. 양해 부탁드립니다.</p>
               <p>차량: Toyota Camry Le/ 4도어/ 운전자 제외 4인 탑승가능/ 트렁크 용량: 대형 캐리어 x 4</p>
               <p>
-                Please aware that we are currently running JJ RIDE with a midsize car, thus we are unable to
+                Please be aware that we are currently running JJ RIDE with a midsize car, thus we are unable to
                 load huge furnitures.
               </p>
               <p>Car Info: Toyota Camry Le/ 4 Doors 4 ppl Capcity(excluding driver)/ Trunk Capcity: 4 Big Size Luggages</p>
