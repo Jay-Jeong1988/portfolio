@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <Menu :class="{showMenu: isMenu}" @closeMenu="hideMenu"></Menu>
-    <div id="main">
+    <div class="showMenuBtn" @click="toggleMenu" v-if="isMenu">
+        <p v-if="!isMenu">Show filters</p>
+        <p v-else>Hide filters</p>
+      </div>
+    <div id="main" v-if="!isMenu">
       <Navbar></Navbar>
       <router-view/>
       <div class="showMenuBtn" @click="toggleMenu">

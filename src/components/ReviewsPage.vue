@@ -8,7 +8,7 @@
           후기를 남겨주세요. 개선 하도록 노력하겠습니다!
         </p>
         <small>
-          *후기는 JJ RIDE를 이용해주셨던 고객께서만 작성이 가능 합니다.
+          *후기는 JJ RIDE를 이용해주신 분 께서만 작성이 가능 합니다.
           후기 작성 시 예약하셨던 성함과 전화번호 마지막 4자리를 입력 해주세요.
         </small>
       </div>
@@ -209,7 +209,7 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 8em;
+  margin-top: 6em;
   padding: 1em;
   padding-bottom: 6em;
 }

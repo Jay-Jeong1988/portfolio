@@ -90,11 +90,6 @@ export default {
   min-width: 16em;
   border-right: solid 1px rgb(109, 109, 109);
 }
-@media only screen and (max-width: 924px) {
-  #menu {
-    display: none;
-  }
-}
 button {
   border: none;
   background-color: transparent;
@@ -174,5 +169,16 @@ button {
   display: flex; 
   justify-content: space-Evenly;
   margin-bottom: .5em;
+}
+@media only screen and (max-width: 924px) {
+  #menu {
+    display: none;
+  }
+  .filters {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .filters p {
+    font-size: .9em;
+  }
 }
 </style>
