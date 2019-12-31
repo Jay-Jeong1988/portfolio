@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Trip = require("../db/schema");
+var Trip = require("../db/tripSchema");
 
 router.get('/getAll', function (req, res, next) {
   Trip.find().limit(20)

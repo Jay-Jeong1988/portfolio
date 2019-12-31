@@ -14,7 +14,7 @@ const tripSchema = new mongoose.Schema({
                 type: Number
         },
         phone: {
-                type: Number,
+                type: String,
                 required: true,
         },
         pickupAddress: {

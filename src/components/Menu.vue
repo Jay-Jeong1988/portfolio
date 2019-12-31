@@ -7,27 +7,37 @@
         </router-link>
       </div>
       <div class="filters">
-        <button class="about" @click="goToAbout">
+        <button class="about" @click="goTo('/about')">
           <img src="../assets/images/about.svg" alt="about icon" />
           <p>소개</p>
           <p>About</p>
         </button>
-        <button class="trips" @click="goToHome">
+        <button class="trips" @click="goTo('/')">
           <img src="../assets/images/travel.svg" alt="travel icon" />
           <p>예약현황</p>
           <p>Trips</p>
         </button>
-        <button class="notification" @click="goToNotification">
+        <button class="notification" @click="goTo('Notification')">
           <img src="../assets/images/notification.svg" alt="notification icon" />
           <p>공지사항</p>
           <p>Notification</p>
         </button>
-        <button class="payment" @click="goToPayment">
+        <button class="payment" @click="goTo('/how-to-pay')">
           <img src="../assets/images/payment.svg" alt="payment icon" />
           <p>결제방법</p>
           <p>Payment</p>
         </button>
-        <button class="admin" @click="goToAdminPage" v-if="$store.state.isAdmin">
+        <button class="review" @click="goTo('/reviews')">
+          <img src="../assets/images/review.svg" alt="review icon" />
+          <p>고객 평가</p>
+          <p>Reviews</p>
+        </button>
+        <button class="developerInquiry" @click="goTo('/devInquiry')">
+          <img src="../assets/images/programing.svg" alt="coding icon" />
+          <p>웹사이트 문의</p>
+          <p>Website</p>
+        </button>
+        <button class="admin" @click="goTo('/admin')" v-if="$store.state.isAdmin">
           <img src="../assets/images/admin.svg" alt="admin person icon" />
           <p>Admin</p>
         </button>
@@ -61,26 +71,9 @@ export default {
   },
   computed: {},
   methods: {
-    switchPage() {},
-    goToNotification() {
+    goTo(page) {
       this.$emit("closeMenu");
-      this.$router.push("Notification");
-    },
-    goToHome() {
-      this.$emit("closeMenu");
-      this.$router.push("/");
-    },
-    goToPayment() {
-      this.$emit("closeMenu");
-      this.$router.push("/how-to-pay");
-    },
-    goToAdminPage() {
-      this.$emit("closeMenu");
-      this.$router.push("/admin");
-    },
-    goToAbout() {
-      this.$emit("closeMenu");
-      this.$router.push("/about");
+      this.$router.push(page);
     },
   },
   created() {
@@ -95,7 +88,7 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap");
 #menu {
   min-width: 16em;
-  border-right: solid 1px rgb(131, 23, 23);
+  border-right: solid 1px rgb(109, 109, 109);
 }
 @media only screen and (max-width: 924px) {
   #menu {

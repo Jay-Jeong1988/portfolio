@@ -38,13 +38,14 @@
         <li>
           <div class="warning">
             <p>
-              JJ RIDE 운행요금은 대략 밴쿠버 택시의 70% 정도 입니다 (당연히 팁도 받지 않으니 얼마나 저렴한지 아시겠죠?).
+              JJ RIDE 운행요금은 대략 밴쿠버 택시 비용보다 30% 정도 저렴하며, 팁을 요구하지 않습니다.
               자세한 밴쿠버 택시 운행요금은
               <a
                 target="_blank"
                 href="https://www.numbeo.com/taxi-fare/in/Vancouver"
               >여기</a>에서
               확인 하실 수 있습니다.
+              <small>* 운행 거리에 따라 약간씩 비용의 차이가 있을 수 있습니다. 예) 장거리 요금 ↓ 단거리 요금 ↑</small>
             </p>
             <p>
               JJ RIDE's Driving cost is roughly 30% less than regular taxis (We don't ask for tips either).

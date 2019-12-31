@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const db = require("./db/db");
 const tripsRouter = require('./routes/trips');
+const reviewsRouter = require('./routes/reviews');
 const app = express();
 const apiPath = "/api/v1";
 const cors = require('cors');
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(apiPath + '/trips', tripsRouter);
+app.use(apiPath + '/reviews', reviewsRouter);
 
 app.use('/', serveStatic(path.join(__dirname, '/dist')))
 app.use('/*', serveStatic(path.join(__dirname, '/dist')))

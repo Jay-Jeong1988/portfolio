@@ -5,6 +5,8 @@ import Notification from '../components/Notification.vue'
 import AdminPage from '../components/AdminPage.vue'
 import Payment from '../components/Payment.vue'
 import About from '../components/About.vue'
+import ReviewsPage from '../components/ReviewsPage.vue'
+import DevInquiry from '../components/DevInquiry.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +35,16 @@ const routes = [
     path: '/about',
     name: 'About',
     component: About
+  },
+  {
+    path: '/reviews',
+    name: 'ReviewsPage',
+    component: ReviewsPage
+  },
+  {
+    path: '/devInquiry',
+    name: 'DevInquiry',
+    component: DevInquiry
   },
 ]
 

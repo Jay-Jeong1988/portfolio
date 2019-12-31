@@ -70,6 +70,8 @@ export default {
     toggleCheckIcon(e) {
       e.preventDefault();
       this.item.checked = !this.item.checked;
+
+
     },
     openModal() {
       if(this.$store.state.isAdmin) this.modalShow = !this.modalShow;
