@@ -10,7 +10,7 @@
       header-class="bg-dark"
     >
       <template v-slot:modal-header="{close}">
-        <div class="btn btn-outline-danger" @click="deleteTrip">
+        <div class="btn btn-outline-danger" @click="deleteReservation">
           <p>Delete</p>
         </div>
         <b-button size="sm" variant @click="close()">x</b-button>
@@ -112,12 +112,12 @@ export default {
     switchStatus(e) {
       var clickedStatus = e.target.name;
       const productionUrl =
-        "https://survivalstack.herokuapp.com/api/v1/trips/updateStatus";
-      const devUrl = "http://localhost:8081/api/v1/trips/updateStatus";
+        "https://survivalstack.herokuapp.com/api/v1/reservations/updateStatus";
+      const devUrl = "http://localhost:8081/api/v1/reservations/updateStatus";
       let myUrl =
         process.env.NODE_ENV === "production" ? productionUrl : devUrl;
 
-      fetch(`${myUrl}?tripId=${this.data._id}&status=${clickedStatus}`)
+      fetch(`${myUrl}?reservationId=${this.data._id}&status=${clickedStatus}`)
         .then(response => response.json())
         .then(data => {
           this.item.status = data.status;
@@ -132,8 +132,8 @@ export default {
     },
     save() {
       const productionUrl =
-        "https://survivalstack.herokuapp.com/api/v1/trips/update";
-      const devUrl = "http://localhost:8081/api/v1/trips/update";
+        "https://survivalstack.herokuapp.com/api/v1/reservations/update";
+      const devUrl = "http://localhost:8081/api/v1/reservations/update";
       let myUrl =
         process.env.NODE_ENV === "production" ? productionUrl : devUrl;
       const options = {
@@ -145,10 +145,10 @@ export default {
         body: JSON.stringify(this.data)
       };
 
-      fetch(`${myUrl}?tripId=${this.data._id}`, options)
+      fetch(`${myUrl}?reservationId=${this.data._id}`, options)
         .then(response => response.json())
-        .then(trip => {
-          this.data = trip;
+        .then(reservation => {
+          this.data = reservation;
           this.item._id += 1;    //changing item's key makes ables to update the component in real time
           this.editing = false;
           setTimeout(()=>this.item._id = this.item._id.slice(0,-1), 0) //must change the key back to as it was, otherwise fetch fails due to unmatching _id
@@ -157,13 +157,13 @@ export default {
           alert(error)
         });
     },
-    deleteTrip() {
+    deleteReservation() {
       const productionUrl =
-        "https://survivalstack.herokuapp.com/api/v1/trips/remove";
-      const devUrl = "http://localhost:8081/api/v1/trips/remove";
+        "https://survivalstack.herokuapp.com/api/v1/reservations/remove";
+      const devUrl = "http://localhost:8081/api/v1/reservations/remove";
       let myUrl =
         process.env.NODE_ENV === "production" ? productionUrl : devUrl;
-        fetch(`${myUrl}?tripId=${this.data._id}`)
+        fetch(`${myUrl}?reservationId=${this.data._id}`)
         .then(response => response.status)
         .catch(error => {
           alert(error)

@@ -5,7 +5,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const db = require("./db/db");
-const tripsRouter = require('./routes/trips');
+const reservationsRouter = require('./routes/reservations');
 const reviewsRouter = require('./routes/reviews');
 const app = express();
 const apiPath = "/api/v1";
@@ -19,7 +19,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(apiPath + '/trips', tripsRouter);
+app.use(apiPath + '/reservations', reservationsRouter);
 app.use(apiPath + '/reviews', reviewsRouter);
 
 app.use('/', serveStatic(path.join(__dirname, '/dist')))

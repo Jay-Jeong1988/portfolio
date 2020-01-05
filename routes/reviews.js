@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Review = require("../db/reviewSchema");
-var Trip = require("../db/tripSchema");
+var Reservation = require("../db/reservationSchema");
 
 router.get('/getAll', function (req, res, next) {
   Review.find()
@@ -29,7 +29,7 @@ router.get('/verifyAuth', function (req, res, next) {
 router.get('/remove', (req, res) => {
   Review.deleteOne({
     _id: req.query.reviewId
-  }, (err, trip) => {
+  }, (err, reservation) => {
     if (err) return console.error(err);
     res.status(200).send("ok")
   })
@@ -72,7 +72,7 @@ router.post('/create', (req, res) => {
   let customerName = "";
   customerNameWithoutInitials = req.body.customerNameWithoutInitials[0].toUpperCase() + customerNameWithoutInitials.slice(1);
 
-  Trip.findOne({
+  Reservation.findOne({
     "customerName": {
       "$regex": customerNameWithoutInitials,
       "$options": "i"
@@ -81,10 +81,10 @@ router.post('/create', (req, res) => {
       "$regex": phoneLast4Digits,
       "$options": "i"
     },
-  }, (err, trip) => {
+  }, (err, reservation) => {
     if (err) return console.error(err);
-    if (trip) {
-      customerName = trip.customerName;
+    if (reservation) {
+      customerName = reservation.customerName;
       Review.findOne({
         "customerName": {
           "$regex": customerNameWithoutInitials,
