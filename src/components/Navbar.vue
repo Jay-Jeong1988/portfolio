@@ -3,8 +3,14 @@
     <a id="homeLink" href>
       <img src="../assets/images/vippp_logo.png" />
     </a>
+    <div class="navs">
+      <button class="scrollTo" name="intro" @click="scrollTo"><p>탁구장 소개</p></button>
+      <button class="scrollTo" name="notice" @click="scrollTo"><p>알려 드립니다</p></button>
+      <button class="scrollTo" name="location" @click="scrollTo"><p>찾아오시는 길</p></button>
+      <button class="scrollTo" name="book" @click="scrollTo"><p>예약하기</p></button>
+    </div>
     <div class="contactIcons">
-      <span>
+      <!-- <span>
         <img @click="selectContact" src="@/assets/images/email.svg" alt="email icon" name="email"/>
         <ContactCard :type="contactType" v-if="isContactCardOpen && contactType==='email'" :iconClickedPosition="iconClickedPosition"/>
       </span>
@@ -15,12 +21,12 @@
       <span>
         <img @click="selectContact" src="../assets/images/kakao-talk.svg" name="katalk" alt="kakaotalk icon" />
         <ContactCard :type="contactType" v-if="isContactCardOpen && contactType==='katalk'" :iconClickedPosition="iconClickedPosition"/>
-      </span>
+      </span> -->
     </div>
   </div>
 </template>
 <script>
-import ContactCard from './ContactCard'
+// import ContactCard from './ContactCard'
 export default {
   name: "Navbar",
   data() {
@@ -32,11 +38,21 @@ export default {
     };
   },
   components: {
-    ContactCard
+    // ContactCard
   },
   computed: {
   },
   methods: {
+    scrollTo(e){
+      const scrollToName = e.currentTarget.getAttribute("name");
+      const scrollPositions = {
+        intro: 607,
+        notice: 1505,
+        location: 2408,
+        book: 2700
+      };
+      window.scrollTo({left:0, top:scrollPositions[scrollToName], behavior: 'smooth'})
+    },
     selectContact(e){
       var clickedPosition = [e.clientX, e.clientY]
       var clickedType = e.target.name
@@ -47,7 +63,7 @@ export default {
   },
   mounted() {
     window.onscroll = ()=>{
-        this.isWindowTop = window.scrollY <= 300;
+        this.isWindowTop = window.scrollY <= 200;
     }
     var self = this
     var body = document.getElementsByTagName("body")[0]
@@ -63,6 +79,10 @@ export default {
 };
 </script>
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=Jua&display=swap');
+p {
+  margin: 0;
+}
 .navbar {
   background: #fff;
   width: 100%;
@@ -78,16 +98,18 @@ export default {
   overflow: hidden;
   opacity: 0;
   transition: all .5s ease-in-out;
+  font-family: "Jua", sans-serif;
 }
 .navbar.show {
   opacity: 1;
   height: 6.874rem;
 }
-@media only screen and (max-width: 924px) {
-}
-.nav-menu button {
-  background-color: transparent;
+.navs button {
+  margin-right: 2em;
   border: none;
+  background-color: transparent;
+}
+@media only screen and (max-width: 924px) {
 }
 .rightSideContainer {
   display: flex;
@@ -98,7 +120,6 @@ export default {
 }
 .contactIcons p {
   color: rgb(250, 250, 250);
-  margin: 0;
   margin-right: .5em;
 }
 @media only screen and (max-width: 924px) {
