@@ -328,7 +328,7 @@ export default {
 }
 .map {
   position: absolute;
-  z-index: 1000;
+  z-index: 949;
   width: 100%;
   display: flex;
   justify-content: center;
