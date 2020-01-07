@@ -129,7 +129,7 @@
     <section class="credit">
       <p>©2020 귀빈탁구클럽</p>
     </section>
-    <ModalCard :modalShow="modalShow" :modalContent="modalContent"/>
+    <ModalCard :modalShow="modalShow" :modalContent="modalContent" @closeModal="modalShow=false"/>
   </div>
 </template>
 
@@ -249,6 +249,7 @@ export default {
   background-color: rgba(0, 0, 0, 0.5);
   width: 25%;
   height: 40vh;
+  font-family: "Do Hyeon", sans-serif;
 }
 .staffs .overlay.show {
   display: flex;
@@ -361,6 +362,9 @@ export default {
 .booknow p {
   margin: 0;
 }
+.footer .buttons {
+  display: flex;
+}
 .footer .buttons button {
   background-color: rgba(255, 255, 255,0.3);
   border-radius: 50%;
@@ -406,7 +410,7 @@ export default {
     min-height: 60vh;
   }
   .aboutUs div p {
-    padding: 3em;
+    padding: 1em;
     text-align: start;
   }
   .staffs {
@@ -427,6 +431,20 @@ export default {
   }
   .menus {
     display: block;
+  }
+  .aboutUs .texts {
+    padding: 1em;
+    padding-top: 3em;
+  }
+  .footer {
+    padding: 0 1em;
+  }
+  .footer .buttons button {
+    margin: 0 0.3em;
+    padding: .7em;
+  }
+  .footer .buttons img {
+    width: 2.5em;
   }
 }
 </style>

@@ -48,7 +48,7 @@ export default {
       const scrollPositions = {
         intro: 607,
         notice: 1505,
-        location: 2408,
+        location: 2108,
         book: 2700
       };
       window.scrollTo({left:0, top:scrollPositions[scrollToName], behavior: 'smooth'})
