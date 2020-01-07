@@ -4,8 +4,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/car.ico"
   },
   {
-    "revision": "b28d9b15406fac7dab40",
-    "url": "/css/app.89580b7a.css"
+    "revision": "18a6682905b71892022a",
+    "url": "/css/app.61f64f70.css"
   },
   {
     "revision": "f88ba6ac82d9a54d1180",
@@ -26,6 +26,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "162aa128677ff3b810af873badddbc09",
     "url": "/img/membership.162aa128.svg"
+  },
+  {
+    "revision": "29e44c512052159c07eb6a18341b3e71",
+    "url": "/img/menu.29e44c51.svg"
   },
   {
     "revision": "59ceb1a5751fc6b60680a3d3eba37f59",
@@ -64,12 +68,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/vippp_logo_white.c736920d.png"
   },
   {
-    "revision": "8e8a3f9aeb43024395d99765ff13c459",
+    "revision": "a42a6588089d237f6635adedee09fa1e",
     "url": "/index.html"
   },
   {
-    "revision": "b28d9b15406fac7dab40",
-    "url": "/js/app.8fbcf6d7.js"
+    "revision": "18a6682905b71892022a",
+    "url": "/js/app.8d16df60.js"
   },
   {
     "revision": "f88ba6ac82d9a54d1180",
