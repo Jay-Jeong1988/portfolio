@@ -7,9 +7,7 @@
     <section class="aboutUs">
       <div class="texts">
         <h3>탁구장 소개</h3>
-        <p>
-          저희 귀빈탁구클럽은 저희 귀빈탁구클럽은 저희 귀빈탁구클럽은 저희 귀빈탁구클럽은 저희 귀빈탁구클럽은 저희 귀빈탁구클럽은 저희 귀빈탁구클럽은 저희 귀빈탁구클럽은 저희 귀빈탁구클럽은 저희 귀빈탁구클럽은 저희 귀빈탁구클럽은 저희 귀빈탁구클럽은 저희 귀빈탁구클럽은 저희 귀빈탁구클럽은 저희 귀빈탁구클럽은 
-        </p>
+        <p>저희 귀빈탁구클럽은 탁구를 사랑하는 탁구인들이 한 자리에 모여 함께 건강증진과 생활의 활력을 도모하는 클럽입니다. 대전의 중심지인 서구 만년동에 위치한 저희 귀빈탁구클럽은 미세먼지 정화 시스템과 넓은 휴게공간을 갖춘 쾌적한 시설을 자랑합니다. 저희 귀빈탁구클럽에서 성공적인 건강관리와 친목도모를 시작해보세요.</p>
       </div>
       <div>
         <img
@@ -22,20 +20,36 @@
       <div>
         <h2>STAFFS</h2>
       </div>
-      <div class="photoContainer owner" @mouseover="hoverOnOwner = true" @mouseleave="hoverOnOwner = false">
+      <div
+        class="photoContainer owner"
+        @mouseover="hoverOnOwner = true"
+        @mouseleave="hoverOnOwner = false"
+      >
         <div class="overlay" :class="{show: hoverOnOwner}">
           <div>
-            <p style="margin-bottom: 0"><small>귀빈탁구클럽</small></p>
-            <p><small>관장</small></p>
+            <p style="margin-bottom: 0">
+              <small>귀빈탁구클럽</small>
+            </p>
+            <p>
+              <small>관장</small>
+            </p>
             <p>곽효월</p>
           </div>
         </div>
       </div>
-      <div class="photoContainer coach" @mouseover="hoverOnCoach = true" @mouseleave="hoverOnCoach = false">
+      <div
+        class="photoContainer coach"
+        @mouseover="hoverOnCoach = true"
+        @mouseleave="hoverOnCoach = false"
+      >
         <div class="overlay" :class="{show: hoverOnCoach}">
           <div>
-            <p style="margin-bottom: 0"><small>귀빈탁구클럽</small></p>
-            <p><small>메인 코치</small></p>
+            <p style="margin-bottom: 0">
+              <small>귀빈탁구클럽</small>
+            </p>
+            <p>
+              <small>메인 코치</small>
+            </p>
             <p>???</p>
           </div>
         </div>
@@ -44,10 +58,13 @@
     <section class="menus">
       <div>
         <h2>알려 드립니다</h2>
-        <p>주차장사용은  주말은  탁구장주변  (단속없음)
-주중엔  귀빈돌솥밥주차장에 사용가능시간  오전9시~11시까지
-오후2시~5시까지
-오후8시부터는  프리</p>
+        <p>
+          귀빈돌솥밥주차장 사용 가능 시간 (평일): 
+          <br/>(오전)9시 ~ 11시
+          <br/>(오후)2시 ~ 5시
+          <br/>*오후8시부터는 FREE
+          <br />*주말은 탁구장주변 도로주차 (단속없음)
+        </p>
       </div>
       <div class="lesson" name="lesson" @click="openModal">
         <img src="../assets/images/coach.svg" alt="coach icon" />
@@ -90,35 +107,39 @@
           :zoom="17"
           style="width: 100%; min-height: 70vh"
         >
-          <GmapMarker 
-          :icon="{ 
+          <GmapMarker
+            :icon="{ 
             url: require('../assets/images/ping-pong-racket.svg'),
             size: {width: 40, height: 40, f: 'px', b: 'px'},
             scaledSize: {width: 40, height: 40, f: 'px', b: 'px'},
             }"
-          :position="{lat:36.366198, lng:127.380517}" 
-          :clickable="true"
-          @click="showTooltip=!showTooltip"
-           />
+            :position="{lat:36.366198, lng:127.380517}"
+            :clickable="true"
+            @click="showTooltip=!showTooltip"
+          />
         </GmapMap>
         <div class="customTooltip" v-if="showTooltip">
           <p>대전광역시 서구 만년동 349번지 지하1층</p>
-          <p style="font-size: 1.2em"><b>귀빈탁구클럽</b></p> 
-          <p style="font-size: 1.2em"><b>010 6420 8888</b></p>
+          <p style="font-size: 1.2em">
+            <b>귀빈탁구클럽</b>
+          </p>
+          <p style="font-size: 1.2em">
+            <b>010 6420 8888</b>
+          </p>
         </div>
       </div>
     </section>
     <section class="footer">
       <div class="buttons">
         <button class="navigateToTop" @click="scrollToTop">
-          <img src="../assets/images/up-arrow.svg" alt="up arrow icon"/>
+          <img src="../assets/images/up-arrow.svg" alt="up arrow icon" />
         </button>
         <button class="phoneNumber">
-          <img src="../assets/images/phone-call.svg" alt="phone icon"/>
+          <img src="../assets/images/phone-call.svg" alt="phone icon" />
         </button>
         <!-- <button class="kakaotalk">
           <img src="../assets/images/kakao.svg" alt="kakaotalk icon"/>
-        </button> -->
+        </button>-->
       </div>
       <div class="booknow">
         <button>
@@ -129,35 +150,34 @@
     <section class="credit">
       <p>©2020 귀빈탁구클럽</p>
     </section>
-    <ModalCard :modalShow="modalShow" :modalContent="modalContent" @closeModal="modalShow=false"/>
+    <ModalCard :modalShow="modalShow" :modalContent="modalContent" @closeModal="modalShow=false" />
   </div>
 </template>
 
 <script>
 import Navbar from "./Navbar";
-import ModalCard from "./ModalCard"
+import ModalCard from "./ModalCard";
 export default {
   name: "LandingPage",
   data() {
     return {
       hoverOnOwner: false,
       hoverOnCoach: false,
-      showTooltip:false,
+      showTooltip: false,
       modalShow: false,
-      modalContent: "",
+      modalContent: ""
     };
   },
   methods: {
-    scrollToTop(){
-      window.scrollTo({left:0,top:0,behavior: 'smooth'})
+    scrollToTop() {
+      window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
     },
-    openModal(e){
-      this.modalContent = e.currentTarget.getAttribute("name")
-      this.modalShow = !this.modalShow
+    openModal(e) {
+      this.modalContent = e.currentTarget.getAttribute("name");
+      this.modalShow = !this.modalShow;
     }
   },
-  computed: {
-  },
+  computed: {},
   mounted() {
     this.$refs.mapRef.$mapPromise.then(map => {
       map.panTo({ lat: 36.366378, lng: 127.380517 });
@@ -171,7 +191,14 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+button {
+  border: none;
+  background-color: transparent;
+}
+p {
+  margin: 0;
+}
 .LandingPage {
   background-color: rgb(36, 36, 36);
   font-family: "Jua", sans-serif;
@@ -201,12 +228,16 @@ export default {
 }
 .aboutUs .texts h3 {
   color: rgb(170, 170, 170);
+  font-size: 2.5em;
 }
 .aboutUs .texts {
   color: rgb(170, 170, 170);
   padding: 3em;
   text-align: center;
-  font-size: 1.3em;
+  font-size: 1.8em;
+  font-family: "Do Hyeon", sans-serif;
+  max-height: 85vh;
+  overflow: hidden;
 }
 .aboutUs div img {
   width: 100%;
@@ -256,17 +287,6 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.joinUs {
-  width: 100%;
-  min-height: 30vh;
-  display: flex;
-  text-align: center;
-  align-items: center;
-  color: white;
-}
-.joinUs p {
-  padding: 3em;
-}
 .menus {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -279,6 +299,7 @@ export default {
   justify-content: center;
   align-items: center;
   min-height: 42vh;
+  max-height: 42vh;
   padding: 1em;
 }
 .menus > div:not(:first-child):hover {
@@ -286,14 +307,17 @@ export default {
   background-color: rgba(249, 232, 252, 0.7) !important;
 }
 .menus p {
-  margin: 0;
   margin-top: 1em;
   font-size: 1.3em;
 }
 .menus > div:first-child {
+  display: block;
+  text-align: start;
+  overflow: hidden;
   background-color: #0c1821 !important;
   grid-column: 1 / span 2;
   padding: 3em;
+  padding-left: 5em;
   color: white;
 }
 .menus > div:nth-child(even) {
@@ -323,9 +347,6 @@ export default {
   margin-top: 4em;
   text-align: center;
 }
-.customTooltip p {
-  margin: 0;
-}
 .map {
   position: absolute;
   z-index: 949;
@@ -339,16 +360,12 @@ export default {
   justify-content: space-between;
   align-items: center;
   bottom: 0;
-  background-color: #EB644A;
+  background-color: #eb644a;
   z-index: 1001;
   width: 100%;
   min-height: 20vh;
   padding: 0 3em;
   margin-top: 70vh;
-}
-.footer button {
-  border: none;
-  background-color: transparent;
 }
 .booknow button {
   background-color: white;
@@ -359,17 +376,14 @@ export default {
   padding: 1.5em 2em;
   width: 10em;
 }
-.booknow p {
-  margin: 0;
-}
 .footer .buttons {
   display: flex;
 }
 .footer .buttons button {
-  background-color: rgba(255, 255, 255,0.3);
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   padding: 1em;
-  margin: 0 .7em;
+  margin: 0 0.7em;
 }
 .footer .buttons img {
   width: 2.5em;
@@ -379,11 +393,8 @@ export default {
   min-height: 2em;
   font-size: 1em;
   color: rgb(152, 152, 152);
-  padding: .5em 2.5em;
+  padding: 0.5em 2.5em;
   text-align: end;
-}
-.credit p {
-  margin: 0;
 }
 @media only screen and (max-width: 924px) {
   .menus {
@@ -392,22 +403,28 @@ export default {
   .menus > div:first-child {
     grid-column: 1 / span 3;
   }
-}
-@media only screen and (max-width: 767px) {
-  .banner {
-    background-position: 16%;
-  }
-  .banner img {
-    width: 18em;
-  }
   .aboutUs {
     display: block;
   }
   .aboutUs > div {
     width: 100%;
   }
+  .aboutUs .texts {
+    padding: 1em;
+    padding-top: 3em;
+    font-size: 1.5em;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .banner {
+    background-position: 16%;
+    height: 190vw;
+  }
+  .banner img {
+    width: 18em;
+  }
   .aboutUs div img {
-    min-height: 60vh;
+    min-height: 170vw;
   }
   .aboutUs div p {
     padding: 1em;
@@ -417,34 +434,44 @@ export default {
     display: block;
   }
   .staffs > div:first-child {
-    min-height: 22vh;
+    min-height: 45vw;
   }
   .photoContainer {
-    min-height: 45vh;
+    min-height: 100vw;
   }
   .overlay.show {
     width: 100%;
-    height: 45vh;
-  }
-  .joinUs p {
-    text-align: start;
+    height: 100vw;
   }
   .menus {
     display: block;
   }
+  .menus div {
+    max-height: unset;
+  }
   .aboutUs .texts {
     padding: 1em;
     padding-top: 3em;
+    font-size: 1.3em;
+    max-height: 170vw;
   }
   .footer {
     padding: 0 1em;
+    min-height: 42vw;
+    margin-top: 150vw;
   }
   .footer .buttons button {
     margin: 0 0.3em;
-    padding: .7em;
+    padding: 0.7em;
   }
   .footer .buttons img {
     width: 2.5em;
+  }
+  .location > div:first-child {
+    min-height: 60vw;
+  }
+  .vue-map-container {
+    min-height: 150vw !important;
   }
 }
 </style>

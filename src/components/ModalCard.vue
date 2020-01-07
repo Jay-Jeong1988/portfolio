@@ -162,10 +162,6 @@ export default {
 .contentsHeader {
   align-self: flex-end;
 }
-.closeModalBtn {
-  border: none;
-  background-color: transparent;
-}
 .closeModalBtn img {
   width: 3.5em;
 }
@@ -198,14 +194,13 @@ export default {
 .functions .buttons button {
   background-color: rgba(255, 255, 255, 1);
   border-radius: 50%;
-  border: none;
   padding: .5em;
   margin: 0 .3em;
 }
 .functions .buttons img {
   width: 2.5em;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 600px) {
   .modal-content {
     height: auto;
   }
