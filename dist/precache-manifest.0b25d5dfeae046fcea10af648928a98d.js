@@ -4,8 +4,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/car.ico"
   },
   {
-    "revision": "b1369729f3f017844862",
-    "url": "/css/app.242856da.css"
+    "revision": "cf5f75b1af6c7e3a8fc3",
+    "url": "/css/app.25a869b7.css"
   },
   {
     "revision": "cb701a6a6e1beeb9b22a",
@@ -68,12 +68,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/vippp_logo_white.c736920d.png"
   },
   {
-    "revision": "a347c3e8f0e6147adc3dbbd1daa6b205",
+    "revision": "7ae597731110b9a99889fac9d60adc00",
     "url": "/index.html"
   },
   {
-    "revision": "b1369729f3f017844862",
-    "url": "/js/app.93f1cb17.js"
+    "revision": "cf5f75b1af6c7e3a8fc3",
+    "url": "/js/app.5840984b.js"
   },
   {
     "revision": "cb701a6a6e1beeb9b22a",
