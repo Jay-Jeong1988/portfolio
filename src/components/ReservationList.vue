@@ -39,7 +39,7 @@ export default {
     fetchReservations() {
       let self = this;
       const productionRequest = new Request(
-        "https://vippingpong.com:8081/api/v1/reservations/getAll"
+        "http://vippingpong.com:8081/api/v1/reservations/getAll"
       );
       const devRequest = new Request(
         "http://localhost:8081/api/v1/reservations/getAll"

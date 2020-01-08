@@ -45,7 +45,7 @@ export default {
     toggleCross(){
       this.crossed = !this.crossed
       const productionUrl =
-        "https://vippingpong.com:8081/api/v1/reservations/updateCrossed";
+        "http://vippingpong.com:8081/api/v1/reservations/updateCrossed";
       const devUrl = "http://localhost:8081/api/v1/reservations/updateCrossed";
       let myUrl =
         process.env.NODE_ENV === "production" ? productionUrl : devUrl;
