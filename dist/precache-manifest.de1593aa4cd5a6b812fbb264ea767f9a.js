@@ -4,16 +4,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/car.ico"
   },
   {
-    "revision": "18a6682905b71892022a",
-    "url": "/css/app.61f64f70.css"
+    "revision": "b1369729f3f017844862",
+    "url": "/css/app.242856da.css"
   },
   {
-    "revision": "f88ba6ac82d9a54d1180",
+    "revision": "cb701a6a6e1beeb9b22a",
     "url": "/css/chunk-vendors.8da9011d.css"
   },
   {
     "revision": "4acd41dfd8a46638bd751a093917cedb",
     "url": "/img/calendar.4acd41df.svg"
+  },
+  {
+    "revision": "33b4ca304e5162ab2679c0c987569abd",
+    "url": "/img/checked.33b4ca30.svg"
   },
   {
     "revision": "5b90f6a8c0e94f529c2d4e2de783f6e5",
@@ -26,10 +30,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "162aa128677ff3b810af873badddbc09",
     "url": "/img/membership.162aa128.svg"
-  },
-  {
-    "revision": "29e44c512052159c07eb6a18341b3e71",
-    "url": "/img/menu.29e44c51.svg"
   },
   {
     "revision": "59ceb1a5751fc6b60680a3d3eba37f59",
@@ -68,16 +68,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/vippp_logo_white.c736920d.png"
   },
   {
-    "revision": "a42a6588089d237f6635adedee09fa1e",
+    "revision": "a347c3e8f0e6147adc3dbbd1daa6b205",
     "url": "/index.html"
   },
   {
-    "revision": "18a6682905b71892022a",
-    "url": "/js/app.8d16df60.js"
+    "revision": "b1369729f3f017844862",
+    "url": "/js/app.93f1cb17.js"
   },
   {
-    "revision": "f88ba6ac82d9a54d1180",
-    "url": "/js/chunk-vendors.4958c397.js"
+    "revision": "cb701a6a6e1beeb9b22a",
+    "url": "/js/chunk-vendors.62972602.js"
   },
   {
     "revision": "b75c440b72f00815511e2c1dfaabe622",

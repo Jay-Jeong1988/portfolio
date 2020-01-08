@@ -5,9 +5,9 @@
       v-model="modalShow"
       hide-header
       hide-footer
-      dialog-class
-      content-class="modalContent shadow-lg border-0"
-      body-class="p-0"
+      dialog-class="menu"
+      content-class="modalContent shadow-lg border-0 menu"
+      body-class="p-0 menu"
     >
       <section class="photoSection">
         <img :src="dynamicPhotoUrl" alt="inside gym" />
@@ -24,7 +24,7 @@
         </div>
         <div class="functions">
           <div class="booknow">
-            <button>
+            <button @click="openBookingModal">
               <p>예약하기</p>
             </button>
           </div>
@@ -92,6 +92,9 @@ export default {
   methods: {
     closeModal() {
       this.$emit("closeModal");
+    },
+    openBookingModal(){
+      this.$emit("openBookingModal");
     }
   },
   computed: {
@@ -106,7 +109,8 @@ export default {
     }
   },
   created() {},
-  mounted() {}
+  mounted() {},
+  components: {}
 };
 </script>
 
@@ -117,28 +121,28 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.modal-dialog {
+.modal-dialog.menu {
   margin: 0;
   align-items: start;
 }
-.modal-content {
+.modal-content.menu {
   width: 100vw;
   height: 50vw;
   border-radius: 0;
   background-color: #E0E0E0;
 }
-.modal-body {
+.modal-body.menu {
   width: 100vw;
   height: 50vw;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.modal-body section {
+.modal-body.menu section {
   width: 50%;
   height: 100%;
 }
-.modal-body * {
+.modal-body.menu * {
   font-family: "Do Hyeon", sans-serif;
 }
 .logo img {
@@ -201,19 +205,19 @@ export default {
   width: 2.5em;
 }
 @media only screen and (max-width: 600px) {
-  .modal-content {
+  .modal-content.menu {
     height: auto;
   }
-  .modal-body {
+  .modal-body.menu {
     flex-direction: column;
     min-height: 100vh;
     height: auto;
   }
-  .modal-body .contentsContainer {
+  .modal-body.menu .contentsContainer {
     width: 100%;
     min-height: 50vh;
   }
-  .modal-body .photoSection {
+  .modal-body.menu .photoSection {
     width: 100%;
     height: 50vh !important;
   }

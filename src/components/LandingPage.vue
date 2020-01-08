@@ -142,7 +142,7 @@
         </button>-->
       </div>
       <div class="booknow">
-        <button>
+        <button @click="openBookingModal">
           <p>예약하기</p>
         </button>
       </div>
@@ -150,13 +150,15 @@
     <section class="credit">
       <p>©2020 귀빈탁구클럽</p>
     </section>
-    <ModalCard :modalShow="modalShow" :modalContent="modalContent" @closeModal="modalShow=false" />
+    <ModalCard :modalShow="modalShow" :modalContent="modalContent" @closeModal="modalShow=false" @openBookingModal="openBookingModal"/>
+    <Modal :bookingModalShow="bookingModalShow" @closeAllModal="closeAllModal"/>
   </div>
 </template>
 
 <script>
 import Navbar from "./Navbar";
 import ModalCard from "./ModalCard";
+import Modal from "./Modal";
 export default {
   name: "LandingPage",
   data() {
@@ -165,16 +167,24 @@ export default {
       hoverOnCoach: false,
       showTooltip: false,
       modalShow: false,
-      modalContent: ""
+      modalContent: "lesson",
+      bookingModalShow: false
     };
   },
   methods: {
+    closeAllModal(){
+      this.modalShow = false;
+      this.bookingModalShow = false;
+    },
     scrollToTop() {
       window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
     },
     openModal(e) {
       this.modalContent = e.currentTarget.getAttribute("name");
       this.modalShow = !this.modalShow;
+    },
+    openBookingModal(){
+      this.bookingModalShow = !this.bookingModalShow;
     }
   },
   computed: {},
@@ -184,9 +194,10 @@ export default {
     });
     this.$root.$on("bv::modal::hide", () => {
       this.modalShow = false;
+      this.bookingModalShow = false;
     });
   },
-  components: { Navbar, ModalCard }
+  components: { Navbar, ModalCard, Modal }
 };
 </script>
 
@@ -424,7 +435,7 @@ p {
     width: 18em;
   }
   .aboutUs div img {
-    min-height: 170vw;
+    min-height: 160vw;
   }
   .aboutUs div p {
     padding: 1em;
@@ -448,6 +459,7 @@ p {
   }
   .menus div {
     max-height: unset;
+    min-height: 90vw;
   }
   .aboutUs .texts {
     padding: 1em;

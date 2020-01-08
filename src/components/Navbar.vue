@@ -33,7 +33,7 @@
         </span>-->
       </div>
       <button class="toggleDropdownBtn" v-if="isMobile" @click="toggleDropdown">
-        <img src="../assets/images/menu.svg" alt="dropdown icon" />
+        <img :src="dynamicToggleBtnImg" alt="dropdown icon" />
       </button>
     </div>
     <div class="dropdownContainer" :class="{show: showDropdown}">
@@ -71,6 +71,9 @@ export default {
   computed: {
     isMobile(){
       return window.innerWidth <= 600
+    },
+    dynamicToggleBtnImg(){
+      return this.showDropdown ? "/img/icons/cancel.svg" : "/img/icons/menu.svg"
     }
   },
   methods: {
@@ -79,7 +82,12 @@ export default {
     },
     scrollTo(e) {
       const scrollToName = e.currentTarget.getAttribute("name");
-      const scrollPositions = {
+      const scrollPositions = this.isMobile ? {
+        intro: 440,
+        notice: 2380,
+        location: 4372,
+        book: 4815
+      } : {
         intro: 607,
         notice: 1505,
         location: 2108,

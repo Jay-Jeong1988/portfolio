@@ -3,9 +3,15 @@ var router = express.Router();
 var Reservation = require("../db/reservationSchema");
 
 router.get('/getAll', function (req, res, next) {
-  Reservation.find().limit(20)
+  const today = new Date();
+  const y = today.getFullYear();
+  const m = today.getMonth();
+  const d = today.getDate();
+  Reservation.find({
+    dateAndTime: {"$gte": new Date(y, m, d), "$lt": new Date(y, m, d+1)}
+  }).limit(200)
     .sort({
-      pickupTime: -1
+      dateAndTime: 1
     })
     .exec(function (err, items) {
       if (err) return console.error(err);
@@ -13,21 +19,22 @@ router.get('/getAll', function (req, res, next) {
     })
 });
 
-router.get('/updateStatus', (req, res) => {
+router.get('/updateCrossed', (req, res) => {
   Reservation.updateOne({
       _id: req.query.reservationId
     }, {
       $set: {
-        status: req.query.status
+        crossed: req.query.crossed
       }
     })
     .exec((err, data) => {
       if (err) return console.error(err);
-      Reservation.findOne({
-        _id: req.query.reservationId
-      }).select("status").exec((err, status) => {
-        res.status(200).json(status);
-      })
+      res.status(200).json({"ok": 200})
+      // Reservation.findOne({
+      //   _id: req.query.reservationId
+      // }).select("crossed").exec((err, status) => {
+      //   res.status(200).json(status);
+      // })
     })
 })
 
@@ -75,27 +82,27 @@ router.get('/removeAll', (req, res) => {
 })
 
 router.post('/create', (req, res) => {
-  const customerName = req.body.customerName || "귀빈탁구클럽";
+  const customerName = req.body.customerName;
   const dateAndTime = req.body.dateAndTime;
-  const duration = req.body.duration;
+  const duration = req.body.duration || "미정";
   const phone = req.body.phone;
   const numberOfPeople = req.body.numberOfPeople;
+  const note = req.body.note;
 
   const newReservation = new Reservation({
-    customerName: customerName[0].toUpperCase() + customerName.slice(1),
+    customerName,
     dateAndTime,
     duration,
     phone,
     numberOfPeople,
-    thumbnailUrl: randomThumbnailUrl(),
+    note
   });
-
   newReservation.save().then(newReservation => {
     res.status(200).json({"ok": "successfully created a reservation"});
   }).catch(error => {
     console.log(error.message);
     res.status(500).json({
-      error: error.message
+      error: error.message.split(":").slice(1).join(":")
     })
   })
 
