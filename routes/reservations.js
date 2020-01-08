@@ -7,7 +7,7 @@ router.get('/getAll', function (req, res, next) {
   const y = today.getFullYear();
   const m = today.getMonth();
   const d = today.getDate();
-  const h = -17; //to convert to korean timezone
+  const h = 7; //to convert to korean timezone
   Reservation.find({
     dateAndTime: {"$gte": new Date(y, m, d, h), "$lt": new Date(y, m, d+1, h)}
   }).limit(200)
