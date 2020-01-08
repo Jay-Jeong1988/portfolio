@@ -134,9 +134,11 @@
         <button class="navigateToTop" @click="scrollToTop">
           <img src="../assets/images/up-arrow.svg" alt="up arrow icon" />
         </button>
-        <button class="phoneNumber">
-          <img src="../assets/images/phone-call.svg" alt="phone icon" />
-        </button>
+        <a href="tel:+82-10-6420-8888">
+          <button class="phoneNumber">
+            <img src="../assets/images/phone-call.svg" alt="phone icon" />
+          </button>
+        </a>
         <!-- <button class="kakaotalk">
           <img src="../assets/images/kakao.svg" alt="kakaotalk icon"/>
         </button>-->

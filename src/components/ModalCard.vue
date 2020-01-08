@@ -29,9 +29,11 @@
             </button>
           </div>
           <div class="buttons">
-            <button>
-              <img src="../assets/images/phone-call-orange.svg" alt="phone icon"/>
-            </button>
+            <a href="tel:+82-10-6420-8888">
+              <button>
+                <img src="../assets/images/phone-call-orange.svg" alt="phone icon"/>
+              </button>
+            </a>
             <button>
               <img src="../assets/images/calendar.svg" alt="calendar icon"/>
             </button>
