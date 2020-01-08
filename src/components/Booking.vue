@@ -94,7 +94,7 @@ export default {
     makeReservation() {
       this.responseErrors = [];
       const productionUrl =
-        "https://vippingpong.com:8081/api/v1/reservations/create";
+        "http://vippingpong.com:8081/api/v1/reservations/create";
       const devUrl = "http://localhost:8081/api/v1/reservations/create";
       let myUrl =
         process.env.NODE_ENV === "production" ? productionUrl : devUrl;

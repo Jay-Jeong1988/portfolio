@@ -68,7 +68,6 @@ export default {
 </script>
 
 <style scoped>  
-@import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap');
 #clock p {
   margin-bottom: 0;
   padding: 0;
