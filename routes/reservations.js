@@ -3,7 +3,8 @@ var router = express.Router();
 var Reservation = require("../db/reservationSchema");
 
 router.get('/getAll', function (req, res, next) {
-  const today = new Date();
+  const requestDate = req.query.requestDate;
+  const today = requestDate ? new Date(requestDate) : new Date();
   const y = today.getFullYear();
   const m = today.getMonth();
   const d = today.getDate();

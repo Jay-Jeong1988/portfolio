@@ -1,7 +1,7 @@
 <template>
   <div id="clock">
     <!-- <p class="date">{{ date }}</p> -->
-    <p class="time">{{ time }}</p>
+    <p class="time">{{ dynamicDisplayingTime }}</p>
   </div>
 </template>
 
@@ -9,9 +9,7 @@
 export default {
   data() {
     return {
-      week: ["일", "월", "화", "수", "목", "금", "토"],
-      time: new Date().toLocaleString("ko-KO",{timeZone: "Asia/Seoul"}).split(":").slice(0,2).join(":"),
-      // date: ""
+      displayingTime: new Date().toLocaleString("ko-KO",{timeZone: "Asia/Seoul"}).split(":").slice(0, 2).join(":"),
     };
   },
   computed: {
@@ -31,10 +29,19 @@ export default {
     //     ":" +
     //     this.zeroPadding(cd.getMinutes(), 2);
     // }
+    dynamicDisplayingTime(){
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = today.getFullYear();
+      today = yyyy + '-' + mm + '-' + dd;
+      if (this.date && this.date != today) return new Date(`${this.date}`).toLocaleString("ko-KO",{timeZone: "Asia/Seoul"}).split(".").slice(0, 3).join(".")
+      else return this.displayingTime
+    }
   },
   methods: {
     updateTime() {
-      this.time = new Date().toLocaleString("ko-KO",{timeZone: "Asia/Seoul"}).split(":").slice(0, 2).join(":");
+      this.displayingTime = new Date().toLocaleString("ko-KO",{timeZone: "Asia/Seoul"}).split(":").slice(0, 2).join(":");
       // this.time =
       //   this.zeroPadding(cd.getHours(), 2) +
       //   ":" +
@@ -57,11 +64,10 @@ export default {
     //   return (zero + num).slice(-digit);
     // }
   },
+  props: ["date"],
   created() {
-    // this.time = this.initialTime
-    // this.date = this.initialDate
     setInterval(()=>{
-        this.updateTime();
+      this.updateTime();
     }, 60000);
   }
 };

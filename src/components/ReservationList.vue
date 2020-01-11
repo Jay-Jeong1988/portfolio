@@ -3,7 +3,10 @@
     <div class="integration">
       <section class="header">
         <h1 class="title">예약 현황</h1>
-        <DigitalClock />
+        <div class="pageControllers">
+          <input v-model="date" class="form-control" type="date" @change="fetchDate"/>
+        </div>
+        <DigitalClock :date="date"/>
       </section>
       <section class="mainContainer">
         <table>
@@ -36,18 +39,16 @@ export default {
     };
   },
   methods: {
-    fetchReservations() {
+    fetchDate() {
+      this.fetchReservations(this.date)
+    },
+    fetchReservations(requestDate) {
       let self = this;
-      const productionRequest = new Request(
-        "http://vippingpong.com:8081/api/v1/reservations/getAll"
-      );
-      const devRequest = new Request(
-        "http://localhost:8081/api/v1/reservations/getAll"
-      );
-      let myRequest =
-        process.env.NODE_ENV === "production" ? productionRequest : devRequest;
-
-      fetch(myRequest)
+      const productionRequestUrl = "http://vippingpong.com:8081/api/v1/reservations/getAll"
+      const devRequestUrl = "http://localhost:8081/api/v1/reservations/getAll"
+      const myRequestUrl = process.env.NODE_ENV === "production" ? productionRequestUrl : devRequestUrl;
+      let queryString = requestDate.length > 0 ? `?requestDate=${requestDate}` : ""
+      fetch(myRequestUrl + queryString)
         .then(response => {
           return response.json();
         })
@@ -57,14 +58,18 @@ export default {
         .catch(error => alert(error));
     }
   },
-  computed: {},
+  computed: {
+    dynamicDate(){
+      return this.date
+    }
+  },
   components: {
     DigitalClock, ReservationListItem
   },
   created() {
-    this.fetchReservations()
+    this.fetchReservations(this.dynamicDate)
     const watchInterval=300000
-    setInterval(()=>{this.fetchReservations()}, watchInterval)
+    setInterval(()=>{this.fetchReservations(this.dynamicDate)}, watchInterval)
   }
 };
 </script>
@@ -107,30 +112,38 @@ th, td {
   overflow-wrap: break-word;
 }
 td:nth-child(1) > div {
-  width: 10px;
+  min-width: 10px;
 }
 td:nth-child(2) > div {
-  width: 58px;
+  min-width: 58px;
 }
 td:nth-child(3) > div {
-  width: 105px;
+  min-width: 105px;
 }
 td:nth-child(4) > div {
-  width: 58px;
+  min-width: 58px;
 }
 td:nth-child(5) > div {
-  width: 30px;
+  min-width: 30px;
 }
 td:nth-child(6) > div {
-  width: 58px;
+  min-width: 58px;
 }
 td:nth-child(7) > div {
-  width: 90px;
+  min-width: 90px;
+}
+.pageControllers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @media only screen and (max-width: 800px){
   .ReservationList {
     padding: 3rem 0;
     overflow: scroll;
+  }
+  .integration {
+    width: fit-content;
   }
   .header {
     position: initial;
