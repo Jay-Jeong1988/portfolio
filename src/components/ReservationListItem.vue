@@ -59,8 +59,8 @@ export default {
   props: ["item"],
   computed:{
     reservationTime(){
-      const timeInKST = new Date(String(this.item.dateAndTime)).toLocaleString("ko-KO", {timeZone: "Asia/Seoul"})
-      return timeInKST
+      const timeInKST = new Date(String(this.item.dateAndTime)).toLocaleTimeString("ko-KO", {timeZone: "Asia/Seoul"})
+      return timeInKST.split(":").slice(0,2).join(":")
     },
     createdAtInKST(){
       let dateAndTime = new Date(this.item.createdAt).toLocaleString("ko-KO", {timeZone: "asia/Seoul"})
