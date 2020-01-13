@@ -3,17 +3,9 @@ var router = express.Router();
 var Reservation = require("../db/reservationSchema");
 
 router.get('/getAll', function (req, res, next) {
-  const requestDate = req.query.requestDate;
-  const today = requestDate ? new Date(requestDate) : new Date();
-  const y = today.getFullYear();
-  const m = today.getMonth();
-  const d = today.getDate();
-  const h = -9; //to match Korean Time Zone
-  Reservation.find({
-    dateAndTime: {"$gte": new Date(y, m, d, h), "$lt": new Date(y, m, d+1, h)}
-  }).limit(200)
+  Reservation.find()
     .sort({
-      dateAndTime: 1
+      createdAt: -1
     })
     .exec(function (err, items) {
       if (err) return console.error(err);
@@ -32,30 +24,21 @@ router.get('/updateCrossed', (req, res) => {
     .exec((err, data) => {
       if (err) return console.error(err);
       res.status(200).json({"ok": 200})
-      // Reservation.findOne({
-      //   _id: req.query.reservationId
-      // }).select("crossed").exec((err, status) => {
-      //   res.status(200).json(status);
-      // })
     })
 })
 
 router.post('/update', (req, res) => {
-  const customerName = req.body.customerName || "귀빈탁구클럽";
-  const dateAndTime = req.body.dateAndTime;
-  const duration = req.body.duration;
+  const name = req.body.name;
   const phone = req.body.phone;
-  const numberOfPeople = req.body.numberOfPeople;
+  const note = req.body.note;
 
   Reservation.updateOne({
       _id: req.query.reservationId
     }, {
       $set: {
-        customerName,
-        dateAndTime,
-        duration,
+        name,
         phone,
-        numberOfPeople
+        note
       }
     })
     .exec((err, data) => {
@@ -84,19 +67,13 @@ router.get('/removeAll', (req, res) => {
 })
 
 router.post('/create', (req, res) => {
-  const customerName = req.body.customerName;
-  const dateAndTime = req.body.dateAndTime;
-  const duration = req.body.duration || "미정";
+  const name = req.body.name;
   const phone = req.body.phone;
-  const numberOfPeople = req.body.numberOfPeople;
   const note = req.body.note;
 
   const newReservation = new Reservation({
-    customerName,
-    dateAndTime,
-    duration,
+    name,
     phone,
-    numberOfPeople,
     note
   });
   newReservation.save().then(newReservation => {
@@ -107,10 +84,6 @@ router.post('/create', (req, res) => {
       error: error.message.split(":").slice(1).join(":")
     })
   })
-
-  function randomThumbnailUrl() {
-    return `https://ik.imagekit.io/kitkitkitit/guibinpingpong/tr:q-100,ar-6-4,w-600e-usm-2-2-0.8-0.024/table_tennis_${Math.floor(Math.random() * 15)}.jpg`
-  }
 })
 
 module.exports = router;

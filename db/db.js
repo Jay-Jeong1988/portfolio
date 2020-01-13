@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect("mongodb+srv://admin:ht1eOdNoWZZvH1j5@cluster0-w13jx.mongodb.net/guibinpingpong?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://admin:fUmQCs2n7AMz69UR@portfolio-11bnz.mongodb.net/test?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useCreateIndex: true,
 }, (err) => {

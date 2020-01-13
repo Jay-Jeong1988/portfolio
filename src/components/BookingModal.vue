@@ -1,20 +1,24 @@
 <template>
   <div id="modalview">
+    <button @click="openBookingModal">
+      <p>Direct Message</p>
+    </button>
     <b-modal
+      v-if="$store.state.bookingModalShow"
       centered
-      v-model="bookingModalShow"
       hide-footer
       dialog-class=""
       content-class="shadow-lg bookingPage"
       body-class="bookingPage"
       header-class="border-0"
+      id="bookingModal"
     >
       <template v-slot:modal-header="{close}">
-        <b-button size="sm" variant @click="close()" style="background-color: transparent; border: none; margin-left: auto;">
-          <img :src="`img/icons/cancel.svg`" alt="close icon" style="width:2em"/>
+        <b-button size="sm" variant @click="$bvModal.hide('bookingModal')" style="background-color: transparent; border: none; margin-left: auto;">
+          <img :src="`img/icons/cancel-black.svg`" alt="close icon" style="width:2em"/>
         </b-button>
       </template>
-      <Booking @closeAllModal="closeAllModal"/>
+      <Booking/>
     </b-modal>
   </div>
 </template>
@@ -26,12 +30,12 @@ export default {
     return {
     };
   },
-  props: ["bookingModalShow"],
+  props: [],
   computed: {
   },
   methods: {
-    closeAllModal(){
-      this.$emit("closeAllModal")
+    openBookingModal() {
+      window.location.hash += this.$store.state.openBookingModalHashStateId
     }
   },
   created() {

@@ -2,23 +2,17 @@
   <div class="ReservationList">
     <div class="integration">
       <section class="header">
-        <h1 class="title">예약 현황</h1>
-        <div class="pageControllers">
-          <input v-model="date" class="form-control" type="date" @change="fetchDate"/>
-        </div>
+        <h1 class="title">Messages</h1>
         <DigitalClock :date="date"/>
       </section>
       <section class="mainContainer">
         <table>
           <tr>
             <th></th>
-            <th>예약명</th>
-            <th>연락처</th>
-            <th>예약시간</th>
-            <th>인원 수</th>
-            <th>이용시간</th>
-            <th>예약받은날짜</th>
-            <th>비고</th>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Sent At</th>
+            <th>Message</th>
           </tr>
           <ReservationListItem :item="item" v-for="(item, index) in reservations" :key="index" />
         </table>
@@ -40,15 +34,15 @@ export default {
   },
   methods: {
     fetchDate() {
-      this.fetchReservations(this.date)
+      this.fetchReservations()
     },
-    fetchReservations(requestDate) {
+    fetchReservations() {
       let self = this;
-      const productionRequestUrl = "http://vippingpong.com:8081/api/v1/reservations/getAll"
+      const productionRequestUrl = "http://jayjeong.xyz:8081/api/v1/reservations/getAll"
       const devRequestUrl = "http://localhost:8081/api/v1/reservations/getAll"
       const myRequestUrl = process.env.NODE_ENV === "production" ? productionRequestUrl : devRequestUrl;
-      let queryString = requestDate.length > 0 ? `?requestDate=${requestDate}` : ""
-      fetch(myRequestUrl + queryString)
+
+      fetch(myRequestUrl)
         .then(response => {
           return response.json();
         })
@@ -59,17 +53,14 @@ export default {
     }
   },
   computed: {
-    dynamicDate(){
-      return this.date
-    }
   },
   components: {
     DigitalClock, ReservationListItem
   },
   created() {
-    this.fetchReservations(this.dynamicDate)
+    this.fetchReservations()
     const watchInterval=300000
-    setInterval(()=>{this.fetchReservations(this.dynamicDate)}, watchInterval)
+    setInterval(()=>{this.fetchReservations()}, watchInterval)
   }
 };
 </script>

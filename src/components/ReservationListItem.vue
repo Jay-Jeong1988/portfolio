@@ -8,23 +8,14 @@
       </div>
     </td>
     <td>
-      <div>{{item.customerName}}</div>
+      <div>{{item.name}}</div>
     </td>
     <td>
       <div>{{item.phone}}</div>
     </td>
     <td>
-      <div>{{reservationTime}}</div>
-    </td>
-    <td>
-      <div>{{item.numberOfPeople}}</div>
-    </td>
-    <td>
-      <div>{{item.duration}}</div>
-    </td>
-    <td>
       <div>
-        {{createdAtInKST}}
+        {{createdAtInPST}}
       </div>
     </td>
     <td>
@@ -45,7 +36,7 @@ export default {
     toggleCross(){
       this.crossed = !this.crossed
       const productionUrl =
-        "http://vippingpong.com:8081/api/v1/reservations/updateCrossed";
+        "http://jayjeong.xyz:8081/api/v1/reservations/updateCrossed";
       const devUrl = "http://localhost:8081/api/v1/reservations/updateCrossed";
       let myUrl =
         process.env.NODE_ENV === "production" ? productionUrl : devUrl;
@@ -58,13 +49,10 @@ export default {
   },
   props: ["item"],
   computed:{
-    reservationTime(){
-      const timeInKST = new Date(String(this.item.dateAndTime)).toLocaleTimeString("ko-KO", {timeZone: "Asia/Seoul"})
-      return timeInKST.split(":").slice(0,2).join(":")
-    },
-    createdAtInKST(){
-      let dateAndTime = new Date(this.item.createdAt).toLocaleString("ko-KO", {timeZone: "asia/Seoul"})
-      return dateAndTime;
+    createdAtInPST(){
+      // let createdAt = new Date(this.item.createdAt).toLocaleString("en-CA", {timeZone: "pacific/Vancouver"})
+      const createdAt = new Date(this.item.createdAt)
+      return createdAt;
     },
   },
   created() {

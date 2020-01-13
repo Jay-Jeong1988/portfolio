@@ -9,7 +9,7 @@
       <p>hangma12</p>
     </div>
     <div class="cardContainer" v-if="type==='email'">
-      <img src="@/assets/images/email.svg" alt="email icon" />
+      <img src="@/assets/images/email-color.svg" alt="email icon" />
       <p>heybro32@gmail.com</p>
     </div>
   </div>

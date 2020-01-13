@@ -2,35 +2,54 @@
   <div class="Navbar" :class="{show: !isWindowTop}">
     <div class="topContainer">
       <a id="homeLink" href>
-        <img src="../assets/images/vippp_logo.png" />
+        <img src="../assets/images/logo.png" />
       </a>
       <div class="navs" v-if="!isMobile">
         <button class="scrollTo" name="intro" @click="scrollTo">
-          <p>탁구장 소개</p>
+          <p>About Me</p>
         </button>
         <button class="scrollTo" name="notice" @click="scrollTo">
-          <p>알려 드립니다</p>
+          <p>My Projects</p>
         </button>
         <button class="scrollTo" name="location" @click="scrollTo">
-          <p>찾아오시는 길</p>
+          <p>Where I Am</p>
         </button>
         <button class="scrollTo" name="book" @click="scrollTo">
-          <p>예약하기</p>
+          <p>Direct Message</p>
         </button>
       </div>
       <div class="contactIcons">
-        <!-- <span>
-          <img @click="selectContact" src="@/assets/images/email.svg" alt="email icon" name="email"/>
-          <ContactCard :type="contactType" v-if="isContactCardOpen && contactType==='email'" :iconClickedPosition="iconClickedPosition"/>
+        <span>
+          <img
+            @click="selectContact"
+            src="../assets/images/email.svg"
+            name="email"
+            alt="email icon"
+          />
+          <ContactCard
+            :type="contactType"
+            v-if="isContactCardOpen && contactType==='email'"
+            :iconClickedPosition="iconClickedPosition"
+          />
         </span>
         <span>
-          <img @click="selectContact" src="../assets/images/smartphone.svg" name="phone" alt="smartphone icon" />
-          <ContactCard :type="contactType" v-if="isContactCardOpen && contactType==='phone'" :iconClickedPosition="iconClickedPosition"/>
+          <img
+            @click="selectContact"
+            src="../assets/images/phone.svg"
+            name="phone"
+            alt="smartphone icon"
+          />
+          <ContactCard
+            :type="contactType"
+            v-if="isContactCardOpen && contactType==='phone'"
+            :iconClickedPosition="iconClickedPosition"
+          />
         </span>
-        <span>
-          <img @click="selectContact" src="../assets/images/kakao-talk.svg" name="katalk" alt="kakaotalk icon" />
-          <ContactCard :type="contactType" v-if="isContactCardOpen && contactType==='katalk'" :iconClickedPosition="iconClickedPosition"/>
-        </span>-->
+        <a href="https://github.com/Jay-Jeong1988" target="_blank">
+          <span>
+            <img src="@/assets/images/github-image.svg" alt="github icon" name="github" />
+          </span>
+        </a>
       </div>
       <button class="toggleDropdownBtn" v-if="isMobile" @click="toggleDropdown">
         <img :src="dynamicToggleBtnImg" alt="dropdown icon" />
@@ -38,22 +57,22 @@
     </div>
     <div class="dropdownContainer" :class="{show: showDropdown}">
       <button class="scrollTo" name="intro" @click="scrollTo">
-        <p>탁구장 소개</p>
+        <p>About Me</p>
       </button>
       <button class="scrollTo" name="notice" @click="scrollTo">
-        <p>알려 드립니다</p>
+        <p>My Projects</p>
       </button>
       <button class="scrollTo" name="location" @click="scrollTo">
-        <p>찾아오시는 길</p>
+        <p>Where I Am</p>
       </button>
       <button class="scrollTo" name="book" @click="scrollTo">
-        <p>예약하기</p>
+        <p>Contact</p>
       </button>
     </div>
   </div>
 </template>
 <script>
-// import ContactCard from './ContactCard'
+import ContactCard from "./ContactCard";
 export default {
   name: "Navbar",
   data() {
@@ -66,14 +85,16 @@ export default {
     };
   },
   components: {
-    // ContactCard
+    ContactCard
   },
   computed: {
-    isMobile(){
-      return window.innerWidth <= 600
+    isMobile() {
+      return window.innerWidth <= 600;
     },
-    dynamicToggleBtnImg(){
-      return this.showDropdown ? "/img/icons/cancel.svg" : "/img/icons/menu.svg"
+    dynamicToggleBtnImg() {
+      return this.showDropdown
+        ? "/img/icons/cancel.svg"
+        : "/img/icons/menu.svg";
     }
   },
   methods: {
@@ -82,17 +103,19 @@ export default {
     },
     scrollTo(e) {
       const scrollToName = e.currentTarget.getAttribute("name");
-      const scrollPositions = this.isMobile ? {
-        intro: 440,
-        notice: 2380,
-        location: 4372,
-        book: 4815
-      } : {
-        intro: 607,
-        notice: 1505,
-        location: 2108,
-        book: 2700
-      };
+      const scrollPositions = this.isMobile
+        ? {
+            intro: 440,
+            notice: 2380,
+            location: 4372,
+            book: 4815
+          }
+        : {
+            intro: 607,
+            notice: 1505,
+            location: 2108,
+            book: 2700
+          };
       window.scrollTo({
         left: 0,
         top: scrollPositions[scrollToName],
@@ -133,7 +156,6 @@ p {
   margin: 0;
 }
 .Navbar {
-  background: #fff;
   width: 100%;
   height: 0;
   position: fixed;
@@ -141,9 +163,10 @@ p {
   z-index: 950;
   opacity: 0;
   transition: all 0.5s ease-in-out;
-  font-family: "Jua", sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 .topContainer {
+  background: #0D1822;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -161,12 +184,13 @@ p {
   margin-right: 2em;
   border: none;
   background-color: transparent;
+  color: white;
 }
 .dropdownContainer {
-  background-color: white;
+  background: #0D1822;
   height: 0;
   opacity: 0;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 .dropdownContainer.show {
   padding: 0.8rem 0.8rem;
@@ -177,6 +201,7 @@ p {
   margin-left: auto;
   display: block;
   margin-bottom: 0.5em;
+  color: white;
 }
 .rightSideContainer {
   display: flex;
@@ -200,10 +225,10 @@ p {
   width: 1.5em;
 }
 .contactIcons span {
-  border-radius: 10px;
+  /* border-radius: 10px; */
   margin: 0 5px;
   padding: 0 2px;
-  border: white solid 0.5px;
+  /* border: white solid 0.5px; */
 }
 .toggleDropdownBtn img {
   width: 2em;

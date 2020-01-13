@@ -3,14 +3,19 @@ import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
 import store from './store'
-
 import * as VueGoogleMaps from 'vue2-google-maps'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+
+// require styles
+import 'swiper/dist/css/swiper.css'
+
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
  
 Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyA4D1IrSyymiDuxH1LUyak7_R9_NNjIFJ4',
-    region: 'KR',
-    language: 'ko',
+    region: 'CA',
+    language: 'en',
   },
 })
 

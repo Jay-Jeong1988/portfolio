@@ -2,23 +2,23 @@
   <div class="LandingPage">
     <Navbar></Navbar>
     <div class="banner">
-      <img src="../assets/images/vippp_logo_white.png" alt="logo" />
+      <img src="../assets/images/logo.png" alt="logo" />
     </div>
     <section class="aboutUs">
       <div class="texts">
-        <h3>탁구장 소개</h3>
-        <p>저희 귀빈탁구클럽은 탁구를 사랑하는 탁구인들이 한 자리에 모여 함께 건강증진과 생활의 활력을 도모하는 클럽입니다. 대전의 중심지인 서구 만년동에 위치한 저희 귀빈탁구클럽은 미세먼지 정화 시스템과 넓은 휴게공간을 갖춘 쾌적한 시설을 자랑합니다. 저희 귀빈탁구클럽에서 성공적인 건강관리와 친목도모를 시작해보세요.</p>
+        <h3>Hi ! I am Jay, a growing developer.</h3>
+        <p></p>
       </div>
       <div>
         <img
-          src="http://ik.imagekit.io/kitkitkitit/guibinpingpong/tr:q-100,ar-6-4,w-1000e-usm-2-2-0.8-0.024/gbpp.jpeg"
+          src="http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-6-4,w-1000e-usm-2-2-0.8-0.024/laptop.jpg"
           alt="interior pics"
         />
       </div>
     </section>
     <section class="staffs">
       <div>
-        <h2>STAFFS</h2>
+        <h2>OUR STAFFS</h2>
       </div>
       <div
         class="photoContainer owner"
@@ -27,13 +27,11 @@
       >
         <div class="overlay" :class="{show: hoverOnOwner}">
           <div>
-            <p style="margin-bottom: 0">
-              <small>귀빈탁구클럽</small>
-            </p>
+            <p style="margin-bottom: 0"></p>
             <p>
-              <small>관장</small>
+              <small>Web Developer</small>
             </p>
-            <p>곽효월</p>
+            <p>Jay Jeong</p>
           </div>
         </div>
       </div>
@@ -45,51 +43,20 @@
         <div class="overlay" :class="{show: hoverOnCoach}">
           <div>
             <p style="margin-bottom: 0">
-              <small>귀빈탁구클럽</small>
+              <small>Vancouver Developers</small>
             </p>
             <p>
-              <small>메인 코치</small>
+              <small>Senior Developer</small>
             </p>
-            <p>???</p>
+            <p>Randy</p>
           </div>
         </div>
       </div>
     </section>
-    <section class="menus">
-      <div>
-        <h2>알려 드립니다</h2>
-        <p>
-          귀빈돌솥밥주차장 사용 가능 시간 (평일): 
-          <br/>(오전)9시 ~ 11시
-          <br/>(오후)2시 ~ 5시
-          <br/>*오후8시부터는 FREE
-          <br />*주말은 탁구장주변 도로주차 (단속없음)
-        </p>
-      </div>
-      <div class="lesson" name="lesson" @click="openModal">
-        <img src="../assets/images/coach.svg" alt="coach icon" />
-        <p>탁구 레슨</p>
-      </div>
-      <div name="question" @click="openModal">
-        <img src="../assets/images/question.svg" alt="question mark" />
-        <p>구장 정보</p>
-      </div>
-      <div name="membership" @click="openModal">
-        <img src="../assets/images/membership.svg" alt="membership card icon" />
-        <p>멤버쉽</p>
-      </div>
-      <div name="community" @click="openModal">
-        <img src="../assets/images/teamwork.svg" alt="networking icon" />
-        <p>친목</p>
-      </div>
-      <div name="newFeed" @click="openModal">
-        <img src="../assets/images/new-arrivals.svg" alt="new arrival" />
-        <p>새소식</p>
-      </div>
-    </section>
+    <ProjectsSection/>
     <section class="location">
       <div>
-        <h2>찾아오시는 길</h2>
+        <h2>Where I Am</h2>
       </div>
       <div class="map">
         <GmapMap
@@ -103,28 +70,26 @@
             fullscreenControl: true,
             disableDefaultUi: false
           }"
-          :center="{lat:36.366198, lng:127.380517}"
-          :zoom="17"
+          :center="{lat:49.327973, lng:-123.141709}"
+          :zoom="10"
           style="width: 100%; min-height: 70vh"
         >
           <GmapMarker
             :icon="{ 
-            url: require('../assets/images/ping-pong-racket.svg'),
+            url: require('../assets/images/home.svg'),
             size: {width: 40, height: 40, f: 'px', b: 'px'},
             scaledSize: {width: 40, height: 40, f: 'px', b: 'px'},
             }"
-            :position="{lat:36.366198, lng:127.380517}"
+            :position="{lat:49.327973, lng:-123.141709}"
             :clickable="true"
-            @click="showTooltip=!showTooltip"
+            @mouseover="showTooltip=true"
+            @mouseout="showTooltip=false"
           />
         </GmapMap>
         <div class="customTooltip" v-if="showTooltip">
-          <p>대전광역시 서구 만년동 349번지 지하1층</p>
+          <p>935 Marine Drive, West Vancouver</p>
           <p style="font-size: 1.2em">
-            <b>귀빈탁구클럽</b>
-          </p>
-          <p style="font-size: 1.2em">
-            <b>010 6420 8888</b>
+            <b>778 792 1407</b>
           </p>
         </div>
       </div>
@@ -134,7 +99,7 @@
         <button class="navigateToTop" @click="scrollToTop">
           <img src="../assets/images/up-arrow.svg" alt="up arrow icon" />
         </button>
-        <a href="tel:+82-10-6420-8888">
+        <a href="tel:+1-778-792-1407">
           <button class="phoneNumber">
             <img src="../assets/images/phone-call.svg" alt="phone icon" />
           </button>
@@ -144,23 +109,19 @@
         </button>-->
       </div>
       <div class="booknow">
-        <button @click="openBookingModal">
-          <p>예약하기</p>
-        </button>
+        <BookingModal/>
       </div>
     </section>
     <section class="credit">
-      <p>©2020 귀빈탁구클럽</p>
+      <p>©2020 Jay Jeong's Portfolio Website</p>
     </section>
-    <ModalCard :modalShow="modalShow" :modalContent="modalContent" @closeModal="modalShow=false" @openBookingModal="openBookingModal"/>
-    <Modal :bookingModalShow="bookingModalShow" @closeAllModal="closeAllModal"/>
   </div>
 </template>
 
 <script>
 import Navbar from "./Navbar";
-import ModalCard from "./ModalCard";
-import Modal from "./Modal";
+import ProjectsSection from "./ProjectsSection";
+import BookingModal from "./BookingModal";
 export default {
   name: "LandingPage",
   data() {
@@ -168,38 +129,36 @@ export default {
       hoverOnOwner: false,
       hoverOnCoach: false,
       showTooltip: false,
-      modalShow: false,
-      modalContent: "lesson",
-      bookingModalShow: false
     };
   },
   methods: {
-    closeAllModal(){
-      this.modalShow = false;
-      this.bookingModalShow = false;
-    },
     scrollToTop() {
       window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
     },
-    openModal(e) {
-      this.modalContent = e.currentTarget.getAttribute("name");
-      this.modalShow = !this.modalShow;
-    },
-    openBookingModal(){
-      this.bookingModalShow = !this.bookingModalShow;
-    }
   },
   computed: {},
   mounted() {
+    window.onhashchange = () => {
+      if (!window.location.hash) {
+        this.$store.state.bookingModalShow = false;
+        this.$store.state.projectModalShow = false;
+      }else if (window.location.hash == this.$store.state.openProjectModalHashStateId){
+        this.$store.state.bookingModalShow = false;
+        this.$store.state.projectModalShow = true;
+        setTimeout(()=> {this.$bvModal.show("projectModal")}, 100)
+      }else if (window.location.hash == this.$store.state.openBookingModalHashStateId){
+        this.$store.state.bookingModalShow = true;
+        setTimeout(()=> {this.$bvModal.show("bookingModal")}, 100)
+      }
+    }
     this.$refs.mapRef.$mapPromise.then(map => {
-      map.panTo({ lat: 36.366378, lng: 127.380517 });
+      map.panTo({ lat: 49.327973, lng: -123.141709 });
     });
     this.$root.$on("bv::modal::hide", () => {
-      this.modalShow = false;
-      this.bookingModalShow = false;
+      window.history.back();
     });
   },
-  components: { Navbar, ModalCard, Modal }
+  components: { Navbar, ProjectsSection, BookingModal }
 };
 </script>
 
@@ -222,8 +181,7 @@ p {
   width: 100%;
   height: 100vh;
   background-position: bottom center;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("http://ik.imagekit.io/kitkitkitit/guibinpingpong/tr:q-100,w-2000e-usm-2-2-0.8-0.024/Table-Tennis-0001.jpg");
+  background: url("http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-2000e-usm-2-2-0.8-0.024/banner1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
@@ -241,14 +199,14 @@ p {
 }
 .aboutUs .texts h3 {
   color: rgb(170, 170, 170);
-  font-size: 2.5em;
+  font-size: 2em;
 }
 .aboutUs .texts {
   color: rgb(170, 170, 170);
   padding: 3em;
   text-align: center;
   font-size: 1.8em;
-  font-family: "Do Hyeon", sans-serif;
+  font-family: sans-serif;
   max-height: 85vh;
   overflow: hidden;
 }
@@ -280,7 +238,7 @@ p {
   height: 100%;
 }
 .photoContainer.owner {
-  background-image: url("http://ik.imagekit.io/kitkitkitit/guibinpingpong/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/ownerPic-creamy.jpg");
+  background-image: url("http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/image.png");
 }
 .photoContainer.coach {
   background-image: url("https://cdn.clipart.email/e18613dfcd8eefadcab305c9d921fd33_silhouette-question-mark-at-getdrawingscom-free-for-personal-_615-456.jpeg");
@@ -299,48 +257,6 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.menus {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("http://ik.imagekit.io/kitkitkitit/guibinpingpong/tr:q-100,ar-7-3/concrete_bg.jpg");
-}
-.menus div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 42vh;
-  max-height: 42vh;
-  padding: 1em;
-}
-.menus > div:not(:first-child):hover {
-  transition: all 0.2s;
-  background-color: rgba(249, 232, 252, 0.7) !important;
-}
-.menus p {
-  margin-top: 1em;
-  font-size: 1.3em;
-}
-.menus > div:first-child {
-  display: block;
-  text-align: start;
-  overflow: hidden;
-  background-color: #0c1821 !important;
-  grid-column: 1 / span 2;
-  padding: 3em;
-  padding-left: 5em;
-  color: white;
-}
-.menus > div:nth-child(even) {
-  background-color: rgb(216, 216, 216);
-}
-.menus > div:nth-child(odd) {
-  background-color: rgb(172, 172, 172);
-}
-.menus div img {
-  width: 50%;
 }
 .location > div:first-child {
   color: white;
@@ -388,6 +304,7 @@ p {
   align-items: center;
   padding: 1.5em 2em;
   width: 10em;
+  font-family: "Raleway", sans-serif;
 }
 .footer .buttons {
   display: flex;
@@ -410,12 +327,6 @@ p {
   text-align: end;
 }
 @media only screen and (max-width: 924px) {
-  .menus {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-  .menus > div:first-child {
-    grid-column: 1 / span 3;
-  }
   .aboutUs {
     display: block;
   }
@@ -455,13 +366,6 @@ p {
   .overlay.show {
     width: 100%;
     height: 100vw;
-  }
-  .menus {
-    display: block;
-  }
-  .menus div {
-    max-height: unset;
-    min-height: 90vw;
   }
   .aboutUs .texts {
     padding: 1em;

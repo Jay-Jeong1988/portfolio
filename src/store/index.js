@@ -7,6 +7,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     isAdmin: false,
+    bookingModalShow: false,
+    projectModalShow: false,
+    openProjectModalHashStateId: "#pmOpen",
+    openBookingModalHashStateId: "#bmOpen",
   },
   mutations: {
     setAdmin(state) {
