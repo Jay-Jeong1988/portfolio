@@ -1,5 +1,5 @@
 <template>
-  <div class="CustomSwiper">
+  <div class="AboutMeSwiper">
     <!-- swiper -->
     <swiper :options="swiperOption" ref="mySwiper">
       <swiper-slide v-for="(url, i) in photoUrls" :key="i">
@@ -24,7 +24,8 @@ export default {
         pagination: 
         {
           el: ".swiper-pagination",
-          clickable: true
+          clickable: false,
+          dynamicBullets: true
         },
         navigation: {
           nextEl: ".swiper-button-next",
@@ -51,7 +52,7 @@ export default {
 </script>
 
 <style>
-.CustomSwiper {
+.AboutMeSwiper {
   width: 100%;
   height: 100%;
 }
@@ -64,22 +65,31 @@ export default {
   height: 100%;
   text-align: center;
 }
-.swiper-container > .swiper-button {
-  right: 40px;
+.AboutMeSwiper .swiper-container > .swiper-button {
+  top: 85%;
   width: 4em;
   height: 4em;
   background-size: cover;
 }
-.swiper-container > .swiper-button-prev {
+.AboutMeSwiper .swiper-container > .swiper-button-prev {
   left: unset;
-  top: 70%;
+  right: calc(1.5em + 4em + 1.5em);
   background-image: url("../assets/images/left.svg");
 }
-.swiper-container > .swiper-button-next {
-  top: 85%;
+.AboutMeSwiper .swiper-container > .swiper-button-next {
+  right: 1.5em;
   background-image: url("../assets/images/right.svg");
 }
-.swiper-pagination-bullet-active {
+.AboutMeSwiper .swiper-pagination-bullet-active {
   background: white !important;
+}
+@media only screen and (max-width: 600px) {
+  .AboutMeSwiper .swiper-container > .swiper-button {
+    width: 3.5em;
+    height: 3.5em;
+  }
+  .AboutMeSwiper .swiper-container > .swiper-button-prev {
+    right: calc(1.5em + 3.5em + 1.5em);
+  }
 }
 </style>

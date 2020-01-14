@@ -60,7 +60,7 @@
         <div class="functions">
           <div class="booknow">
             <button @click="openBookingModal">
-              <p>예약하기</p>
+              <p>DM</p>
             </button>
           </div>
           <div class="buttons">

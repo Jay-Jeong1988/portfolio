@@ -7,7 +7,8 @@
     <section class="aboutUs">
       <div class="texts">
         <h3>Hi ! I am Jay, a growing developer.</h3>
-        <p></p>
+        <p>I am 2 years experienced full stack web developer. I had studied coding at CodeCore Web Developer College and successfully acquired diploma of web development. After graduation, I had worked as a Front-End web developer in a marketing company for 4 months in 2018-2019, then worked on my own to improve my developement skills. My next goal is to get a new development job in North America and hoping to work in long-term for my next company to advance my career in the tech industry.
+</p>
       </div>
       <div>
         <AboutMeSwiper :photoUrls="aboutMePhotoUrls"/>
@@ -15,40 +16,11 @@
     </section>
     <section class="staffs">
       <div>
-        <h2>OUR STAFFS</h2>
+        <h2>MEMBERS</h2>
       </div>
-      <div
-        class="photoContainer owner"
-        @mouseover="hoverOnOwner = true"
-        @mouseleave="hoverOnOwner = false"
-      >
-        <div class="overlay" :class="{show: hoverOnOwner}">
-          <div>
-            <p style="margin-bottom: 0"></p>
-            <p>
-              <small>Web Developer</small>
-            </p>
-            <p>Jay Jeong</p>
-          </div>
-        </div>
-      </div>
-      <div
-        class="photoContainer coach"
-        @mouseover="hoverOnCoach = true"
-        @mouseleave="hoverOnCoach = false"
-      >
-        <div class="overlay" :class="{show: hoverOnCoach}">
-          <div>
-            <p style="margin-bottom: 0">
-              <small>Vancouver Developers</small>
-            </p>
-            <p>
-              <small>Senior Developer</small>
-            </p>
-            <p>Randy</p>
-          </div>
-        </div>
-      </div>
+      <StaffPhotoContainer :staff="staffs.owner"/>
+      <StaffPhotoContainer :staff="staffs.rick"/>
+      <StaffPhotoContainer :staff="staffs.morty"/>
     </section>
     <ProjectsSection/>
     <section class="location">
@@ -117,10 +89,31 @@ import Navbar from "./Navbar";
 import ProjectsSection from "./ProjectsSection";
 import BookingModal from "./BookingModal";
 import AboutMeSwiper from "./AboutMeSwiper";
+import StaffPhotoContainer from "./StaffPhotoContainer"
 export default {
   name: "LandingPage",
   data() {
     return {
+      staffs: {
+        owner: {
+          uid: "owner",
+          title: "Web Developer",
+          name: "Jay Jeong",
+          photoUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/image.png"
+        },
+        rick: {
+          uid: "rick",
+          title: "Senior Developer",
+          name: "Rick",
+          photoUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/rick.jpg"
+        },
+        morty: {
+          uid: "morty",
+          title: "Morty",
+          name: "Morty",
+          photoUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/morty.jpg"
+        }
+      },
       hoverOnOwner: false,
       hoverOnCoach: false,
       showTooltip: false,
@@ -180,7 +173,7 @@ export default {
       window.history.back();
     });
   },
-  components: { Navbar, ProjectsSection, BookingModal, AboutMeSwiper}
+  components: { Navbar, ProjectsSection, BookingModal, AboutMeSwiper, StaffPhotoContainer}
 };
 </script>
 
@@ -221,13 +214,13 @@ p {
 }
 .aboutUs .texts h3 {
   color: rgb(170, 170, 170);
-  font-size: 2em;
+  font-size: 1.8em;
 }
 .aboutUs .texts {
   color: rgb(170, 170, 170);
   padding: 3em;
   text-align: center;
-  font-size: 1.8em;
+  font-size: 1.3em;
   font-family: sans-serif;
   max-height: 85vh;
   overflow: hidden;
@@ -242,7 +235,7 @@ p {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("http://ik.imagekit.io/kitkitkitit/guibinpingpong/tr:q-100,ar-7-3/concrete_bg.jpg");
-  min-height: 40vh;
+  min-height: 25vw;
 }
 .staffs > div {
   display: flex;
@@ -253,32 +246,6 @@ p {
 }
 .staffs h2 {
   font-family: "Raleway", sans-serif;
-}
-.photoContainer {
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-}
-.photoContainer.owner {
-  background-image: url("http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/image.png");
-}
-.photoContainer.coach {
-  background-image: url("https://cdn.clipart.email/e18613dfcd8eefadcab305c9d921fd33_silhouette-question-mark-at-getdrawingscom-free-for-personal-_615-456.jpeg");
-}
-.staffs .overlay {
-  display: none;
-  position: absolute;
-  z-index: 949;
-  font-size: 1.5em;
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 25%;
-  height: 40vh;
-  font-family: "Do Hyeon", sans-serif;
-}
-.staffs .overlay.show {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .location > div:first-child {
   color: white;
@@ -370,30 +337,23 @@ p {
     width: 18em;
   }
   .aboutUs div img {
-    min-height: 160vw;
+    min-height: 130vw;
   }
   .aboutUs div p {
     padding: 1em;
     text-align: start;
-  }
-  .staffs {
-    display: block;
-  }
-  .staffs > div:first-child {
-    min-height: 45vw;
-  }
-  .photoContainer {
-    min-height: 100vw;
-  }
-  .overlay.show {
-    width: 100%;
-    height: 100vw;
   }
   .aboutUs .texts {
     padding: 1em;
     padding-top: 3em;
     font-size: 1.3em;
     max-height: 170vw;
+  }
+  .staffs {
+    display: block;
+  }
+  .staffs > div:first-child {
+    min-height: 45vw;
   }
   .footer {
     padding: 0 1em;

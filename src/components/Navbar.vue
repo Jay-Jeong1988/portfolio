@@ -105,22 +105,23 @@ export default {
       const scrollToName = e.currentTarget.getAttribute("name");
       const scrollPositions = this.isMobile
         ? {
-            intro: 440,
-            notice: 2380,
-            location: 4372,
-            book: 4815
+            intro: 604,
+            notice: 2270,
+            location: 4495,
+            book: 4847
           }
         : {
-            intro: 607,
-            notice: 1505,
-            location: 2108,
-            book: 2700
+            intro: 614,
+            notice: 1595,
+            location: 2198,
+            book: 2730
           };
       window.scrollTo({
         left: 0,
         top: scrollPositions[scrollToName],
         behavior: "smooth"
       });
+      this.showDropdown = false
     },
     selectContact(e) {
       var clickedPosition = [e.clientX, e.clientY];
@@ -131,11 +132,10 @@ export default {
     }
   },
   created() {
-    // if (window.innerWidth < 600) this.isMobile = true
   },
   mounted() {
     window.onscroll = () => {
-      this.isWindowTop = window.scrollY <= 200;
+      this.isWindowTop = window.scrollY <= 100;
     };
     var self = this;
     var body = document.getElementsByTagName("body")[0];
