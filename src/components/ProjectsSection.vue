@@ -69,9 +69,11 @@
                 <img src="../assets/images/phone-call-orange.svg" alt="phone icon"/>
               </button>
             </a>
-            <button>
-              <img src="../assets/images/calendar.svg" alt="calendar icon"/>
-            </button>
+            <a :href="computedContents.githubUrl" target="_blank">
+              <button>
+                <img src="../assets/images/github-orange.svg" alt="github icon"/>
+              </button>
+            </a>
           </div>
         </div>
         <div class="logo">
@@ -108,7 +110,9 @@ export default {
             "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/jm-banner07.png",
           ],
           linkToProject:
-            "https://play.google.com/store/apps/details?id=com.random.JustMusic"
+            "https://play.google.com/store/apps/details?id=com.random.JustMusic",
+          githubUrl:
+            "https://github.com/Jay-Jeong1988/JustMusic"
         },
         question: {
           title: "Info",
@@ -118,7 +122,9 @@ export default {
           photoUrls:[
             "http://ik.imagekit.io/kitkitkitit/guibinpingpong/tr:q-100,w-1000e-usm-2-2-0.8-0.024/table-tennies.jpg",
           ],
-          linkToProject: ""
+          linkToProject: "",
+          githubUrl:
+            "https://github.com/Jay-Jeong1988/JustMusic"
         },
         membership: {
           title: "Membership",
@@ -128,7 +134,9 @@ export default {
           photoUrls:[
             "http://ik.imagekit.io/kitkitkitit/guibinpingpong/tr:q-100,w-1000e-usm-2-2-0.8-0.024/tabletennis.jpg",
           ],
-          linkToProject: ""
+          linkToProject: "",
+          githubUrl:
+            "https://github.com/Jay-Jeong1988/JustMusic"
         },
         community: {
           title: "Community",
@@ -138,7 +146,9 @@ export default {
           photoUrls: [
             "http://ik.imagekit.io/kitkitkitit/guibinpingpong/tr:q-100,w-1000e-usm-2-2-0.8-0.024/Table-Tennis-0001.jpg",
           ],
-          linkToProject: ""
+          linkToProject: "",
+          githubUrl:
+            "https://github.com/Jay-Jeong1988/JustMusic"
         },
         newFeed: {
           title: "News",
@@ -147,7 +157,9 @@ export default {
           photoUrls:[
             "http://ik.imagekit.io/kitkitkitit/guibinpingpong/tr:q-100,w-1000e-usm-2-2-0.8-0.024/Table-Tennis-0001.jpg",
           ],
-          linkToProject: ""
+          linkToProject: "",
+          githubUrl:
+            "https://github.com/Jay-Jeong1988/JustMusic"
         }
       }
     };
@@ -172,7 +184,8 @@ export default {
         textContent: contentType.contents,
         dynamicPhotoUrls: contentType.photoUrls,
         dynamicBg: contentType.bgUrl,
-        linkToProject: contentType.linkToProject
+        linkToProject: contentType.linkToProject,
+        githubUrl: contentType.githubUrl,
       }
     }
   },

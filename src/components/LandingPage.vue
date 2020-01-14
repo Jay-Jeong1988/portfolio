@@ -10,10 +10,7 @@
         <p></p>
       </div>
       <div>
-        <img
-          src="http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-6-4,w-1000e-usm-2-2-0.8-0.024/laptop.jpg"
-          alt="interior pics"
-        />
+        <AboutMeSwiper :photoUrls="aboutMePhotoUrls"/>
       </div>
     </section>
     <section class="staffs">
@@ -104,9 +101,6 @@
             <img src="../assets/images/phone-call.svg" alt="phone icon" />
           </button>
         </a>
-        <!-- <button class="kakaotalk">
-          <img src="../assets/images/kakao.svg" alt="kakaotalk icon"/>
-        </button>-->
       </div>
       <div class="booknow">
         <BookingModal/>
@@ -122,6 +116,7 @@
 import Navbar from "./Navbar";
 import ProjectsSection from "./ProjectsSection";
 import BookingModal from "./BookingModal";
+import AboutMeSwiper from "./AboutMeSwiper";
 export default {
   name: "LandingPage",
   data() {
@@ -129,6 +124,33 @@ export default {
       hoverOnOwner: false,
       hoverOnCoach: false,
       showTooltip: false,
+      aboutMePhotoUrls: [
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/laptop.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage00.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage01.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage02.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage03.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage04.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage05.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage06.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage07.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage08.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage09.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage10.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage11.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage13.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage14.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage15.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage16.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage17.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage18.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage19.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage20.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage21.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024,fo-bottom/aboutMeImage22.jpg",
+        "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/aboutMeImage23.jpg",
+
+      ]
     };
   },
   methods: {
@@ -158,7 +180,7 @@ export default {
       window.history.back();
     });
   },
-  components: { Navbar, ProjectsSection, BookingModal }
+  components: { Navbar, ProjectsSection, BookingModal, AboutMeSwiper}
 };
 </script>
 
