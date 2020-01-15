@@ -6,22 +6,14 @@
     </div>
     <section class="aboutUs">
       <div class="texts">
-        <h3>Hi ! I am Jay, a growing developer.</h3>
-        <p>I am 2 years experienced full stack web developer. I had studied coding at CodeCore Web Developer College and successfully acquired diploma of web development. After graduation, I had worked as a Front-End web developer in a marketing company for 4 months in 2018-2019, then worked on my own to improve my developement skills. My next goal is to get a new development job in North America and hoping to work in long-term for my next company to advance my career in the tech industry.
-</p>
+        <h3>Hi ! I am Jay, <br/>a growing developer.</h3>
+        <p>I am a full stack web developer with 2 years of experience(2020). I  studied coding at CodeCore Web Developer College and successfully graduated with my Diploma of Web Development. After graduation, I  worked as a front-end web developer at a marketing company from 2018-2019, then worked on my own to improve my development skills. My next goal is to get a development job in North America. I hope to work long-term for my next company to advance my career in the tech industry.</p>
       </div>
       <div>
         <AboutMeSwiper :photoUrls="aboutMePhotoUrls"/>
       </div>
     </section>
-    <section class="staffs">
-      <div>
-        <h2>MEMBERS</h2>
-      </div>
-      <StaffPhotoContainer :staff="staffs.owner"/>
-      <StaffPhotoContainer :staff="staffs.rick"/>
-      <StaffPhotoContainer :staff="staffs.morty"/>
-    </section>
+    <StaffsSection/>
     <ProjectsSection/>
     <section class="location">
       <div>
@@ -53,6 +45,7 @@
             :clickable="true"
             @mouseover="showTooltip=true"
             @mouseout="showTooltip=false"
+            @click="showTooltip=!showTooltip"
           />
         </GmapMap>
         <div class="customTooltip" v-if="showTooltip">
@@ -89,31 +82,11 @@ import Navbar from "./Navbar";
 import ProjectsSection from "./ProjectsSection";
 import BookingModal from "./BookingModal";
 import AboutMeSwiper from "./AboutMeSwiper";
-import StaffPhotoContainer from "./StaffPhotoContainer"
+import StaffsSection from "./StaffsSection"
 export default {
   name: "LandingPage",
   data() {
     return {
-      staffs: {
-        owner: {
-          uid: "owner",
-          title: "Web Developer",
-          name: "Jay Jeong",
-          photoUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/image.png"
-        },
-        rick: {
-          uid: "rick",
-          title: "Senior Developer",
-          name: "Rick",
-          photoUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/rick.jpg"
-        },
-        morty: {
-          uid: "morty",
-          title: "Morty",
-          name: "Morty",
-          photoUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/morty.jpg"
-        }
-      },
       hoverOnOwner: false,
       hoverOnCoach: false,
       showTooltip: false,
@@ -155,8 +128,10 @@ export default {
   mounted() {
     window.onhashchange = () => {
       if (!window.location.hash) {
+        this.$store.state.swiperOn = false;
         this.$store.state.bookingModalShow = false;
         this.$store.state.projectModalShow = false;
+        this.$store.state.staffModalShow = false;
       }else if (window.location.hash == this.$store.state.openProjectModalHashStateId){
         this.$store.state.bookingModalShow = false;
         this.$store.state.projectModalShow = true;
@@ -164,6 +139,9 @@ export default {
       }else if (window.location.hash == this.$store.state.openBookingModalHashStateId){
         this.$store.state.bookingModalShow = true;
         setTimeout(()=> {this.$bvModal.show("bookingModal")}, 100)
+      }else if (window.location.hash == this.$store.state.openStaffModalHashStateId){
+        this.$store.state.staffModalShow = true;
+        setTimeout(()=> {this.$bvModal.show("staffModal")}, 100)
       }
     }
     this.$refs.mapRef.$mapPromise.then(map => {
@@ -173,7 +151,7 @@ export default {
       window.history.back();
     });
   },
-  components: { Navbar, ProjectsSection, BookingModal, AboutMeSwiper, StaffPhotoContainer}
+  components: { Navbar, ProjectsSection, BookingModal, AboutMeSwiper, StaffsSection}
 };
 </script>
 
@@ -214,38 +192,20 @@ p {
 }
 .aboutUs .texts h3 {
   color: rgb(170, 170, 170);
-  font-size: 1.8em;
+  font-size: 2.5em;
+  margin-bottom: 1em;
 }
 .aboutUs .texts {
   color: rgb(170, 170, 170);
   padding: 3em;
-  text-align: center;
   font-size: 1.3em;
   font-family: sans-serif;
-  max-height: 85vh;
   overflow: hidden;
 }
 .aboutUs div img {
   width: 100%;
   min-height: 85vh;
   object-fit: cover;
-}
-.staffs {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("http://ik.imagekit.io/kitkitkitit/guibinpingpong/tr:q-100,ar-7-3/concrete_bg.jpg");
-  min-height: 25vw;
-}
-.staffs > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
-}
-.staffs h2 {
-  font-family: "Raleway", sans-serif;
 }
 .location > div:first-child {
   color: white;
@@ -323,9 +283,11 @@ p {
     width: 100%;
   }
   .aboutUs .texts {
-    padding: 1em;
-    padding-top: 3em;
+    padding: 3em 2em;
     font-size: 1.5em;
+  }
+  .location > div:first-child {
+    min-height: 35vw;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -339,21 +301,13 @@ p {
   .aboutUs div img {
     min-height: 130vw;
   }
-  .aboutUs div p {
-    padding: 1em;
-    text-align: start;
-  }
   .aboutUs .texts {
-    padding: 1em;
-    padding-top: 3em;
+    padding: 3em 2em;
     font-size: 1.3em;
-    max-height: 170vw;
+    max-height: unset;
   }
-  .staffs {
-    display: block;
-  }
-  .staffs > div:first-child {
-    min-height: 45vw;
+  .aboutUs .texts h3 {
+    font-size: 1.8em;
   }
   .footer {
     padding: 0 1em;

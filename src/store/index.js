@@ -9,8 +9,11 @@ export default new Vuex.Store({
     isAdmin: false,
     bookingModalShow: false,
     projectModalShow: false,
+    staffModalShow: false,
     openProjectModalHashStateId: "#pmOpen",
     openBookingModalHashStateId: "#bmOpen",
+    openStaffModalHashStateId: "#smOpen",
+    swiperOn: false
   },
   mutations: {
     setAdmin(state) {

@@ -1,7 +1,7 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f629c2dafab8f663a356",
-    "url": "/css/app.352b4280.css"
+    "revision": "95244ae1861e3e6276dc",
+    "url": "/css/app.cd6d9148.css"
   },
   {
     "revision": "7c165d7a3854b8a6301a",
@@ -52,6 +52,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/letter.570a02f3.svg"
   },
   {
+    "revision": "1dc2ee60f544de82d552726d3e216191",
+    "url": "/img/linkedin.1dc2ee60.svg"
+  },
+  {
     "revision": "b05858a356fe14479a680c1cd5444ae1",
     "url": "/img/logo-grey.b05858a3.png"
   },
@@ -96,12 +100,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/zen-circle.449bfb74.svg"
   },
   {
-    "revision": "66cc223ac5a75776c4e27a45ccb70822",
+    "revision": "4490bef010b535f40e784fa496eebb7e",
     "url": "/index.html"
   },
   {
-    "revision": "f629c2dafab8f663a356",
-    "url": "/js/app.57ea4f44.js"
+    "revision": "95244ae1861e3e6276dc",
+    "url": "/js/app.5ad7af79.js"
   },
   {
     "revision": "7c165d7a3854b8a6301a",

@@ -1,5 +1,5 @@
 <template>
-  <div id="modalview">
+  <div class="BookingModal">
     <button @click="openBookingModal">
       <p>Direct Message</p>
     </button>
@@ -47,7 +47,7 @@ export default {
 </script>
 
 <style>
-#modalview {
+.BookingModal {
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,16 +1,17 @@
 <template>
   <div
-    class="staffPhotoContainer" :class="staff.uid"
-    @mouseover="onHover = true"
-    @mouseleave="onHover = false"
+    :name="staff.uid"
+    class="staffPhotoContainer"
+    :class="staff.uid"
+    @mouseover="asyncHoverOn"
+    @mouseleave="asyncHoverOff"
+    @click="openStaffModal"
   >
     <div class="overlay" :class="{show: onHover}">
       <div>
-        <p style="margin-bottom: 0"></p>
-        <p>
-          <small>{{staff.title}}</small>
-        </p>
-        <p>{{staff.name}}</p>
+        <small>{{staff.title}}</small>
+        <p style="margin-bottom: 5em;">{{staff.name}}</p>
+        <small style="font-family: sans-serif;">Click to see profile</small>
       </div>
     </div>
   </div>
@@ -18,9 +19,24 @@
 
 <script>
 export default {
-  data (){
+  data(){
     return {
-      onHover: false
+      onHover: false,
+    }
+  },
+  methods: {
+    openStaffModal(e) {
+      if (this.onHover) {
+        window.location.hash += this.$store.state.openStaffModalHashStateId;
+        var selectedStaffName = e.currentTarget.getAttribute("name");
+        this.$emit("selectStaff", selectedStaffName);
+      }
+    },
+    asyncHoverOn(){
+      setTimeout(()=>this.onHover=true, 0)
+    },
+    asyncHoverOff(){
+      setTimeout(()=>this.onHover=false, 0)
     }
   },
   props: ["staff"]
@@ -32,6 +48,12 @@ export default {
   background-size: cover;
   width: 100%;
   height: 100%;
+  min-height: 45vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
 }
 .staffPhotoContainer.owner {
   background-image: url("http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/image.png");
@@ -44,12 +66,11 @@ export default {
 }
 .staffPhotoContainer .overlay {
   display: none;
-  position: absolute;
-  z-index: 949;
+  border: solid white 1px;
   font-size: 1.5em;
   background-color: rgba(0, 0, 0, 0.5);
-  width: 25%;
-  height: 25vw;
+  width: 100%;
+  min-height: 45vh;
   font-family: "Do Hyeon", sans-serif;
 }
 .staffPhotoContainer .overlay.show {

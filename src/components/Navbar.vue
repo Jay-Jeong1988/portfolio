@@ -50,12 +50,17 @@
             <img src="@/assets/images/github-image.svg" alt="github icon" name="github" />
           </span>
         </a>
+        <a href="https://www.linkedin.com/in/jay-jeong" target="_blank">
+          <span>
+            <img src="@/assets/images/linkedin.svg" alt="linkedin icon" name="github" />
+          </span>
+        </a>
       </div>
       <button class="toggleDropdownBtn" v-if="isMobile" @click="toggleDropdown">
-        <img :src="dynamicToggleBtnImg" alt="dropdown icon" />
+        <img id="dropdownBtn" :src="dynamicToggleBtnImg" alt="dropdown icon" />
       </button>
     </div>
-    <div class="dropdownContainer" :class="{show: showDropdown}">
+    <div class="dropdownContainer" id="dropdownContainer" :class="{show: showDropdown}">
       <button class="scrollTo" name="intro" @click="scrollTo">
         <p>About Me</p>
       </button>
@@ -81,16 +86,14 @@ export default {
       iconClickedPosition: "",
       isContactCardOpen: false,
       isWindowTop: true,
-      showDropdown: false
+      showDropdown: false,
+      isMobile: false
     };
   },
   components: {
     ContactCard
   },
   computed: {
-    isMobile() {
-      return window.innerWidth <= 600;
-    },
     dynamicToggleBtnImg() {
       return this.showDropdown
         ? "/img/icons/cancel.svg"
@@ -99,7 +102,8 @@ export default {
   },
   methods: {
     toggleDropdown() {
-      this.showDropdown = !this.showDropdown;
+      setTimeout(()=>this.showDropdown = !this.showDropdown, 0) 
+      //use async in order to make sure this toggles showDropdown AFTER the other event handler
     },
     scrollTo(e) {
       const scrollToName = e.currentTarget.getAttribute("name");
@@ -137,6 +141,9 @@ export default {
     window.onscroll = () => {
       this.isWindowTop = window.scrollY <= 100;
     };
+    window.addEventListener("resize", ()=>{
+      this.isMobile = window.innerWidth <= 600;
+    })
     var self = this;
     var body = document.getElementsByTagName("body")[0];
     body.addEventListener("click", function(e) {
@@ -144,6 +151,12 @@ export default {
         e.preventDefault();
         var contactCard = document.getElementById("ContactCard");
         if (!contactCard.contains(e.target)) self.isContactCardOpen = false;
+      }
+      if (self.showDropdown) {
+        e.preventDefault();
+        var dropdown = document.getElementById("dropdownContainer")
+        var dropdownBtn = document.getElementById("dropdownBtn")
+        if (!dropdown.contains(e.target) && e.target != dropdownBtn) self.showDropdown = false;
       }
     });
   },
@@ -188,11 +201,13 @@ p {
 }
 .dropdownContainer {
   background: #0D1822;
+  display: none;
   height: 0;
   opacity: 0;
   transition: all 0.5s ease-in-out;
 }
 .dropdownContainer.show {
+  display: block;
   padding: 0.8rem 0.8rem;
   height: 10em;
   opacity: 1;
@@ -240,6 +255,9 @@ p {
   }
   .topContainer {
     padding: 0.5em 0.8em;
+  }
+  #homeLink > img {
+    width: 7em;
   }
 }
 </style>
