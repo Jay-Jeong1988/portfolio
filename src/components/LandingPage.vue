@@ -124,10 +124,7 @@ export default {
     scrollToTop() {
       window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
     },
-  },
-  computed: {},
-  mounted() {
-    window.onhashchange = () => {
+    handleHashChange() {
       if (!window.location.hash) {
         this.$store.state.swiperOn = false;
         this.$store.state.bookingModalShow = false;
@@ -144,6 +141,13 @@ export default {
         this.$store.state.staffModalShow = true;
         setTimeout(()=> {this.$bvModal.show("staffModal")}, 100)
       }
+    }
+  },
+  computed: {},
+  mounted() {
+    this.handleHashChange()
+    window.onhashchange = () => {
+      this.handleHashChange()
     }
     this.$refs.mapRef.$mapPromise.then(map => {
       map.panTo({ lat: 49.327973, lng: -123.141709 });
@@ -206,7 +210,7 @@ p {
   color: rgb(170, 170, 170);
   font-size: 1.3rem;
   font-family: sans-serif;
-  overflow: scroll;
+  overflow: hidden;
 }
 .aboutUs .texts > div > h3 {
   color: rgb(170, 170, 170);

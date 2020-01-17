@@ -13,7 +13,7 @@ Vue.use(VueAwesomeSwiper, /* { default global options } */)
  
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyA4D1IrSyymiDuxH1LUyak7_R9_NNjIFJ4',
+    key: process.env.VUE_APP_API_KEY,
     region: 'CA',
     language: 'en',
   },

@@ -182,7 +182,7 @@ export default {
   font-size: 1.3em;
   display: block;
   text-align: start;
-  overflow: scroll;
+  overflow: hidden;
   color: white;
 }
 .menus > div:nth-child(even) {

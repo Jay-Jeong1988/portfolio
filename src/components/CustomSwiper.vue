@@ -91,8 +91,5 @@ export default {
   width: 100%;
 }
 @media only screen and (max-width: 600px) {
-  .swiper-slide video {
-    width: 110%;
-  }
 }
 </style>

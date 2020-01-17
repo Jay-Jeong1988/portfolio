@@ -18,7 +18,7 @@
     >
       <div class="modalContents">
         <img :src="selectedStaff.modalContentsUrl" alt="resume" />
-        <a class="downloadLink" :href="selectedStaff.pdfDownloadUrl">
+        <a class="downloadLink" :href="selectedStaff.pdfDownloadUrl" target="_blank">
           <img src="../assets/images/download.svg" alt="download icon"/>
           <p>Download</p>
         </a>
@@ -48,7 +48,7 @@ export default {
           name: "Rick",
           photoUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/rick.jpg",
           modalContentsUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/rick-resume.png",
-          pdfDownloadUrl: "http://s3-us-west-2.amazonaws.com/jayjeong.xyz/portfolio/rick_resume.png",
+          pdfDownloadUrl: "https://s3-us-west-2.amazonaws.com/jayjeong.xyz/portfolio/rick-resume.pdf",
         },
         morty: {
           uid: "morty",
@@ -56,7 +56,7 @@ export default {
           name: "Morty",
           photoUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/morty.jpg",
           modalContentsUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/morty-missing.png",
-          pdfDownloadUrl: "http://s3-us-west-2.amazonaws.com/jayjeong.xyz/portfolio/morty_resume.png",
+          pdfDownloadUrl: "https://s3-us-west-2.amazonaws.com/jayjeong.xyz/portfolio/morty-missing.png",
         }
       },
     };
