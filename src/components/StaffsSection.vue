@@ -16,7 +16,13 @@
       header-class="border-0"
       id="staffModal"
     >
-      <img :src="selectedStaff.modalContentsUrl" alt="resume" />
+      <div class="modalContents">
+        <img :src="selectedStaff.modalContentsUrl" alt="resume" />
+        <a class="downloadLink" :href="selectedStaff.pdfDownloadUrl">
+          <img src="../assets/images/download.svg" alt="download icon"/>
+          <p>Download</p>
+        </a>
+      </div>
     </b-modal>
   </section>
 </template>
@@ -33,21 +39,24 @@ export default {
           title: "Web Developer",
           name: "Jay Jeong",
           photoUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/image.png",
-          modalContentsUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/jayjeong_new-resume.png"
+          modalContentsUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/jayjeong_new-resume.png",
+          pdfDownloadUrl: "http://s3-us-west-2.amazonaws.com/jayjeong.xyz/portfolio/jayjeong_resume.pdf",
         },
         rick: {
           uid: "rick",
           title: "Mad Scientist",
           name: "Rick",
           photoUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/rick.jpg",
-          modalContentsUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/rick-resume.png"
+          modalContentsUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/rick-resume.png",
+          pdfDownloadUrl: "http://s3-us-west-2.amazonaws.com/jayjeong.xyz/portfolio/rick_resume.png",
         },
         morty: {
           uid: "morty",
           title: "Rick's Grandson",
           name: "Morty",
           photoUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/morty.jpg",
-          modalContentsUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/morty-missing.png"
+          modalContentsUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/morty-missing.png",
+          pdfDownloadUrl: "http://s3-us-west-2.amazonaws.com/jayjeong.xyz/portfolio/morty_resume.png",
         }
       },
     };
@@ -57,7 +66,7 @@ export default {
   methods: {
     selectStaff(staffName){
       this.selectedStaff = this.staffs[staffName]
-    }
+    },
   },
   props: [],
   components: {StaffPhotoContainer}
@@ -85,11 +94,29 @@ export default {
   border-radius: 0;
 }
 .modal-body.staffPage {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0;
 }
-.modal-body.staffPage > img {
+.staffPage > .modalContents > img {
   width: 100%;
+}
+.downloadLink {
+  right: 15px;
+  top: 15px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #028FA3;
+}
+.downloadLink img {
+  width: 1.7em;
+}
+.downloadLink p {
+  font-size: .6em;
 }
 @media only screen and (max-width: 924px) {
   .staffs {
@@ -97,7 +124,15 @@ export default {
   }
   .staffs > div:first-child {
     grid-column: 1 / span 3;
-    min-height: 35vw;
+    min-height: 35vh;
+  }
+}
+@media only screen and (max-width: 740px) {
+  .staffs {
+    grid-template-columns: 1fr 1fr;
+  }
+  .staffs > div:first-child {
+    grid-column: 1 / span 2;
   }
 }
 @media only screen and (max-width: 600px) {

@@ -6,10 +6,12 @@
     </div>
     <section class="aboutUs">
       <div class="texts">
-        <h3>Hi ! I am Jay, <br/>a growing developer.</h3>
-        <p>I am a full stack web developer with 2 years of experience(2020). I  studied coding at CodeCore Web Developer College and successfully graduated with my Diploma of Web Development. After graduation, I  worked as a front-end web developer at a marketing company from 2018-2019, then worked on my own to improve my development skills. My next goal is to get a development job in North America. I hope to work long-term for my next company to advance my career in the tech industry.</p>
+        <div>
+          <h3>Hi ! I am Jay, <br/>a growing developer.</h3>
+          <p>I am a full stack web developer with 2 years of experience(2020). I  studied coding at CodeCore Web Developer College and successfully graduated with my Diploma of Web Development. After graduation, I  worked as a front-end web developer at a marketing company from 2018-2019, then worked on my own to improve my development skills. My next goal is to get a development job in North America. I hope to work long-term for my next company to advance my career in the tech industry.</p>
+        </div>
       </div>
-      <div>
+      <div class="swiperContainer">
         <AboutMeSwiper :photoUrls="aboutMePhotoUrls"/>
       </div>
     </section>
@@ -33,7 +35,6 @@
           }"
           :center="{lat:49.327973, lng:-123.141709}"
           :zoom="10"
-          style="width: 100%; min-height: 70vh"
         >
           <GmapMarker
             :icon="{ 
@@ -172,7 +173,7 @@ p {
   /* position: absolute;
   left: 0; */
   width: 100%;
-  height: 100vh;
+  height: 57vw;
   background-position: bottom center;
   background: url("http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-2000e-usm-2-2-0.8-0.024/banner1.jpg");
   background-size: cover;
@@ -186,26 +187,32 @@ p {
 }
 .aboutUs {
   display: flex;
+  max-height: 47vw;
 }
 .aboutUs > div {
   width: 50%;
 }
-.aboutUs .texts h3 {
+.aboutUs .swiperContainer {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("http://ik.imagekit.io/kitkitkitit/guibinpingpong/tr:q-100,ar-7-3/concrete_bg.jpg");
+}
+.aboutUs .texts {
+  padding: 3em;
+  height: 47vw;
+  display: flex;
+  justify-content: center;
+}
+.aboutUs .texts > div {
+  color: rgb(170, 170, 170);
+  font-size: 1.3rem;
+  font-family: sans-serif;
+  overflow: scroll;
+}
+.aboutUs .texts > div > h3 {
   color: rgb(170, 170, 170);
   font-size: 2.5em;
   margin-bottom: 1em;
-}
-.aboutUs .texts {
-  color: rgb(170, 170, 170);
-  padding: 3em;
-  font-size: 1.3em;
-  font-family: sans-serif;
-  overflow: hidden;
-}
-.aboutUs div img {
-  width: 100%;
-  min-height: 85vh;
-  object-fit: cover;
+  text-shadow: 1px 1px white;
 }
 .location > div:first-child {
   color: white;
@@ -213,7 +220,7 @@ p {
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 30vh;
+  height: 23vw;
 }
 .customTooltip {
   background-color: #f3fcec;
@@ -233,6 +240,10 @@ p {
   justify-content: center;
   align-items: center;
 }
+.vue-map-container {
+  width: 100%; 
+  height: 47vw;
+}
 .footer {
   display: flex;
   justify-content: space-between;
@@ -241,9 +252,9 @@ p {
   background-color: #eb644a;
   z-index: 1001;
   width: 100%;
-  min-height: 20vh;
+  height: 17vw;
   padding: 0 3em;
-  margin-top: 70vh;
+  margin-top: 47vw;
 }
 .booknow button {
   background-color: white;
@@ -276,8 +287,12 @@ p {
   text-align: end;
 }
 @media only screen and (max-width: 924px) {
+  .banner {
+    height: 85vw;
+  }
   .aboutUs {
     display: block;
+    max-height: unset;
   }
   .aboutUs > div {
     width: 100%;
@@ -285,9 +300,35 @@ p {
   .aboutUs .texts {
     padding: 3em 2em;
     font-size: 1.5em;
+    min-height: 55vw;
+    height: unset;
+    max-height: 93vw;
+    align-items: center;
   }
   .location > div:first-child {
-    min-height: 35vw;
+    height: 26vw;
+  }
+  .vue-map-container {
+    height: 64vw;
+  }
+  .footer {
+    height: 23vw;
+    margin-top: 64vw;
+  }
+}
+@media only screen and (max-width: 740px) {
+  .banner {
+    height: 103vw;
+  }
+  .location > div:first-child {
+    height: 37vw;
+  }
+  .vue-map-container {
+    height: 74vw;
+  }
+  .footer {
+    height: 33vw;
+    margin-top: 74vw;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -311,7 +352,7 @@ p {
   }
   .footer {
     padding: 0 1em;
-    min-height: 42vw;
+    min-height: 55vw;
     margin-top: 150vw;
   }
   .footer .buttons button {
@@ -322,7 +363,7 @@ p {
     width: 2.5em;
   }
   .location > div:first-child {
-    min-height: 60vw;
+    min-height: 67vw;
   }
   .vue-map-container {
     min-height: 150vw !important;

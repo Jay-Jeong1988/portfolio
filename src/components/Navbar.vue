@@ -4,17 +4,17 @@
       <a id="homeLink" href>
         <img src="../assets/images/logo.png" />
       </a>
-      <div class="navs" v-if="!isMobile">
-        <button class="scrollTo" name="intro" @click="scrollTo">
+      <div class="navs" v-if="!$store.state.isMobile">
+        <button class="scrollTo" name="aboutUs" @click="scrollTo">
           <p>About Me</p>
         </button>
-        <button class="scrollTo" name="notice" @click="scrollTo">
+        <button class="scrollTo" name="ProjectsSection" @click="scrollTo">
           <p>My Projects</p>
         </button>
         <button class="scrollTo" name="location" @click="scrollTo">
           <p>Where I Am</p>
         </button>
-        <button class="scrollTo" name="book" @click="scrollTo">
+        <button class="scrollTo" name="footer" @click="scrollTo">
           <p>Direct Message</p>
         </button>
       </div>
@@ -56,21 +56,21 @@
           </span>
         </a>
       </div>
-      <button class="toggleDropdownBtn" v-if="isMobile" @click="toggleDropdown">
+      <button class="toggleDropdownBtn" v-if="$store.state.isMobile" @click="toggleDropdown">
         <img id="dropdownBtn" :src="dynamicToggleBtnImg" alt="dropdown icon" />
       </button>
     </div>
     <div class="dropdownContainer" id="dropdownContainer" :class="{show: showDropdown}">
-      <button class="scrollTo" name="intro" @click="scrollTo">
+      <button class="scrollTo" name="aboutUs" @click="scrollTo">
         <p>About Me</p>
       </button>
-      <button class="scrollTo" name="notice" @click="scrollTo">
+      <button class="scrollTo" name="ProjectsSection" @click="scrollTo">
         <p>My Projects</p>
       </button>
       <button class="scrollTo" name="location" @click="scrollTo">
         <p>Where I Am</p>
       </button>
-      <button class="scrollTo" name="book" @click="scrollTo">
+      <button class="scrollTo" name="footer" @click="scrollTo">
         <p>Contact</p>
       </button>
     </div>
@@ -87,7 +87,7 @@ export default {
       isContactCardOpen: false,
       isWindowTop: true,
       showDropdown: false,
-      isMobile: false
+      sectionPosition: {}
     };
   },
   components: {
@@ -98,34 +98,32 @@ export default {
       return this.showDropdown
         ? "/img/icons/cancel.svg"
         : "/img/icons/menu.svg";
-    }
+    },
   },
   methods: {
+    setSectionPositions(){
+      const sections = document.getElementsByTagName("section");
+      for (let section of sections) {
+        this.sectionPosition[section.className] = this.getOffsetTop(section)
+      }
+    },
+    getOffsetTop(el) {
+      const navbarHeight = window.innerWidth <= 600 ? 80 : 130;
+      const sectionRect = el.getBoundingClientRect();
+      return sectionRect.top + window.scrollY - navbarHeight
+    },
     toggleDropdown() {
-      setTimeout(()=>this.showDropdown = !this.showDropdown, 0) 
+      setTimeout(() => (this.showDropdown = !this.showDropdown), 0);
       //use async in order to make sure this toggles showDropdown AFTER the other event handler
     },
     scrollTo(e) {
-      const scrollToName = e.currentTarget.getAttribute("name");
-      const scrollPositions = this.isMobile
-        ? {
-            intro: 604,
-            notice: 2270,
-            location: 4495,
-            book: 4847
-          }
-        : {
-            intro: 614,
-            notice: 1595,
-            location: 2198,
-            book: 2730
-          };
+      const sectionName = e.currentTarget.getAttribute("name");
       window.scrollTo({
         left: 0,
-        top: scrollPositions[scrollToName],
+        top: this.sectionPosition[sectionName],
         behavior: "smooth"
       });
-      this.showDropdown = false
+      this.showDropdown = false;
     },
     selectContact(e) {
       var clickedPosition = [e.clientX, e.clientY];
@@ -136,29 +134,30 @@ export default {
     }
   },
   created() {
+    window.addEventListener("resize", ()=>{
+      this.setSectionPositions()
+    })
   },
   mounted() {
     window.onscroll = () => {
       this.isWindowTop = window.scrollY <= 100;
     };
-    window.addEventListener("resize", ()=>{
-      this.isMobile = window.innerWidth <= 600;
-    })
-    var self = this;
     var body = document.getElementsByTagName("body")[0];
-    body.addEventListener("click", function(e) {
-      if (self.isContactCardOpen) {
+    body.addEventListener("click", (e) => {
+      if (this.isContactCardOpen) {
         e.preventDefault();
         var contactCard = document.getElementById("ContactCard");
-        if (!contactCard.contains(e.target)) self.isContactCardOpen = false;
+        if (!contactCard.contains(e.target)) this.isContactCardOpen = false;
       }
-      if (self.showDropdown) {
+      if (this.showDropdown) {
         e.preventDefault();
-        var dropdown = document.getElementById("dropdownContainer")
-        var dropdownBtn = document.getElementById("dropdownBtn")
-        if (!dropdown.contains(e.target) && e.target != dropdownBtn) self.showDropdown = false;
+        var dropdown = document.getElementById("dropdownContainer");
+        var dropdownBtn = document.getElementById("dropdownBtn");
+        if (!dropdown.contains(e.target) && e.target != dropdownBtn)
+          this.showDropdown = false;
       }
-    });
+    }); 
+    this.setSectionPositions()
   },
   props: ["totalItemCount", "checkedItemCount"]
 };
@@ -179,7 +178,7 @@ p {
   font-family: "Raleway", sans-serif;
 }
 .topContainer {
-  background: #0D1822;
+  background: #0d1822;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -191,7 +190,7 @@ p {
 }
 .Navbar.show {
   opacity: 1;
-  height: 6.874rem;
+  height: 130px;
 }
 .navs button {
   margin-right: 2em;
@@ -200,7 +199,7 @@ p {
   color: white;
 }
 .dropdownContainer {
-  background: #0D1822;
+  background: #0d1822;
   display: none;
   height: 0;
   opacity: 0;

@@ -47,8 +47,7 @@ export default {
 .staffPhotoContainer {
   background-size: cover;
   width: 100%;
-  height: 100%;
-  min-height: 45vh;
+  height: 26vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,13 +69,29 @@ export default {
   font-size: 1.5em;
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
-  min-height: 45vh;
+  height: 26vw;
   font-family: "Do Hyeon", sans-serif;
 }
 .staffPhotoContainer .overlay.show {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media only screen and (max-width: 924px) {
+  .staffPhotoContainer {
+    height: 33vw;
+  }
+  .staffPhotoContainer .overlay {
+    height: 33vw;
+  }
+}
+@media only screen and (max-width: 740px) {
+  .staffPhotoContainer {
+    height: 48vw;
+  }
+  .staffPhotoContainer .overlay {
+    height: 48vw;
+  }
 }
 @media only screen and (max-width: 600px) {
   .staffPhotoContainer {

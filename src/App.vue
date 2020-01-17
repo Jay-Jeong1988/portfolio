@@ -22,7 +22,11 @@ export default {
   },
   methods: {
   },
-  created() {
+  mounted() {
+    this.$store.state.isMobile = window.innerWidth <= 600
+    window.addEventListener("resize", ()=>{
+      this.$store.state.isMobile = window.innerWidth <= 600
+    })
   }
 };
 </script>

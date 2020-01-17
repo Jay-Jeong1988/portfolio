@@ -4,10 +4,6 @@
       <img src="../assets/images/smartphone.svg" alt="smartphone icon" />
       <p>778 792 1407</p>
     </div>
-    <div class="cardContainer" v-if="type==='katalk'">
-      <img src="../assets/images/kakao-talk.svg" alt="kakaotalk icon" />
-      <p>hangma12</p>
-    </div>
     <div class="cardContainer" v-if="type==='email'">
       <img src="@/assets/images/email-color.svg" alt="email icon" />
       <p>heybro32@gmail.com</p>

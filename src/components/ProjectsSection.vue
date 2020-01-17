@@ -1,6 +1,7 @@
 <template>
-  <section>
+  <section class="ProjectsSection">
     <div class="menus">
+      <div>
       <div class="introduction">
         <h2>My Projects</h2>
         <p>
@@ -13,25 +14,22 @@
           </a>
         </p>
       </div>
+      </div>
       <div name="justmusic" @click="openProjectModal">
         <img src="../assets/images/play.svg" alt="play button icon" />
-        <p>Just Music</p>
+        <p>Just Music (2019)</p>
       </div>
       <div name="jjride" @click="openProjectModal">
         <img src="../assets/images/car.svg" alt="car icon" />
-        <p>JJ Ride</p>
-      </div>
-      <div name="bdayLetter" @click="openProjectModal">
-        <img src="../assets/images/letter.svg" alt="love letter icon" />
-        <p>Birthday Letter</p>
+        <p>JJ Ride (2019)</p>
       </div>
       <div name="idealio" @click="openProjectModal">
         <img src="../assets/images/restaurant.svg" alt="restaurant icon" />
-        <p>Idealio</p>
+        <p>Idealio (2018)</p>
       </div>
       <div name="codezen" @click="openProjectModal">
         <img src="../assets/images/zen-circle.svg" alt="zen circle icon" />
-        <p>Codezen</p>
+        <p>Codezen (2018)</p>
       </div>
     </div>
     <b-modal
@@ -44,8 +42,8 @@
       body-class="p-0 menu"
       id="projectModal"
     >
-      <section class="photoSection" :style="`background-image: url(${computedContents.dynamicBg})`">
-        <CustomSwiper v-if="$store.state.swiperOn" :photoUrls="computedContents.dynamicPhotoUrls" />
+      <section class="photoSection" :style="`background-image: url(${project.bgUrl})`">
+        <CustomSwiper v-if="$store.state.swiperOn" :photoUrls="project.photoUrls" :videoUrls="project.videoUrls" />
       </section>
       <section class="contentsContainer">
         <div class="contentsHeader">
@@ -54,10 +52,10 @@
           </button>
         </div>
         <div class="modalTextContents">
-          <h3>{{computedContents.textTitle}}</h3>
-          <p>{{computedContents.textContent}}</p>
-          <a :href="computedContents.linkToProject" target="_blank">
-            <h4>You can check {{computedContents.textTitle}} here</h4>
+          <h3>{{project.title}}</h3>
+          <p>{{unescapedContents}}</p>
+          <a :href="project.linkToProject" target="_blank">
+            <h4>You can check {{project.title}} here</h4>
           </a>
         </div>
         <div class="functions">
@@ -72,7 +70,7 @@
                 <img src="../assets/images/phone-call-orange.svg" alt="phone icon" />
               </button>
             </a>
-            <a :href="computedContents.githubUrl" target="_blank">
+            <a :href="project.githubUrl" target="_blank">
               <button>
                 <img src="../assets/images/github-orange.svg" alt="github icon" />
               </button>
@@ -95,79 +93,15 @@ export default {
     return {
       projectModalShow: false,
       modalContentName: "justmusic", // Default Content Type
-      contentsTypes: {
-        justmusic: {
-          title: "JustMusic - Random Youtube Music Video Player (Beta)",
-          contents:
-            "Hi all, I have just launched my first mobile app ever! The name of the app is JustMusic (please search as justmusic without a space between each word, not Just Music, on Play Store, otherwise it won't show 😭) and it is for android only. I first got the idea when I saw my dad trying to listen to music, but most modern music players were too difficult for him to use. I thought it'd be great if I could make a music player app with a simpler interface so other older people my dad's age can easily use it. It didn’t turn out as good as I had hoped, but I wanted to finish it anyways and here it is now 😄I've built it from scratch and spent 5 hours daily on average for 3 months to completion. \n\nTech stacks I used are: \n\nLanguages/Frameworks: \nDart/Flutter(Front-End)\nNode.js/Express.js/MongoDB/Mongoose(Back-End)\n\nFlutter Plugins: \ngeolocator\nfirebase\nyoutube_player_flutter \ndevice_info \nshared_preferences \nfluttertoast \ndotted_border \nimage_cropper \nimage_picker \nflutter_launcher_icons \nflutter_svg \nhtml_unescape \nads \n\nThe server is running on an AWS EC2 instance and because it is also my first time launching my own production server using AWS, it would be really appreciated if you could tell me what possible issues are when launching servers at AWS. Anyways, please check my app and let me know if anything could be improved. I'd be glad to hear all feedback! Thank you!",
-          bgUrl:
-            "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/jm-bg00.png",
-          photoUrls: [
-            "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/jm-banner00.png",
-            "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/jm-banner01.png",
-            "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/jm-banner02.png",
-            "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/jm-banner03.png",
-            "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/jm-banner04.png",
-            "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/jm-banner05.png",
-            "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/jm-banner06.png",
-            "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/jm-banner07.png"
-          ],
-          linkToProject:
-            "https://play.google.com/store/apps/details?id=com.random.JustMusic",
-          githubUrl: "https://github.com/Jay-Jeong1988/JustMusic"
-        },
-        jjride: {
-          title: "Info",
-          contents:
-            "It was a weird concept. Why would I really need to generate a random paragraph? Could I actually learn something from doing so? All these questions were running through her head as she pressed the generate button. To her surprise, she found what she least expected to see.",
-          bgUrl: "",
-          photoUrls: [
-            "http://ik.imagekit.io/kitkitkitit/guibinpingpong/tr:q-100,w-1000e-usm-2-2-0.8-0.024/table-tennies.jpg"
-          ],
-          linkToProject: "",
-          githubUrl: "https://github.com/Jay-Jeong1988/JustMusic"
-        },
-        idealio: {
-          title: "Membership",
-          contents:
-            "There wasn't a bird in the sky, but that was not what caught her attention. It was the clouds. The deep green that isn't the color of clouds, but came with these. She knew what was coming and she hoped she was prepared.",
-          bgUrl: "",
-          photoUrls: [
-            "http://ik.imagekit.io/kitkitkitit/guibinpingpong/tr:q-100,w-1000e-usm-2-2-0.8-0.024/tabletennis.jpg"
-          ],
-          linkToProject: "",
-          githubUrl: "https://github.com/Jay-Jeong1988/JustMusic"
-        },
-        bdayLetter: {
-          title: "Community",
-          contents:
-            'The robot clicked disapprovingly, gurgled briefly inside its cubical interior and extruded a pony glass of brownish liquid. ",Sir, you will undoubtedly end up in a drunkard\'s grave, dead of hepatic cirrhosis," it informed me virtuously as it returned my ID card. I glared as I pushed the glass across the table.',
-          bgUrl: "",
-          photoUrls: [
-            "http://ik.imagekit.io/kitkitkitit/guibinpingpong/tr:q-100,w-1000e-usm-2-2-0.8-0.024/Table-Tennis-0001.jpg"
-          ],
-          linkToProject: "",
-          githubUrl: "https://github.com/Jay-Jeong1988/JustMusic"
-        },
-        codezen: {
-          title: "News",
-          contents:
-            "I recollect that my first exploit in squirrel-shooting was in a grove of tall walnut-trees that shades one side of the valley. I had wandered into it at noontime, when all nature is peculiarly quiet, and was startled by the roar of my own gun, as it broke the Sabbath stillness around and was prolonged and reverberated by the angry echoes.",
-          bgUrl: "",
-          photoUrls: [
-            "http://ik.imagekit.io/kitkitkitit/guibinpingpong/tr:q-100,w-1000e-usm-2-2-0.8-0.024/Table-Tennis-0001.jpg"
-          ],
-          linkToProject: "",
-          githubUrl: "https://github.com/Jay-Jeong1988/JustMusic"
-        }
-      }
+      project: {},
     };
   },
   props: [],
   methods: {
     openProjectModal(e) {
       window.location.hash += this.$store.state.openProjectModalHashStateId;
-      this.modalContentName = e.currentTarget.getAttribute("name");
+      var modalContentName = e.currentTarget.getAttribute("name");
+      this.fetchProject(modalContentName);
       setTimeout(() => (this.$store.state.swiperOn = true), 500);
     },
     openBookingModal() {
@@ -179,26 +113,32 @@ export default {
     },
     closeModal() {
       this.$bvModal.hide("projectModal");
+    },
+    fetchProject(modalContentName) {
+      let self = this;
+      const productionRequestUrl = "http://jayjeong.xyz:8081/api/v1/projects/getOne"
+      const devRequestUrl = "http://localhost:8081/api/v1/projects/getOne"
+      const myRequestUrl = process.env.NODE_ENV === "production" ? productionRequestUrl : devRequestUrl;
+
+      fetch(myRequestUrl + `/${modalContentName}`)
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          self.project = data || {};
+        })
+        .catch(error => alert(error));
     }
   },
   computed: {
-    computedContents() {
-      const contentType = this.contentsTypes[this.modalContentName];
-      return {
-        textTitle: contentType.title,
-        textContent: contentType.contents,
-        dynamicPhotoUrls: contentType.photoUrls,
-        dynamicBg: contentType.bgUrl,
-        linkToProject: contentType.linkToProject,
-        githubUrl: contentType.githubUrl
-      };
+    unescapedContents(){
+      var c = this.project.contents
+      return c ? c.split("\\n").join("\n") : c
     }
   },
-  created() {},
+  created() {
+  },
   mounted() {
-    setTimeout(() => {
-      this.$store.state.swiperOn = true;
-    }, 100);
   },
   components: {
     CustomSwiper
@@ -214,13 +154,18 @@ export default {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("http://ik.imagekit.io/kitkitkitit/guibinpingpong/tr:q-100,ar-7-3/concrete_bg.jpg");
 }
-.menus div {
+.menus > div {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 42vh;
+  height: 26vw;
   padding: 1em;
+}
+.menus > div:first-child {
+  grid-column: 1 / span 2;
+  padding: 2em 3em;
+  background-color: #0c1821 !important;
 }
 .menus > div:not(:first-child):hover {
   transition: all 0.2s;
@@ -231,16 +176,13 @@ export default {
 }
 .menus > div:not(:first-child) p {
   font-size: 2em;
+  text-align: center;
 }
-.menus > div:first-child {
+.introduction {
   font-size: 1.3em;
   display: block;
   text-align: start;
-  overflow: hidden;
-  background-color: #0c1821 !important;
-  grid-column: 1 / span 2;
-  padding: 2em 3em;
-  padding-left: 5em;
+  overflow: scroll;
   color: white;
 }
 .menus > div:nth-child(even) {
@@ -346,20 +288,29 @@ export default {
   .menus {
     grid-template-columns: 1fr 1fr 1fr;
   }
-  .menus > div:first-child {
+  .menus div:first-child {
     grid-column: 1 / span 3;
   }
-}
-@media only screen and (max-width: 600px) {
-  .menus {
-    display: block;
+  .menus > div {
+    height: 40vw;
   }
-  .menus div {
-    max-height: unset;
-    min-height: 90vw;
+}
+@media only screen and (max-width: 740px) {
+  .menus {
+    grid-template-columns: 1fr 1fr;
+  }
+  .menus > div {
+    height: 45vw;
   }
   .menus > div:first-child {
-    padding: 3em 2em;
+    grid-column: 1 / span 2;
+    height: 58vw;
+  }
+  .menus > div:nth-child(4) {
+    background-color: rgb(172, 172, 172);
+  }
+  .menus > div:nth-child(5) {
+    background-color: rgb(216, 216, 216);
   }
   .modal-content.menu {
     height: auto;
@@ -376,6 +327,24 @@ export default {
   .modal-body.menu .photoSection {
     width: 100%;
     height: 120vw !important;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .menus {
+    display: block;
+  }
+  .menus > div {
+    height: 90vw;
+    padding: 1em;
+  }
+  .menus > div:first-child {
+    height: 130vw;
+  }
+  .menus > div:nth-child(4) {
+    background-color: rgb(216, 216, 216);
+  }
+  .menus > div:nth-child(5) {
+    background-color: rgb(172, 172, 172);
   }
 }
 </style>

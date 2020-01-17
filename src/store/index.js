@@ -13,7 +13,8 @@ export default new Vuex.Store({
     openProjectModalHashStateId: "#pmOpen",
     openBookingModalHashStateId: "#bmOpen",
     openStaffModalHashStateId: "#smOpen",
-    swiperOn: false
+    swiperOn: false,
+    isMobile: false,
   },
   mutations: {
     setAdmin(state) {
@@ -21,7 +22,7 @@ export default new Vuex.Store({
       if(adminKey && adminKey === process.env.VUE_APP_ADMINKEY) {
         state.isAdmin = true;
       }
-    }
+    },
   },
   actions: {
   },

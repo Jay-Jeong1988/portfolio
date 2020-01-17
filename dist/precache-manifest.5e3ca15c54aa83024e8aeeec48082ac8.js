@@ -1,7 +1,7 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "95244ae1861e3e6276dc",
-    "url": "/css/app.cd6d9148.css"
+    "revision": "e607274097eb524ab88a",
+    "url": "/css/app.cdb838bc.css"
   },
   {
     "revision": "7c165d7a3854b8a6301a",
@@ -14,6 +14,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "33b4ca304e5162ab2679c0c987569abd",
     "url": "/img/checked.33b4ca30.svg"
+  },
+  {
+    "revision": "08f7856da6136115ff87c7d78727e1a4",
+    "url": "/img/download.08f7856d.svg"
   },
   {
     "revision": "8583169b0e25376b62792663f50b5f75",
@@ -40,16 +44,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/home.f3da2f4c.svg"
   },
   {
-    "revision": "5d676a2a28e08588a749008b7f32a1b3",
-    "url": "/img/kakao-talk.5d676a2a.svg"
-  },
-  {
     "revision": "4d6e0bf9b8b4d19bde0f4ccfa2b15a3e",
     "url": "/img/left.4d6e0bf9.svg"
-  },
-  {
-    "revision": "570a02f336f5233303e5e466cb2c8f63",
-    "url": "/img/letter.570a02f3.svg"
   },
   {
     "revision": "1dc2ee60f544de82d552726d3e216191",
@@ -100,12 +96,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/zen-circle.449bfb74.svg"
   },
   {
-    "revision": "4490bef010b535f40e784fa496eebb7e",
+    "revision": "ab1445cba05b22fd259591ff62df80f1",
     "url": "/index.html"
   },
   {
-    "revision": "95244ae1861e3e6276dc",
-    "url": "/js/app.5ad7af79.js"
+    "revision": "e607274097eb524ab88a",
+    "url": "/js/app.2ab62f3b.js"
   },
   {
     "revision": "7c165d7a3854b8a6301a",

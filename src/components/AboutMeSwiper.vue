@@ -18,9 +18,17 @@ export default {
   data() {
     return {
       swiperOption: {
-        slidesPerView: 1,
-        spaceBetween: 30,
+        slidesPerView: 1, 
+        slidesPerGroup: 1,
         loop: true,
+        speed: 800,
+        effect: "cube",
+        allowTouchMove: window.innerWidth <= 600, //neither computed nor vuex store data does not work here
+        preventInteractionOnTransition: window.innerWidth >= 600,
+        cubeEffect: {
+          slideShadows: false,
+          shadow: false,
+        },
         pagination: 
         {
           el: ".swiper-pagination",
@@ -42,11 +50,15 @@ export default {
   computed: {
     swiper() {
       return this.$refs.mySwiper.swiper;
-    }
+    },
   },
   components: {
   },
-  mounted() {
+  created() {
+    const screenWidth = window.innerWidth
+    this.swiperOption.slidesPerView = screenWidth >= 660 && screenWidth <= 924 ? 2 : 1
+    this.swiperOption.slidesPerGroup = screenWidth >= 660 && screenWidth <= 924 ? 2 : 1
+    this.swiperOption.effect = screenWidth >= 660 && screenWidth <= 924 ? "slide" : "cube"
   }
 };
 </script>
@@ -64,6 +76,11 @@ export default {
   width: 100%;
   height: 100%;
   text-align: center;
+}
+.AboutMeSwiper .swiper-slide img {
+  width: 100%;
+  height: inherit;
+  object-fit: cover;
 }
 .AboutMeSwiper .swiper-container > .swiper-button {
   top: 85%;
