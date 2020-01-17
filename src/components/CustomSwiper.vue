@@ -3,7 +3,8 @@
     <!-- swiper -->
     <swiper :options="swiperOption" ref="mySwiper" @slideChange="slideChange">
       <swiper-slide v-for="(url, i) in videoUrls" :key="`0${i}`">
-        <video :src="url" loop onloadstart="this.volume=0.1"></video>
+        <video :data-src="url" loop onloadstart="this.volume=0.1" class="swiper-lazy"></video>
+        <div class="swiper-lazy-preloader"></div>
       </swiper-slide>
       <swiper-slide v-for="(url, i) in photoUrls" :key="i">
         <img :src="url" alt="project images" />
@@ -23,6 +24,7 @@ export default {
       hideElements: true,
       swiperOption: {
         slidesPerView: 1,
+        lazy: true,
         spaceBetween: 30,
         loop: true,
         allowTouchMove: window.innerWidth <= 600, //neither computed nor vuex store data does not work here
