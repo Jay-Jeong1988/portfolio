@@ -5,10 +5,11 @@ import router from './router'
 import store from './store'
 import * as VueGoogleMaps from 'vue2-google-maps'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-
+import browserDetect from "vue-browser-detect-plugin";
 // require styles
 import 'swiper/dist/css/swiper.css'
 
+Vue.use(browserDetect);
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
  
 Vue.use(VueGoogleMaps, {

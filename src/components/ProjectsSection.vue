@@ -43,7 +43,7 @@
       id="projectModal"
     >
       <section class="photoSection" :style="`background-image: url(${project.bgUrl})`">
-        <CustomSwiper v-if="$store.state.swiperOn" :photoUrls="project.photoUrls" :videoUrls="project.videoUrls" />
+        <CustomSwiper v-if="$store.state.swiperOn" :photoUrls="project.photoUrls" :videoUrls="videosForDifferentBrowser" />
       </section>
       <section class="contentsContainer">
         <div class="contentsHeader">
@@ -134,6 +134,16 @@ export default {
     unescapedContents(){
       var c = this.project.contents
       return c ? c.split("\\n").join("\n") : c
+    },
+    videosForDifferentBrowser(){
+      var browsers = {
+        IE: this.$browserDetect.isIE,
+        Chrome: this.$browserDetect.isChrome,
+        Safari: this.$browserDetect.isSafari,
+      }
+      var mp4 = this.project.videoUrls[0].mp4
+      var webm = this.project.videoUrls[0].webm
+      return browsers.IE || browsers.Safari ? mp4 : webm
     }
   },
   created() {
