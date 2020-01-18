@@ -144,6 +144,9 @@ export default {
     }
   },
   computed: {},
+  created() {
+    if (window.location.hash) window.location.hash = ""
+  },
   mounted() {
     this.handleHashChange()
     window.onhashchange = () => {
