@@ -43,7 +43,7 @@
       id="projectModal"
     >
       <section class="photoSection" :style="`background-image: url(${project.bgUrl})`">
-        <CustomSwiper v-if="$store.state.swiperOn" :photoUrls="project.photoUrls" :videoUrls="videoUrls" />
+        <CustomSwiper v-if="$store.state.swiperOn" :photoUrls="project.photoUrls" :videoUrls="project.videoUrls" />
       </section>
       <section class="contentsContainer">
         <div class="contentsHeader">
@@ -94,14 +94,6 @@ export default {
       projectModalShow: false,
       modalContentName: "justmusic", // Default Content Type
       project: {},
-      videoUrls: [
-        "/videos/jmVideo-00.mp4",
-        "/videos/jmVideo-01.mp4",
-        "/videos/jmVideo-02.mp4",
-        "/videos/jmVideo-03.mp4",
-        "/videos/jmVideo-04.mp4",
-        "/videos/jmVideo-05.mp4",
-      ]
     };
   },
   props: [],
