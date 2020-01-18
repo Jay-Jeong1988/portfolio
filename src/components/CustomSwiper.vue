@@ -3,7 +3,9 @@
     <!-- swiper -->
     <swiper :options="swiperOption" ref="mySwiper" @slideChange="slideChange">
       <swiper-slide v-for="(url, i) in videoUrls" :key="`0${i}`">
-        <video :data-src="url" loop onloadstart="this.volume=0.1" class="swiper-lazy"></video>
+        <video :data-src="url" type="video/mp4" loop onloadstart="this.volume=0.1" class="swiper-lazy" poster="http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/video-loading2.png">
+          Your browser does not support the video player.
+        </video>
         <div class="swiper-lazy-preloader"></div>
       </swiper-slide>
       <swiper-slide v-for="(url, i) in photoUrls" :key="i">
