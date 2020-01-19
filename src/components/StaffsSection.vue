@@ -65,6 +65,7 @@ export default {
   },
   methods: {
     selectStaff(staffName){
+      this.$store.state.targetModalId = "staffModal"
       this.selectedStaff = this.staffs[staffName]
     },
   },

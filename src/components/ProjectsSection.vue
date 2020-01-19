@@ -99,6 +99,7 @@ export default {
   props: [],
   methods: {
     openProjectModal(e) {
+      this.$store.state.targetModalId = "projectModal"
       window.location.hash += this.$store.state.openProjectModalHashStateId;
       var modalContentName = e.currentTarget.getAttribute("name");
       this.fetchProject(modalContentName);

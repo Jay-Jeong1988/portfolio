@@ -12,7 +12,7 @@
       content-class="shadow-lg staffPage"
       body-class="staffPage"
       header-class="border-0"
-      id="staffModal"
+      id="referenceModal"
     >
       <div class="modalContents">
         <img :src="selectedReference.modalContentsUrl" alt="reference letter" />
@@ -47,6 +47,7 @@ export default {
   },
   methods: {
     selectReference(referenceName){
+      this.$store.state.targetModalId = "referenceModal"
       this.selectedReference = this.references[referenceName]
     },
   },

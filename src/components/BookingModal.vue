@@ -35,6 +35,7 @@ export default {
   },
   methods: {
     openBookingModal() {
+      this.$store.state.targetModalId = "bookingModal"
       window.location.hash += this.$store.state.openBookingModalHashStateId
     }
   },

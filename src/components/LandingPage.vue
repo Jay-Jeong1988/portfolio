@@ -135,14 +135,12 @@ export default {
       }else if (window.location.hash == this.$store.state.openProjectModalHashStateId){
         this.$store.state.bookingModalShow = false;
         this.$store.state.projectModalShow = true;
-        setTimeout(()=> {this.$bvModal.show("projectModal")}, 100)
       }else if (window.location.hash == this.$store.state.openBookingModalHashStateId){
         this.$store.state.bookingModalShow = true;
-        setTimeout(()=> {this.$bvModal.show("bookingModal")}, 100)
       }else if (window.location.hash == this.$store.state.openStaffModalHashStateId){
         this.$store.state.staffModalShow = true;
-        setTimeout(()=> {this.$bvModal.show("staffModal")}, 100)
       }
+      setTimeout(()=> {this.$bvModal.show(this.$store.state.targetModalId)}, 100)
     }
   },
   computed: {},

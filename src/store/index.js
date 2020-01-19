@@ -10,6 +10,7 @@ export default new Vuex.Store({
     bookingModalShow: false,
     projectModalShow: false,
     staffModalShow: false,
+    targetModalId: "",
     openProjectModalHashStateId: "#pmOpen",
     openBookingModalHashStateId: "#bmOpen",
     openStaffModalHashStateId: "#smOpen",
