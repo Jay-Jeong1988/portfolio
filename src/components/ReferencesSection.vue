@@ -1,11 +1,9 @@
 <template>
-  <section class="staffs" id="members">
+  <section class="staffs" id="references">
     <div>
-      <h2>MEMBERS</h2>
+      <h2>REFERENCES</h2>
     </div>
-    <StaffPhotoContainer :staff="staffs.owner" @selectStaff="selectStaff"/>
-    <StaffPhotoContainer :staff="staffs.rick" @selectStaff="selectStaff"/>
-    <StaffPhotoContainer :staff="staffs.morty" @selectStaff="selectStaff"/>
+    <StaffPhotoContainer :staff="references.tam" @selectStaff="selectReference"/>
     <b-modal
       v-if="$store.state.staffModalShow"
       centered
@@ -17,8 +15,8 @@
       id="staffModal"
     >
       <div class="modalContents">
-        <img :src="selectedStaff.modalContentsUrl" alt="resume" />
-        <a class="downloadLink" :href="selectedStaff.pdfDownloadUrl" target="_blank">
+        <img :src="selectedReference.modalContentsUrl" alt="reference letter" />
+        <a class="downloadLink" :href="selectedReference.pdfDownloadUrl" target="_blank">
           <img src="../assets/images/download.svg" alt="download icon"/>
           <p>Download</p>
         </a>
@@ -32,40 +30,24 @@ import StaffPhotoContainer from "./StaffPhotoContainer"
 export default {
   data() {
     return {
-      selectedStaff: {},
-      staffs: {
-        owner: {
-          uid: "owner",
-          title: "Web Developer",
-          name: "Jay Jeong",
-          photoUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/image.png",
-          modalContentsUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/jayjeong_new-resume.png",
-          pdfDownloadUrl: "http://s3-us-west-2.amazonaws.com/jayjeong.xyz/portfolio/jayjeong_resume.pdf",
+      selectedReference: {},
+      references: {
+        tam: {
+          uid: "tam",
+          title: "Founder of CodeCore College\nDeveloper",
+          name: "Tam Kbeili",
+          photoUrl: "https://miro.medium.com/max/3150/2*g4Ro-pJaZ72AS4eK1kpE_A.jpeg",
+          modalContentsUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/Jay Jeong - Reference Letter.png",
+          pdfDownloadUrl: "https://s3-us-west-2.amazonaws.com/jayjeong.xyz/portfolio/Jay+Jeong+-+Reference+Letter.pdf",
         },
-        rick: {
-          uid: "rick",
-          title: "Mad Scientist",
-          name: "Rick",
-          photoUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/rick.jpg",
-          modalContentsUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/rick-resume.png",
-          pdfDownloadUrl: "https://s3-us-west-2.amazonaws.com/jayjeong.xyz/portfolio/rick-resume.pdf",
-        },
-        morty: {
-          uid: "morty",
-          title: "Rick's Grandson",
-          name: "Morty",
-          photoUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/morty.jpg",
-          modalContentsUrl: "http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,w-1000e-usm-2-2-0.8-0.024/morty-missing.png",
-          pdfDownloadUrl: "https://s3-us-west-2.amazonaws.com/jayjeong.xyz/portfolio/image.png",
-        }
       },
     };
   },
   computed: {
   },
   methods: {
-    selectStaff(staffName){
-      this.selectedStaff = this.staffs[staffName]
+    selectReference(referenceName){
+      this.selectedReference = this.references[referenceName]
     },
   },
   props: [],

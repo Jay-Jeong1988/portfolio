@@ -1,5 +1,5 @@
 <template>
-  <section class="ProjectsSection">
+  <section class="ProjectsSection" id="myProjects">
     <div class="menus">
       <div>
       <div class="introduction">

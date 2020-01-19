@@ -23,9 +23,9 @@ export default {
   methods: {
   },
   mounted() {
-    this.$store.state.isMobile = window.innerWidth <= 600
+    this.$store.state.isMobile = window.innerWidth <= 924
     window.addEventListener("resize", ()=>{
-      this.$store.state.isMobile = window.innerWidth <= 600
+      this.$store.state.isMobile = window.innerWidth <= 924
     })
   }
 };

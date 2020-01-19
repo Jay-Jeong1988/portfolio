@@ -63,6 +63,9 @@ export default {
 .staffPhotoContainer.morty {
   background-image: url("http://ik.imagekit.io/kitkitkitit/portfolio/tr:q-100,ar-5-5,w-1000e-usm-2-2-0.8-0.024/morty.jpg");
 }
+.staffPhotoContainer.tam {
+  background-image: url("https://miro.medium.com/max/3150/2*g4Ro-pJaZ72AS4eK1kpE_A.jpeg");
+}
 .staffPhotoContainer .overlay {
   display: none;
   border: solid white 1px;
@@ -71,6 +74,7 @@ export default {
   width: 100%;
   height: 26vw;
   font-family: "Do Hyeon", sans-serif;
+  white-space: pre-wrap;
 }
 .staffPhotoContainer .overlay.show {
   display: flex;

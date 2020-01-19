@@ -4,7 +4,7 @@
     <div class="banner">
       <img src="../assets/images/logo.png" alt="logo" />
     </div>
-    <section class="aboutUs">
+    <section class="aboutUs" id="aboutUs">
       <div class="texts">
         <div>
           <h3>Hi ! I am Jay, <br/>a growing developer.</h3>
@@ -17,7 +17,8 @@
     </section>
     <StaffsSection/>
     <ProjectsSection/>
-    <section class="location">
+    <ReferencesSection/>
+    <section class="location" id="location">
       <div>
         <h2>Where I Am</h2>
       </div>
@@ -57,7 +58,7 @@
         </div>
       </div>
     </section>
-    <section class="footer">
+    <section class="footer" id="footer">
       <div class="buttons">
         <button class="navigateToTop" @click="scrollToTop">
           <img src="../assets/images/up-arrow.svg" alt="up arrow icon" />
@@ -83,7 +84,8 @@ import Navbar from "./Navbar";
 import ProjectsSection from "./ProjectsSection";
 import BookingModal from "./BookingModal";
 import AboutMeSwiper from "./AboutMeSwiper";
-import StaffsSection from "./StaffsSection"
+import StaffsSection from "./StaffsSection";
+import ReferencesSection from "./ReferencesSection";
 export default {
   name: "LandingPage",
   data() {
@@ -159,7 +161,7 @@ export default {
       window.history.back();
     });
   },
-  components: { Navbar, ProjectsSection, BookingModal, AboutMeSwiper, StaffsSection}
+  components: { Navbar, ProjectsSection, BookingModal, AboutMeSwiper, StaffsSection, ReferencesSection}
 };
 </script>
 

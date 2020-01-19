@@ -8,8 +8,14 @@
         <button class="scrollTo" name="aboutUs" @click="scrollTo">
           <p>About Me</p>
         </button>
-        <button class="scrollTo" name="ProjectsSection" @click="scrollTo">
+        <button class="scrollTo" name="members" @click="scrollTo">
+          <p>Members</p>
+        </button>
+        <button class="scrollTo" name="myProjects" @click="scrollTo">
           <p>My Projects</p>
+        </button>
+        <button class="scrollTo" name="references" @click="scrollTo">
+          <p>References</p>
         </button>
         <button class="scrollTo" name="location" @click="scrollTo">
           <p>Where I Am</p>
@@ -64,8 +70,14 @@
       <button class="scrollTo" name="aboutUs" @click="scrollTo">
         <p>About Me</p>
       </button>
-      <button class="scrollTo" name="ProjectsSection" @click="scrollTo">
+      <button class="scrollTo" name="members" @click="scrollTo">
+        <p>Members</p>
+      </button>
+      <button class="scrollTo" name="myProjects" @click="scrollTo">
         <p>My Projects</p>
+      </button>
+      <button class="scrollTo" name="references" @click="scrollTo">
+        <p>References</p>
       </button>
       <button class="scrollTo" name="location" @click="scrollTo">
         <p>Where I Am</p>
@@ -87,7 +99,7 @@ export default {
       isContactCardOpen: false,
       isWindowTop: true,
       showDropdown: false,
-      sectionPosition: {}
+      sectionPositions: {}
     };
   },
   components: {
@@ -104,7 +116,7 @@ export default {
     setSectionPositions(){
       const sections = document.getElementsByTagName("section");
       for (let section of sections) {
-        this.sectionPosition[section.className] = this.getOffsetTop(section)
+        this.sectionPositions[section.id] = this.getOffsetTop(section)
       }
     },
     getOffsetTop(el) {
@@ -120,7 +132,7 @@ export default {
       const sectionName = e.currentTarget.getAttribute("name");
       window.scrollTo({
         left: 0,
-        top: this.sectionPosition[sectionName],
+        top: this.sectionPositions[sectionName],
         behavior: "smooth"
       });
       this.showDropdown = false;
@@ -159,7 +171,7 @@ export default {
     }); 
     this.setSectionPositions()
   },
-  props: ["totalItemCount", "checkedItemCount"]
+  props: []
 };
 </script>
 <style scoped>
@@ -208,7 +220,7 @@ p {
 .dropdownContainer.show {
   display: block;
   padding: 0.8rem 0.8rem;
-  height: 10em;
+  height: 15em;
   opacity: 1;
 }
 .dropdownContainer button {
@@ -254,6 +266,7 @@ p {
   }
   .topContainer {
     padding: 0.5em 0.8em;
+    flex-wrap: no-wrap;
   }
   #homeLink > img {
     width: 7em;
