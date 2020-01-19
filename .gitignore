@@ -146,4 +146,7 @@ public/index.html
 # DynamoDB Local files
 .dynamodb/
 
+#production
+dist/
+
 # End of https://www.gitignore.io/api/node,macos
