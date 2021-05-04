@@ -31,16 +31,7 @@ export default {
 };
 </script>
 
-<style>
-a:hover {
-  text-decoration-line: none;
-}
-#app {
-}
-#main {
-}
-@media only screen and (max-width: 600px) {
-}
-@media only screen and (max-width: 924px) {
-}
+<style lang="sass">
+a:hover
+  text-decoration-line: none
 </style>

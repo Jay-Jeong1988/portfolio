@@ -110,19 +110,19 @@ export default {
       return this.showDropdown
         ? "/img/icons/cancel.svg"
         : "/img/icons/menu.svg";
-    },
+    }
   },
   methods: {
-    setSectionPositions(){
+    setSectionPositions() {
       const sections = document.getElementsByTagName("section");
       for (let section of sections) {
-        this.sectionPositions[section.id] = this.getOffsetTop(section)
+        this.sectionPositions[section.id] = this.getOffsetTop(section);
       }
     },
     getOffsetTop(el) {
       const navbarHeight = window.innerWidth <= 600 ? 80 : 130;
       const sectionRect = el.getBoundingClientRect();
-      return sectionRect.top + window.scrollY - navbarHeight
+      return sectionRect.top + window.scrollY - navbarHeight;
     },
     toggleDropdown() {
       setTimeout(() => (this.showDropdown = !this.showDropdown), 0);
@@ -146,16 +146,16 @@ export default {
     }
   },
   created() {
-    window.addEventListener("resize", ()=>{
-      this.setSectionPositions()
-    })
+    window.addEventListener("resize", () => {
+      this.setSectionPositions();
+    });
   },
   mounted() {
     window.onscroll = () => {
       this.isWindowTop = window.scrollY <= 100;
     };
     var body = document.getElementsByTagName("body")[0];
-    body.addEventListener("click", (e) => {
+    body.addEventListener("click", e => {
       if (this.isContactCardOpen) {
         e.preventDefault();
         var contactCard = document.getElementById("ContactCard");
@@ -168,108 +168,100 @@ export default {
         if (!dropdown.contains(e.target) && e.target != dropdownBtn)
           this.showDropdown = false;
       }
-    }); 
-    this.setSectionPositions()
+    });
+    this.setSectionPositions();
   },
   props: []
 };
 </script>
-<style scoped>
-@import url("https://fonts.googleapis.com/css?family=Jua&display=swap");
-p {
-  margin: 0;
-}
-.Navbar {
-  width: 100%;
-  height: 0;
-  position: fixed;
-  top: 0;
-  z-index: 950;
-  opacity: 0;
-  transition: all 0.5s ease-in-out;
-  font-family: "Raleway", sans-serif;
-}
-.topContainer {
-  background: #0d1822;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  white-space: nowrap;
-  flex-wrap: nowrap;
-  padding: 0.5rem 1.5rem;
-  overflow: hidden;
-  height: 100%;
-}
-.Navbar.show {
-  opacity: 1;
-  height: 130px;
-}
-.navs button {
-  margin-right: 2em;
-  border: none;
-  background-color: transparent;
-  color: white;
-}
-.dropdownContainer {
-  background: #0d1822;
-  display: none;
-  height: 0;
-  opacity: 0;
-  transition: all 0.5s ease-in-out;
-}
-.dropdownContainer.show {
-  display: block;
-  padding: 0.8rem 0.8rem;
-  height: 15em;
-  opacity: 1;
-}
-.dropdownContainer button {
-  margin-left: auto;
-  display: block;
-  margin-bottom: 0.5em;
-  color: white;
-}
-.rightSideContainer {
-  display: flex;
-  align-items: center;
-}
-#homeLink > img {
-  width: 10em;
-}
-.contactIcons p {
-  color: rgb(250, 250, 250);
-  margin-right: 0.5em;
-}
-.buffer {
-  display: none;
-}
-.contactIcons {
-  display: flex;
-  align-items: center;
-}
-.contactIcons img {
-  width: 1.5em;
-}
-.contactIcons span {
-  /* border-radius: 10px; */
-  margin: 0 5px;
-  padding: 0 2px;
-  /* border: white solid 0.5px; */
-}
-.toggleDropdownBtn img {
-  width: 2em;
-}
-@media only screen and (max-width: 600px) {
-  .Navbar.show {
-    background-color: white;
-    height: 80px !important;
-  }
-  .topContainer {
-    padding: 0.5em 0.8em;
-    flex-wrap: no-wrap;
-  }
-  #homeLink > img {
-    width: 7em;
-  }
-}
+<style lang="sass">
+@import url("https://fonts.googleapis.com/css?family=Jua&display=swap")
+.Navbar.show 
+  opacity: 1
+  height: 130px
+
+.Navbar 
+  width: 100%
+  height: 0
+  position: fixed
+  top: 0
+  z-index: 950
+  opacity: 0
+  transition: all 0.5s ease-in-out
+  font-family: "Raleway", sans-serif
+ 
+  > .topContainer 
+    background: #0d1822
+    display: flex
+    justify-content: space-between
+    align-items: center
+    white-space: nowrap
+    flex-wrap: nowrap
+    padding: 0.5rem 1.5rem
+    overflow: hidden
+    height: 100%
+
+    > #homeLink 
+      > img 
+        width: 10em
+
+    > .navs 
+      >button 
+        margin-right: 2em
+        border: none
+        background-color: transparent
+        color: white
+
+    > .contactIcons 
+      display: flex
+      align-items: center
+
+      p 
+        color: rgb(250, 250, 250)
+        margin-right: 0.5em
+
+      img 
+        width: 1.5em
+
+      span 
+        margin: 0 5px
+        padding: 0 2px
+
+    > .toggleDropdownBtn 
+      img 
+        width: 2em
+
+  .dropdownContainer 
+    background: #0d1822
+    display: none
+    height: 0
+    opacity: 0
+    transition: all 0.5s ease-in-out
+
+  .dropdownContainer.show 
+    display: block
+    padding: 0.8rem 0.8rem
+    height: 15em
+    opacity: 1
+
+    >button 
+      margin-left: auto
+      display: block
+      margin-bottom: 0.5em
+      color: white
+
+@media only screen and (max-width: 600px) 
+  .Navbar.show 
+    background-color: white
+    height: 80px !important
+  
+  .Navbar
+    >.topContainer 
+      padding: 0.5em 0.8em
+      flex-wrap: no-wrap
+
+      #homeLink 
+        > img 
+          width: 7em
+
 </style>

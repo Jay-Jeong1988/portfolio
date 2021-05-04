@@ -59,7 +59,7 @@ export default {
           pdfDownloadUrl: "https://s3-us-west-2.amazonaws.com/jayjeong.xyz/portfolio/image.png",
         }
       },
-    };
+    }
   },
   computed: {
   },
@@ -74,74 +74,68 @@ export default {
 };
 </script>
 
-<style>
-.staffs {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("http://ik.imagekit.io/kitkitkitit/guibinpingpong/tr:q-100,ar-7-3/concrete_bg.jpg");
-}
-.staffs > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
-}
-.staffs h2 {
-  font-family: "Raleway", sans-serif;
-}
-.modal-content.staffPage {
-  border-radius: 0;
-}
-.modal-body.staffPage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-}
-.staffPage > .modalContents > img {
-  width: 100%;
-}
-.downloadLink {
-  right: 15px;
-  top: 15px;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  color: #028FA3;
-}
-.downloadLink img {
-  width: 1.7em;
-}
-.downloadLink p {
-  font-size: .6em;
-}
-@media only screen and (max-width: 924px) {
-  .staffs {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-  .staffs > div:first-child {
-    grid-column: 1 / span 3;
-    min-height: 35vh;
-  }
-}
-@media only screen and (max-width: 740px) {
-  .staffs {
-    grid-template-columns: 1fr 1fr;
-  }
-  .staffs > div:first-child {
-    grid-column: 1 / span 2;
-  }
-}
-@media only screen and (max-width: 600px) {
-  .staffs {
-    display: block;
-  }
-  .staffs > div:first-child {
-    min-height: 60vw;
-  }
-}
+<style lang="sass">
+.staffs 
+  display: grid
+  grid-template-columns: 1fr 1fr 1fr 1fr
+  +concreteBg
+
+  > div 
+    +flexAllCenter
+    color: white
+    text-align: center
+
+    > h2 
+      font-family: "Raleway", sans-serif
+
+.modal-content.staffPage 
+  border-radius: 0
+
+  > .modal-body
+    +flexAllCenter
+    padding: 0
+
+    > .modalContents 
+      > img 
+        width: 100%
+
+      > .downloadLink 
+        right: 15px
+        top: 15px
+        position: absolute
+        +flexAllCenter
+        flex-direction: column
+        color: #028FA3
+
+        > img 
+          width: 1.7em
+
+        > p 
+          font-size: .6em
+
+@media only screen and (max-width: 924px) 
+  .staffs 
+    grid-template-columns: 1fr 1fr 1fr
+  
+    > div:first-child 
+      grid-column: 1 / span 3
+      min-height: 35vh
+  
+
+@media only screen and (max-width: 740px) 
+  .staffs 
+    grid-template-columns: 1fr 1fr
+  
+    > div:first-child 
+      grid-column: 1 / span 2
+  
+
+@media only screen and (max-width: 600px) 
+  .staffs 
+    display: block
+  
+    > div:first-child 
+      min-height: 60vw
+    
+
 </style>

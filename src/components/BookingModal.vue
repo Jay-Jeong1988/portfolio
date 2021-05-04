@@ -47,18 +47,16 @@ export default {
 };
 </script>
 
-<style>
-.BookingModal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.modal-content.bookingPage {
-  border-radius: 0;
-}
-.modal-body.bookingPage {
-    display: block;
-    padding: 0;
-    font-family: "Do Hyeon", sans-serif;
-}
+<style lang="sass">
+.BookingModal 
+  +flexAllCenter
+
+.modal-content.bookingPage 
+  border-radius: 0
+
+.modal-body.bookingPage 
+  display: block
+  padding: 0
+  font-family: "Do Hyeon", sans-serif
+
 </style>

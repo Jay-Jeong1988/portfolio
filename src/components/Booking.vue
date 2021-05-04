@@ -101,33 +101,32 @@ export default {
 };
 </script>
 
-<style scoped>
-.Booking {
-  padding: 1.7em;
-  padding-top: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.Booking div {
-  text-align: center;
-}
-.createCardForm > div {
-  margin-bottom: 0.5em;
-}
+<style lang="sass">
+
+.Booking 
+  padding: 1.7em
+  padding-top: 0
+  +flexAllCenter
+
+.Booking div 
+  text-align: center
+
+.createCardForm > div 
+  margin-bottom: 0.5em
+
 .createCardForm input,
-.createCardForm label {
-  display: inline;
-}
-.done {
-  margin-top: 1em;
-}
-.successIcon {
-  width: 17em;
-}
-@media only screen and (max-width: 600px) {
-  .successIcon {
-    width: 12em;
-  }
-}
+.createCardForm label 
+  display: inline
+
+.done 
+  margin-top: 1em
+
+.successIcon 
+  width: 17em
+
+@media only screen and (max-width: 600px) 
+  .successIcon 
+    width: 12em
+  
+
 </style>

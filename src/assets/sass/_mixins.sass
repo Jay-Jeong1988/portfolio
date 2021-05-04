@@ -1,0 +1,15 @@
+@mixin flexAllCenter
+  display: flex
+  justify-content: center
+  align-items: center
+
+@mixin concreteBg
+  background: linear-gradient(rgba(#000, 0.5), rgba(#000, 0.5)), url("http://ik.imagekit.io/kitkitkitit/guibinpingpong/tr:q-100,ar-7-3/concrete_bg.jpg")
+
+@mixin bookBtn
+  background-color: white
+  border-radius: 100px
+  +flexAllCenter
+  padding: 1.5em 2em
+  width: 10em
+  font-family: "Raleway", sans-serif
